@@ -97,23 +97,23 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/proxy-download")
-async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Render deployment."""
+    return {"status": "alive", "timestamp": "2026-03-16-v1.0.4"}
+
+@app.get("/p")
+async def proxy_download_short(url: str = Query(..., description="Direct video URL to proxy"), 
                          filename: str = Query("video.mp4", description="Filename for the downloaded file")):
-    """
-    Proxies the download of the video file to bypass Pinterest constraints and ensure a direct download experience.
-    """
+    """ Short proxy route to avoid potential path filtering issues. """
     async def stream_video():
         async with httpx.AsyncClient(follow_redirects=True, timeout=60.0) as client:
             async with client.stream("GET", url) as response:
                 if response.status_code >= 400:
                     yield b"Error: Could not fetch video from source."
                     return
-                
                 async for chunk in response.aiter_bytes():
                     yield chunk
-
-    # We need to know the content type if possible, or default to video/mp4
     return StreamingResponse(
         stream_video(),
         media_type="video/mp4",
@@ -123,12 +123,8 @@ async def proxy_download(url: str = Query(..., description="Direct video URL to 
         }
     )
 
-@app.get("/health")
-async def health_check():
-    """Health check endpoint for Render deployment."""
-    return {"status": "ok", "version": "1.0.3", "note": "DIAGNOSTIC_VERSION"}
-
 @app.get("/api/v2/test")
 async def test_route_v2():
     return {"message": "V2 API is working", "timestamp": "2026-03-16"}
+
 
