@@ -28,7 +28,7 @@ def extract_pinterest_video(url: str):
         'clean_infojson': False,
         'quiet': True,
         'skip_download': True,
-        'format': 'best[ext=mp4]/best',
+        'format': 'best',
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         try:
