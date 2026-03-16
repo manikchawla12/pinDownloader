@@ -59,29 +59,7 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
         # Run the synchronous yt-dlp extraction in a separate thread to avoid blocking the event loop
         info = await asyncio.to_thread(extract_pinterest_video, url)
         
-        # Try to find the best MP4 format first
-        video_url = None
-        formats = info.get('formats', [])
-        
-        # Look for mp4 formats with video and audio
-        mp4_formats = [f for f in formats if f.get('ext') == 'mp4' and f.get('vcodec') != 'none']
-        if mp4_formats:
-            # Sort by quality (usually width/height) if available
-            mp4_formats.sort(key=lambda x: (x.get('width', 0) or 0) * (x.get('height', 0) or 0), reverse=True)
-            video_url = mp4_formats[0].get('url')
-        
-        # Fallback to top-level url if it's an mp4
-        if not video_url:
-            top_level_url = info.get('url')
-            if top_level_url and ('.mp4' in top_level_url or 'video' in top_level_url):
-                video_url = top_level_url
-
-        # Last resort: just take any video format
-        if not video_url and formats:
-            video_formats = [f for f in formats if f.get('vcodec') != 'none']
-            if video_formats:
-                video_url = video_formats[-1].get('url')
-
+        video_url = info.get('url')
         thumbnail = info.get('thumbnail')
         title = info.get('title', 'Pinterest Video')
         
@@ -100,7 +78,7 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
 @app.get("/health")
 async def health_check():
     """Health check endpoint with versioning."""
-    return {"status": "alive", "version": "1.0.6", "timestamp": "2026-03-16T19:12"}
+    return {"status": "alive", "version": "1.0.7", "timestamp": "2026-03-16T19:24"}
 
 @app.get("/api/routes")
 async def list_routes():
