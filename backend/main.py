@@ -100,7 +100,7 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
 @app.get("/health")
 async def health_check():
     """Health check endpoint with versioning."""
-    return {"status": "alive", "version": "1.0.5", "timestamp": "2026-03-16T17:58"}
+    return {"status": "alive", "version": "1.0.6", "timestamp": "2026-03-16T19:12"}
 
 @app.get("/api/routes")
 async def list_routes():
