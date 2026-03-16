@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Pinterest Video (HD) - Ultimate Guide & Free Tool</title>
+    <meta name="description" content="Discover how to download Pinterest video quickly. Our free tool provides direct MP4 links without watermark. Read our comprehensive 2026 guide.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+    
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center gap-2">
+                    <span class="font-bold text-xl tracking-tight text-dark">PinDownloader</span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
+                    <a href="/pinterest-to-mp4" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Pinterest to MP4</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Re-use Downloader Form for maximum utility on SEO pages -->
+        <section class="py-12 bg-pinterest bg-opacity-5 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl font-bold text-dark mb-4">Download Pinterest Video Online</h1>
+                <p class="text-lg text-gray-700 mb-8">The most reliable tool to grab your favorite pins instantly.</p>
+                <div class="bg-white p-6 rounded-2xl shadow-md max-w-2xl mx-auto border border-gray-100">
+                    <form id="downloadForm" class="flex flex-col md:flex-row gap-4">
+                        <input type="url" id="videoUrl" placeholder="Paste Pinterest link..." required class="input-field flex-grow" pattern="https?://([a-zA-Z0-9-]+\.)?(pinterest\.com|pin\.it)/.*">
+                        <button type="submit" class="btn-primary group">
+                            <span id="btnText">Download</span>
+                            <div id="btnLoader" class="loader ml-2 hidden"></div>
+                        </button>
+                    </form>
+                    <div id="errorMsg" class="text-red-500 mt-4 text-sm hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="resultSection" class="py-8 px-4 hidden">
+            <!-- (Content dynamically injected via JS, reusing app.js) -->
+            <div class="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow border flex flex-col md:flex-row gap-6 items-center">
+                <img id="resultThumbnail" src="" class="w-full md:w-1/2 rounded aspect-video object-cover">
+                <div class="flex-grow text-center md:text-left">
+                    <h3 id="resultTitle" class="font-bold text-xl mb-4 line-clamp-2"></h3>
+                    <a id="downloadLink" href="#" target="_blank" class="btn-primary w-full shadow-lg">Download MP4</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Article -->
+        <section class="py-16 px-4 bg-white">
+            <div class="max-w-4xl mx-auto prose prose-lg">
+                <h2>Why You Need to Download Pinterest Video Content</h2>
+                <p>Pinterest is an ultimate source of visual inspiration. Every day, millions of users upload incredibly creative videos spanning recipes, DIY projects, fashion, and home decor. But what happens when you want to view a video offline or share it with a friend who doesn't use the app? You need a reliable way to <strong>download Pinterest video</strong> directly to your device.</p>
+                
+                <h3>Step-by-Step Guide to Saving Videos</h3>
+                <p>Using our tool is incredibly straightforward. You don't need any technical skills.</p>
+                <ol>
+                    <li><strong>Find your video:</strong> Open the Pinterest app or website and navigate to the video pin you wish to save.</li>
+                    <li><strong>Copy the link:</strong> Click on the share icon (usually an arrow) and select "Copy Link". If you're on a browser, you can just copy the URL from the address bar.</li>
+                    <li><strong>Paste the link:</strong> Come back to our site and paste the link into the box at the top of this page.</li>
+                    <li><strong>Hit Download:</strong> Click the button, and our backend will instantly process the video and provide you with a high-definition MP4 link.</li>
+                </ol>
+
+                <h3>Benefits of Using PinDownloader</h3>
+                <p>Our platform was built with the user in mind. Unlike other sites that bombard you with malicious popups or require you to install shady browser extensions, our tool is 100% web-based. It's fast, secure, and preserves the original quality of the uploaded media.</p>
+                
+                <h3>Frequently Asked Questions on Downloading Pins</h3>
+                <h4>Can I download Pinterest videos on iPhone?</h4>
+                <p>Yes. Our website is fully responsive. Simply use Safari or Chrome on your iOS device, copy the link from the Pinterest app, and use our downloader.</p>
+                
+                <h4>Is there a limit to how many videos I can download?</h4>
+                <p>No. We provide unlimited access to our tool. Download as many videos as you like!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-12 mt-auto text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            &copy; 2026 Pinterest Video Downloader | <a href="/privacy-policy" class="hover:text-pinterest">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>

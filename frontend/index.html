@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Pinterest Video Downloader (HD) – Download Videos Without Watermark</title>
+    <meta name="description" content="Download Pinterest videos online in HD quality without watermark. Free, fast, and secure Pinterest video downloader. No login required.">
+    <meta name="keywords" content="pinterest video downloader, download pinterest video, pinterest video download hd, pinterest to mp4">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- AdSense Placeholder Script -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pinterest Video Downloader",
+      "operatingSystem": "All",
+      "applicationCategory": "MultimediaApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Download Pinterest videos online in HD quality without watermark. Free, fast, and secure Pinterest video downloader."
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center gap-2">
+                        <svg class="h-8 w-8 text-pinterest" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.105 0 7.302 2.925 7.302 6.814 0 4.085-2.571 7.373-6.14 7.373-1.2 0-2.328-.623-2.712-1.359l-.746 2.842c-.271 1.043-1.002 2.35-1.492 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg>
+                        <span class="font-bold text-xl tracking-tight text-dark">PinDownloader</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#how-it-works" class="text-gray-600 hover:text-pinterest font-medium transition-colors">How it works</a>
+                    <a href="#faq" class="text-gray-600 hover:text-pinterest font-medium transition-colors">FAQ</a>
+                    <a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Ad Banner Placeholder -->
+    <div class="w-full max-w-6xl mx-auto mt-4 px-4 text-center">
+        <div class="bg-gray-200 text-gray-400 text-sm py-8 border border-dashed border-gray-300 rounded-lg">
+            [AdSense Header Banner Placement]
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="py-12 md:py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-dark mb-4 leading-tight">
+                    Free Pinterest Video Downloader
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                    Download Pinterest videos in HD MP4 without watermark. Fast, simple, and 100% free.
+                </p>
+                
+                <!-- Downloader Box -->
+                <div class="glass-card rounded-2xl p-6 md:p-8 shadow-xl max-w-3xl mx-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    <form id="downloadForm" class="flex flex-col md:flex-row gap-4">
+                        <input 
+                            type="url" 
+                            id="videoUrl" 
+                            placeholder="Paste your Pinterest link here..." 
+                            required
+                            class="input-field flex-grow"
+                            pattern="https?://([a-zA-Z0-9-]+\.)?(pinterest\.com|pin\.it)/.*"
+                            title="Please enter a valid Pinterest URL"
+                        >
+                        <button type="submit" class="btn-primary md:w-auto w-full group">
+                            <span id="btnText">Download</span>
+                            <div id="btnLoader" class="loader ml-2 hidden"></div>
+                            <svg id="btnIcon" class="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        </button>
+                    </form>
+                    <div id="errorMsg" class="text-red-500 mt-4 text-sm font-medium hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section (Hidden initially) -->
+        <section id="resultSection" class="py-8 px-4 hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-full md:w-1/2 aspect-video bg-gray-100 rounded-lg overflow-hidden relative shadow-inner">
+                        <img id="resultThumbnail" src="" alt="Video Thumbnail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center">
+                             <svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+                        <h3 id="resultTitle" class="text-xl font-bold text-gray-800 mb-2 line-clamp-2">Pinterest Video</h3>
+                        <p class="text-green-600 font-medium mb-6 flex items-center gap-1">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Ready to download
+                        </p>
+                        <a id="downloadLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary w-full shadow-lg">
+                            Download HD MP4
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Below Button Ad Banner Placeholder -->
+        <div class="w-full max-w-4xl mx-auto my-8 px-4 text-center">
+            <div class="bg-gray-200 text-gray-400 text-sm py-6 border border-dashed border-gray-300 rounded-lg">
+                [AdSense Middle Placement]
+            </div>
+        </div>
+
+        <!-- How it works (SEO Content) -->
+        <section id="how-it-works" class="py-16 bg-white px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-dark mb-12">How to Download Pinterest Videos</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                        <h3 class="text-xl font-semibold mb-2">Copy Link</h3>
+                        <p class="text-gray-600">Open Pinterest, find the video you want, tap the share icon, and select "Copy Link".</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                        <h3 class="text-xl font-semibold mb-2">Paste URL</h3>
+                        <p class="text-gray-600">Paste the copied link into the input box at the top of this page and click "Download".</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                        <h3 class="text-xl font-semibold mb-2">Save MP4</h3>
+                        <p class="text-gray-600">Wait a few seconds for our tool to process, then click the Download MP4 button to save it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extensive SEO Text Section -->
+        <section class="py-16 bg-gray-50 px-4">
+            <div class="max-w-4xl mx-auto prose prose-lg text-gray-700">
+                <h2 class="text-3xl font-bold text-dark mb-6">The Best Free Pinterest Video Downloader Online</h2>
+                <p class="mb-4">
+                    Pinterest is an incredible platform for discovering ideas, inspiration, short clips, and DIY tutorials. However, the app doesn't provide a built-in feature to download videos directly to your device. That's where our <strong>Pinterest Video Downloader</strong> comes in. We offer a fast, reliable, and entirely free tool to help you save your favorite Pinterest videos in high-definition (HD) MP4 format, completely without watermarks.
+                </p>
+                <h3 class="text-2xl font-bold text-dark mt-8 mb-4">Features of Our Pinterest Downloader</h3>
+                <ul class="list-disc pl-6 mb-6 space-y-2">
+                    <li><strong>No Watermark:</strong> Enjoy your downloaded videos clean and unobscured.</li>
+                    <li><strong>HD Quality:</strong> We extract the highest possible resolution available on Pinterest.</li>
+                    <li><strong>Fast & Secure:</strong> State-of-the-art backend processing ensures quick downloads without comprising your security.</li>
+                    <li><strong>All Devices Supported:</strong> Works seamlessly on mobile phones (iOS/Android), tablets, and desktop computers (PC/Mac).</li>
+                    <li><strong>No Signup Required:</strong> Unlimited downloads without ever creating an account.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-16 bg-white px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-dark mb-10">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Is it free to download Pinterest videos?</h3>
+                        <p class="text-gray-600">Yes, our Pinterest video downloader is 100% free forever. There are no hidden fees or subscription costs.</p>
+                    </div>
+                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Are the downloaded videos watermark-free?</h3>
+                        <p class="text-gray-600">Absolutely. We fetch the raw video file directly from the source, so you get the original video without any added watermarks.</p>
+                    </div>
+                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Where are the downloaded videos saved?</h3>
+                        <p class="text-gray-600">By default, videos are saved in your browser's default "Downloads" folder. On mobile devices, check your gallery or files app.</p>
+                    </div>
+                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Is it safe to use this tool?</h3>
+                        <p class="text-gray-600">Yes, it is completely secure. We do not store your download history or save the videos on our servers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <svg class="h-6 w-6 text-pinterest" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.105 0 7.302 2.925 7.302 6.814 0 4.085-2.571 7.373-6.14 7.373-1.2 0-2.328-.623-2.712-1.359l-.746 2.842c-.271 1.043-1.002 2.35-1.492 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg>
+                    <span class="font-bold text-lg tracking-tight">PinDownloader</span>
+                </div>
+                <p class="text-gray-400 text-sm">The best free tool to download Pinterest videos online, safely and securely.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-pinterest transition-colors">Home</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Pinterest Video Download</a></li>
+                    <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Download Reels</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/privacy-policy" class="hover:text-pinterest transition-colors">Privacy Policy</a></li>
+                    <li><a href="/terms-of-service" class="hover:text-pinterest transition-colors">Terms of Service</a></li>
+                    <li><a href="/disclaimer" class="hover:text-pinterest transition-colors">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Company</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/about-us" class="hover:text-pinterest transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-pinterest transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Pinterest Video Downloader. All rights reserved.<br>
+            <span class="text-xs mt-2 block">This tool is intended for personal use only. Users must respect Pinterest's terms of service and copyright laws.</span>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>

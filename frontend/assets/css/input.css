@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply bg-pinterest hover:bg-pinterestHover text-white font-bold py-3 px-6 rounded-full transition-colors duration-200 shadow-md inline-flex items-center justify-center;
+    }
+    .input-field {
+        @apply w-full border-2 border-gray-200 rounded-full py-4 px-6 text-gray-700 leading-tight focus:outline-none focus:border-pinterest focus:ring-1 focus:ring-pinterest transition-colors;
+    }
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #E60023;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
