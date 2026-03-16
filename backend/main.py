@@ -126,8 +126,9 @@ async def proxy_download(url: str = Query(..., description="Direct video URL to 
 @app.get("/health")
 async def health_check():
     """Health check endpoint for Render deployment."""
-    return {"status": "ok", "version": "1.0.2", "note": "Routing test"}
+    return {"status": "ok", "version": "1.0.3", "note": "DIAGNOSTIC_VERSION"}
 
-@app.get("/api/test")
-async def test_route():
-    return {"message": "API is responding correctly"}
+@app.get("/api/v2/test")
+async def test_route_v2():
+    return {"message": "V2 API is working", "timestamp": "2026-03-16"}
+
