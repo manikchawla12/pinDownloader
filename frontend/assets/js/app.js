@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Replace the default with the actual deployment URL.
     const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
         ? 'http://localhost:8000' 
-        : 'https://pinterest-downloader-api.onrender.com';
+        : 'https://pindownloader-gvif.onrender.com';
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
