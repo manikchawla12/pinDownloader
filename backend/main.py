@@ -108,30 +108,65 @@ async def list_routes():
     return [{"path": route.path} for route in app.routes]
 
 @app.get("/api/p")
-@app.get("/p") # Support both for catch-all
+@app.get("/p")
 async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
                          filename: str = Query("video.mp4", description="Filename for the downloaded file")):
     """
     Proxies the video download to bypass Pinterest's direct link protections.
+    Now with proper error handling and Content-Length support.
     """
-    async def stream_video():
-        async with httpx.AsyncClient(follow_redirects=True, timeout=60.0) as client:
-            async with client.stream("GET", url) as response:
-                if response.status_code >= 400:
-                    yield b"Error: Could not fetch video from source."
-                    return
+    # Use a specific User-Agent to avoid being blocked by CDNs
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://www.pinterest.com/"
+    }
+    
+    client = httpx.AsyncClient(follow_redirects=True, timeout=60.0)
+    
+    try:
+        # Build the request
+        request = client.build_request("GET", url, headers=headers)
+        # Send it but stream the response
+        response = await client.send(request, stream=True)
+        
+        if response.status_code >= 400:
+            await response.aclose()
+            await client.aclose()
+            raise HTTPException(status_code=response.status_code, detail=f"Failed to fetch video: {response.reason_phrase}")
+
+        async def stream_video():
+            try:
                 async for chunk in response.aiter_bytes():
                     yield chunk
+            finally:
+                await response.aclose()
+                await client.aclose()
 
-    return StreamingResponse(
-        stream_video(),
-        media_type="video/mp4",
-        headers={
+        # Extract headers for the proxy response
+        proxy_headers = {
             "Content-Disposition": f'attachment; filename="{filename}"',
             "Cache-Control": "no-cache",
             "Access-Control-Expose-Headers": "Content-Disposition"
         }
-    )
+        
+        # Add Content-Length if available from the source
+        content_length = response.headers.get("Content-Length")
+        if content_length:
+            proxy_headers["Content-Length"] = content_length
+
+        return StreamingResponse(
+            stream_video(),
+            media_type="video/mp4",
+            headers=proxy_headers
+        )
+        
+    except Exception as e:
+        if 'client' in locals():
+            await client.aclose()
+        if isinstance(e, HTTPException):
+            raise e
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/v2/test")
 async def test_route_v2():
