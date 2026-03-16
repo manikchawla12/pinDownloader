@@ -51,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // Provide direct download capabilities via proxy to ensure it works on iOS
-            const filename = `pinterest_video_${Date.now()}.mp4`;
-            downloadLink.href = `${API_BASE_URL}/api/proxy-download?url=${encodeURIComponent(data.video_url)}&filename=${encodeURIComponent(filename)}`;
+            const filename = `pinclip_${Date.now()}.mp4`;
+            // Using the shortened proxy route /p for better compatibility
+            downloadLink.href = `${API_BASE_URL}/p?url=${encodeURIComponent(data.video_url)}&filename=${encodeURIComponent(filename)}`;
             downloadLink.download = filename;
 
             // Show results smoothly
