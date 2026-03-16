@@ -73,35 +73,19 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/health")
-async def health_check():
-    """Health check endpoint for Render deployment."""
-    return {"status": "ok", "version": "1.0.1", "deployed_at": "2026-03-16T17:35:00"}
-
-@app.get("/api/test")
-async def test_route():
-    return {"message": "API is responding correctly"}
-
 @app.get("/api/proxy-download")
 async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
                          filename: str = Query("video.mp4", description="Filename for the downloaded file")):
     """
-    Proxies the video download to bypass CORB/CORS restrictions and force download on iOS.
+    DEBUG: Testing if this endpoint is even reachable.
     """
-    async def stream_video():
-        async with httpx.AsyncClient(follow_redirects=True) as client:
-            async with client.stream("GET", url) as response:
-                if response.status_code != 200:
-                    raise HTTPException(status_code=response.status_code, detail="Failed to fetch video from Pinterest")
-                
-                async for chunk in response.aiter_bytes(chunk_size=1024 * 1024):
-                    yield chunk
+    return {"message": "Proxy endpoint reached", "url": url, "filename": filename}
 
-    return StreamingResponse(
-        stream_video(),
-        media_type="video/mp4",
-        headers={
-            "Content-Disposition": f'attachment; filename="{filename}"',
-            "Cache-Control": "no-cache"
-        }
-    )
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Render deployment."""
+    return {"status": "ok", "version": "1.0.2", "note": "Routing test"}
+
+@app.get("/api/test")
+async def test_route():
+    return {"message": "API is responding correctly"}
