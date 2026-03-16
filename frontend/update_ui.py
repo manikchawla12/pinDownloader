@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - PinClip</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
-        <header class="bg-white shadow-sm sticky top-0 z-50">
+import os
+import re
+
+header_html = """    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -54,24 +44,26 @@
                 });
             }
         });
-    </script>
+    </script>"""
 
-    <main class="flex-grow py-12 px-4">
-        <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 text-center">
-            <h1 class="text-3xl font-bold text-dark mb-6">Contact Us</h1>
-            <p class="text-lg text-gray-600 mb-8 mt-4">Have questions or feedback? We'd love to hear from you. Send us an email.</p>
-            <a href="mailto:orderbusinesspromotion@gmail.com" class="btn-primary">Email Support</a>
-        </div>
-    </main>
+footer_svg_pattern = r'<svg class="h-6 w-6 text-pinterest" fill="currentColor" viewBox="0 0 24 24">.*?</svg>'
+footer_img_replacement = '<img src="/favicon.png" alt="PinClip Logo" class="h-6 w-6 rounded">'
 
-    <footer class="bg-dark text-white py-8 mt-auto text-center text-sm">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="space-x-4 mb-4">
-                <a href="/" class="hover:text-pinterest">Home</a>
-                <a href="/about-us" class="hover:text-pinterest">About Us</a>
-            </div>
-            &copy; 2026 PinClip
-        </div>
-    </footer>
-</body>
-</html>
+def update_headers(directory):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(".html"):
+                path = os.path.join(root, file)
+                with open(path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Replace <header> to </header>
+                new_content = re.sub(r'<header.*?</header>', header_html, content, flags=re.DOTALL)
+                
+                # Replace footer SVG if present
+                new_content = re.sub(footer_svg_pattern, footer_img_replacement, new_content, flags=re.DOTALL)
+
+                with open(path, 'w', encoding='utf-8') as f:
+                    f.write(new_content)
+
+update_headers('/Users/manikchawla/.gemini/antigravity/scratch/pinterest-downloader/frontend')

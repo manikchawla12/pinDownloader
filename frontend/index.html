@@ -39,24 +39,50 @@
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
     
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <a href="/" class="flex items-center gap-2">
-                        <svg class="h-8 w-8 text-pinterest" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.105 0 7.302 2.925 7.302 6.814 0 4.085-2.571 7.373-6.14 7.373-1.2 0-2.328-.623-2.712-1.359l-.746 2.842c-.271 1.043-1.002 2.35-1.492 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg>
-                        <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
-                    </a>
-                </div>
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-2">
+                    <img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded">
+                    <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
+                </a>
+                
+                <!-- Desktop Nav -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#how-it-works" class="text-gray-600 hover:text-pinterest font-medium transition-colors">How it works</a>
-                    <a href="#faq" class="text-gray-600 hover:text-pinterest font-medium transition-colors">FAQ</a>
+                    <a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
                     <a href="/blog" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
                     <a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a>
                 </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
+            <div class="px-4 py-3 space-y-2 pb-4">
+                <a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
+                <a href="/blog" class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
+                <a href="/download-pinterest-video" class="block text-base font-medium text-gray-700 hover:text-pinterest">Features</a>
             </div>
         </div>
     </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('mobileMenuBtn');
+            var menu = document.getElementById('mobileMenu');
+            if (btn && menu) {
+                btn.addEventListener('click', function() {
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
 
     <!-- Header Ad Banner Placeholder -->
     <div class="w-full max-w-6xl mx-auto mt-4 px-4 text-center">
@@ -209,7 +235,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center gap-2 mb-4">
-                    <svg class="h-6 w-6 text-pinterest" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.105 0 7.302 2.925 7.302 6.814 0 4.085-2.571 7.373-6.14 7.373-1.2 0-2.328-.623-2.712-1.359l-.746 2.842c-.271 1.043-1.002 2.35-1.492 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg>
+                    <img src="/favicon.png" alt="PinClip Logo" class="h-6 w-6 rounded">
                     <span class="font-bold text-lg tracking-tight">PinClip</span>
                 </div>
                 <p class="text-gray-400 text-sm">The best free tool to download Pinterest videos online, safely and securely.</p>
