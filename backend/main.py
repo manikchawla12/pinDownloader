@@ -99,13 +99,21 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint for Render deployment."""
-    return {"status": "alive", "timestamp": "2026-03-16-v1.0.4"}
+    """Health check endpoint with versioning."""
+    return {"status": "alive", "version": "1.0.5", "timestamp": "2026-03-16T17:58"}
 
-@app.get("/p")
-async def proxy_download_short(url: str = Query(..., description="Direct video URL to proxy"), 
+@app.get("/api/routes")
+async def list_routes():
+    """List all available routes for debugging."""
+    return [{"path": route.path} for route in app.routes]
+
+@app.get("/api/p")
+@app.get("/p") # Support both for catch-all
+async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
                          filename: str = Query("video.mp4", description="Filename for the downloaded file")):
-    """ Short proxy route to avoid potential path filtering issues. """
+    """
+    Proxies the video download to bypass Pinterest's direct link protections.
+    """
     async def stream_video():
         async with httpx.AsyncClient(follow_redirects=True, timeout=60.0) as client:
             async with client.stream("GET", url) as response:
@@ -114,17 +122,20 @@ async def proxy_download_short(url: str = Query(..., description="Direct video U
                     return
                 async for chunk in response.aiter_bytes():
                     yield chunk
+
     return StreamingResponse(
         stream_video(),
         media_type="video/mp4",
         headers={
             "Content-Disposition": f'attachment; filename="{filename}"',
-            "Cache-Control": "no-cache"
+            "Cache-Control": "no-cache",
+            "Access-Control-Expose-Headers": "Content-Disposition"
         }
     )
 
 @app.get("/api/v2/test")
 async def test_route_v2():
     return {"message": "V2 API is working", "timestamp": "2026-03-16"}
+
 
 
