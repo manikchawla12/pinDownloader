@@ -1,7 +1,9 @@
 import asyncio
 import re
 from fastapi import FastAPI, Request, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
+import httpx
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -75,3 +77,27 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
 async def health_check():
     """Health check endpoint for Render deployment."""
     return {"status": "ok"}
+
+@app.get("/api/proxy-download")
+async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
+                         filename: str = Query("video.mp4", description="Filename for the downloaded file")):
+    """
+    Proxies the video download to bypass CORB/CORS restrictions and force download on iOS.
+    """
+    async def stream_video():
+        async with httpx.AsyncClient(follow_redirects=True) as client:
+            async with client.stream("GET", url) as response:
+                if response.status_code != 200:
+                    raise HTTPException(status_code=response.status_code, detail="Failed to fetch video from Pinterest")
+                
+                async for chunk in response.aiter_bytes(chunk_size=1024 * 1024):
+                    yield chunk
+
+    return StreamingResponse(
+        stream_video(),
+        media_type="video/mp4",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Cache-Control": "no-cache"
+        }
+    )

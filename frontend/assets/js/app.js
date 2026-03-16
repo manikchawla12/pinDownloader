@@ -50,11 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultThumbnail.src = 'https://via.placeholder.com/640x360?text=Video+Ready';
             }
             
-            // Provide direct download capabilities
-            downloadLink.href = data.video_url;
-            // The download attribute sometimes only works for same-origin, 
-            // but setting it is best practice regardless.
-            downloadLink.download = `pinterest_video_${Date.now()}.mp4`;
+            // Provide direct download capabilities via proxy to ensure it works on iOS
+            const filename = `pinterest_video_${Date.now()}.mp4`;
+            downloadLink.href = `${API_BASE_URL}/api/proxy-download?url=${encodeURIComponent(data.video_url)}&filename=${encodeURIComponent(filename)}`;
+            downloadLink.download = filename;
 
             // Show results smoothly
             resultSection.classList.remove('hidden');
