@@ -41,8 +41,9 @@ def extract_pinterest_video(url: str):
             raise Exception(f"Failed to extract video: {str(e)}")
 
 def is_valid_pinterest_url(url: str) -> bool:
-    """Validate that the URL belongs to Pinterest."""
-    pattern = r'^https?://([a-zA-Z0-9-]+\.)?(pinterest\.com|pin\.it)/.*$'
+    """Validate that the URL belongs to Pinterest (including various TLDs)."""
+    # Matches pinterest.com, pinterest.ca, pinterest.co.uk, etc. and pin.it
+    pattern = r'^https?://([a-zA-Z0-9-]+\.)?(pinterest\.[a-z]{2,}(\.[a-z]{2})?|pin\.it)/.*$'
     return bool(re.match(pattern, url))
 
 @app.get("/api/download")
@@ -58,14 +59,27 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
         # Run the synchronous yt-dlp extraction in a separate thread to avoid blocking the event loop
         info = await asyncio.to_thread(extract_pinterest_video, url)
         
-        video_url = info.get('url')
+        # Try to find the best MP4 format first
+        video_url = None
+        formats = info.get('formats', [])
         
-        # Fallback to formats if top-level url is missing
-        if not video_url and 'formats' in info:
-            # Filter for mp4 or video formats
-            video_formats = [f for f in info['formats'] if f.get('vcodec') != 'none']
+        # Look for mp4 formats with video and audio
+        mp4_formats = [f for f in formats if f.get('ext') == 'mp4' and f.get('vcodec') != 'none']
+        if mp4_formats:
+            # Sort by quality (usually width/height) if available
+            mp4_formats.sort(key=lambda x: (x.get('width', 0) or 0) * (x.get('height', 0) or 0), reverse=True)
+            video_url = mp4_formats[0].get('url')
+        
+        # Fallback to top-level url if it's an mp4
+        if not video_url:
+            top_level_url = info.get('url')
+            if top_level_url and ('.mp4' in top_level_url or 'video' in top_level_url):
+                video_url = top_level_url
+
+        # Last resort: just take any video format
+        if not video_url and formats:
+            video_formats = [f for f in formats if f.get('vcodec') != 'none']
             if video_formats:
-                # yt-dlp usually orders by quality, so let's take the first one or a known good one
                 video_url = video_formats[-1].get('url')
 
         thumbnail = info.get('thumbnail')
