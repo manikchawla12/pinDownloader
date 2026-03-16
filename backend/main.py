@@ -76,7 +76,11 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
 @app.get("/health")
 async def health_check():
     """Health check endpoint for Render deployment."""
-    return {"status": "ok"}
+    return {"status": "ok", "version": "1.0.1", "deployed_at": "2026-03-16T17:35:00"}
+
+@app.get("/api/test")
+async def test_route():
+    return {"message": "API is responding correctly"}
 
 @app.get("/api/proxy-download")
 async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
