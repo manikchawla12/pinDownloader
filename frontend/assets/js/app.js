@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultVideo = document.getElementById('resultVideo');
     const playOverlay = document.getElementById('playOverlay');
     const resultTitle = document.getElementById('resultTitle');
-    const downloadFast = document.getElementById('downloadFast');
-    const downloadReliable = document.getElementById('downloadReliable');
+    const downloadBtn = document.getElementById('downloadBtn');
     
     const btnText = document.getElementById('btnText');
     const btnLoader = document.getElementById('btnLoader');
@@ -38,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         form.querySelector('button').disabled = true;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/download?url=${encodeURIComponent(url)}`);
+            // Step 1: Fetch Metadata
+            const response = await fetch(`${API_BASE_URL}/api/info?url=${encodeURIComponent(url)}`);
             const data = await response.json();
 
             if (!response.ok) {
@@ -50,30 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const thumbnail = data.thumbnail || 'https://via.placeholder.com/640x360?text=Video+Ready';
             resultThumbnail.src = thumbnail;
             
-            // Setup Video Player
-            if (data.video_url) {
-                resultVideo.src = data.video_url;
-                resultVideo.poster = thumbnail;
-                
-                // On some platforms, direct Pinterest URLs might not play due to CORS
-                // So we show the player but keep the thumbnail as a fallback
-                resultVideo.oncanplay = () => {
-                    resultVideo.classList.remove('hidden');
-                    resultThumbnail.classList.add('hidden');
-                    playOverlay.classList.add('hidden');
-                };
-            }
-
+            // Setup Download Link (Reliable yt-dlp based stream)
             const filename = `pinclip_${Date.now()}.mp4`;
+            downloadBtn.href = `${API_BASE_URL}/api/download?url=${encodeURIComponent(url)}&filename=${encodeURIComponent(filename)}`;
+            downloadBtn.download = filename;
 
-            // Download (Fast) -> Standard Proxy
-            downloadFast.href = `${API_BASE_URL}/p?url=${encodeURIComponent(data.video_url)}&filename=${encodeURIComponent(filename)}`;
-            downloadFast.download = filename;
-
-            // Download (Reliable) -> yt-dlp Backend
-            downloadReliable.href = `${API_BASE_URL}/api/reliable-download?url=${encodeURIComponent(url)}&filename=${encodeURIComponent(filename)}`;
-            downloadReliable.download = filename;
-
+            // Optional: Preview (We'll try to show it if we have a direct URL, but its secondary now)
+            // For now, let's just keep the thumbnail focus as the backend handles the heavy lifting
+            
             // Show results
             resultSection.classList.remove('hidden');
             resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
