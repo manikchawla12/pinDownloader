@@ -1,4 +1,5 @@
 import asyncio
+from asyncio import subprocess
 import re
 import logging
 from fastapi import FastAPI, Request, HTTPException, Query
@@ -281,7 +282,6 @@ async def proxy_download(url: str = Query(..., description="Direct video URL to 
             response_headers["Content-Length"] = content_length
 
         return StreamingResponse(stream_video(), media_type="video/mp4", headers=response_headers)
-
     except HTTPException:
         raise
     except Exception as e:
@@ -289,6 +289,66 @@ async def proxy_download(url: str = Query(..., description="Direct video URL to 
         if 'client' in locals():
             await client.aclose()
         raise HTTPException(status_code=500, detail=f"Download failed: {str(e)}")
+
+@app.get("/api/reliable-download")
+@limiter.limit("5/minute")
+async def reliable_download(request: Request,
+                            url: str = Query(..., description="Pinterest Pin URL to download reliably"),
+                            filename: str = Query("video.mp4", description="Filename for the download")):
+    """
+    Experimental reliable download using yt-dlp to stream the video.
+    This is slower but more compatible with HLS/complex formats.
+    """
+    logger.info(f"Reliable download requested for: {url}")
+    
+    # We use a sub-process to pipe yt-dlp output directly to the response
+    # This allows yt-dlp to handle HLS merging, etc.
+    cmd = [
+        "python3", "-m", "yt_dlp",
+        url,
+        "-o", "-", # Output to stdout
+        "--quiet",
+        "--no-warnings",
+        "--format", "bestvideo+bestaudio/best",
+        "--merge-output-format", "mp4",
+        "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ]
+    
+    try:
+        process = await asyncio.create_subprocess_exec(
+            *cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        
+        async def stream_output():
+            try:
+                while True:
+                    chunk = await process.stdout.read(1024 * 64) # 64KB chunks
+                    if not chunk:
+                        break
+                    yield chunk
+            except Exception as e:
+                logger.error(f"Error streaming from yt-dlp: {e}")
+            finally:
+                if process.returncode is None:
+                    try:
+                        process.terminate()
+                    except:
+                        pass
+                await process.wait()
+
+        response_headers = {
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Content-Type": "video/mp4",
+            "Access-Control-Expose-Headers": "Content-Disposition",
+        }
+        
+        return StreamingResponse(stream_output(), headers=response_headers)
+
+    except Exception as e:
+        logger.error(f"Reliable Download Error: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Reliable download failed: {str(e)}")
 
 @app.get("/health")
 async def health_check():

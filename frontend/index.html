@@ -132,10 +132,24 @@
         <!-- Result Section (Hidden initially) -->
         <section id="resultSection" class="py-8 px-4 hidden">
             <div class="max-w-3xl mx-auto">
+                <style>
+                    .btn-secondary {
+                        background-color: #f3f4f6;
+                        color: #374151;
+                        border: 1px solid #d1d5db;
+                    }
+                    .btn-secondary:hover {
+                        background-color: #e5e7eb;
+                    }
+                </style>
                 <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
-                    <div class="w-full md:w-1/2 aspect-video bg-gray-100 rounded-lg overflow-hidden relative shadow-inner">
+                    <div class="w-full md:w-1/2 aspect-video bg-gray-100 rounded-lg overflow-hidden relative shadow-inner group">
+                        <!-- Video Player -->
+                        <video id="resultVideo" class="w-full h-full object-contain hidden" controls poster=""></video>
+                        <!-- Image Fallback/Poster -->
                         <img id="resultThumbnail" src="" alt="Video Thumbnail" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center">
+                        <!-- Play Overlay (Only visible when image is shown) -->
+                        <div id="playOverlay" class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center pointer-events-none">
                              <svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
                         </div>
                     </div>
@@ -145,10 +159,17 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             Ready to download
                         </p>
-                        <a id="downloadLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary w-full shadow-lg">
-                            Download HD MP4
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        </a>
+                        
+                        <div class="flex flex-col gap-3 w-full">
+                            <a id="downloadFast" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary w-full shadow-lg">
+                                <span>Download (Fast)</span>
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </a>
+                            <a id="downloadReliable" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full p-3 rounded-full font-bold shadow transition-all flex items-center justify-center">
+                                <span>Download (Reliable)</span>
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

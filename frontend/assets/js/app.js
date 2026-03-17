@@ -4,15 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMsg = document.getElementById('errorMsg');
     const resultSection = document.getElementById('resultSection');
     const resultThumbnail = document.getElementById('resultThumbnail');
+    const resultVideo = document.getElementById('resultVideo');
+    const playOverlay = document.getElementById('playOverlay');
     const resultTitle = document.getElementById('resultTitle');
-    const downloadLink = document.getElementById('downloadLink');
+    const downloadFast = document.getElementById('downloadFast');
+    const downloadReliable = document.getElementById('downloadReliable');
     
     const btnText = document.getElementById('btnText');
     const btnLoader = document.getElementById('btnLoader');
     const btnIcon = document.getElementById('btnIcon');
 
-    // API Base URL - We will use the Render backend in production.
-    // Replace the default with the actual deployment URL.
     const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
         ? 'http://localhost:8000' 
         : 'https://pindownloader-gvif.onrender.com';
@@ -26,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset UI
         errorMsg.classList.add('hidden');
         resultSection.classList.add('hidden');
+        resultVideo.classList.add('hidden');
+        resultThumbnail.classList.remove('hidden');
+        playOverlay.classList.remove('hidden');
         
         // Apply loading state
         btnText.textContent = 'Processing...';
@@ -38,25 +42,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (!response.ok) {
-                // Return detailed error if provided, else generic message
-                throw new Error(data.detail || 'Failed to extract video. Please make sure the URL is valid.');
+                throw new Error(data.detail || 'Failed to extract video.');
             }
 
-            // Populate the successful result
+            // Populate metadata
             resultTitle.textContent = data.title || 'Pinterest Video';
-            if (data.thumbnail) {
-                resultThumbnail.src = data.thumbnail;
-            } else {
-                resultThumbnail.src = 'https://via.placeholder.com/640x360?text=Video+Ready';
-            }
+            const thumbnail = data.thumbnail || 'https://via.placeholder.com/640x360?text=Video+Ready';
+            resultThumbnail.src = thumbnail;
             
-            // Provide direct download capabilities via proxy to ensure it works on iOS
-            const filename = `pinclip_${Date.now()}.mp4`;
-            // Using the shortened proxy route /p for better compatibility
-            downloadLink.href = `${API_BASE_URL}/p?url=${encodeURIComponent(data.video_url)}&filename=${encodeURIComponent(filename)}`;
-            downloadLink.download = filename;
+            // Setup Video Player
+            if (data.video_url) {
+                resultVideo.src = data.video_url;
+                resultVideo.poster = thumbnail;
+                
+                // On some platforms, direct Pinterest URLs might not play due to CORS
+                // So we show the player but keep the thumbnail as a fallback
+                resultVideo.oncanplay = () => {
+                    resultVideo.classList.remove('hidden');
+                    resultThumbnail.classList.add('hidden');
+                    playOverlay.classList.add('hidden');
+                };
+            }
 
-            // Show results smoothly
+            const filename = `pinclip_${Date.now()}.mp4`;
+
+            // Download (Fast) -> Standard Proxy
+            downloadFast.href = `${API_BASE_URL}/p?url=${encodeURIComponent(data.video_url)}&filename=${encodeURIComponent(filename)}`;
+            downloadFast.download = filename;
+
+            // Download (Reliable) -> yt-dlp Backend
+            downloadReliable.href = `${API_BASE_URL}/api/reliable-download?url=${encodeURIComponent(url)}&filename=${encodeURIComponent(filename)}`;
+            downloadReliable.download = filename;
+
+            // Show results
             resultSection.classList.remove('hidden');
             resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -64,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMsg.textContent = error.message;
             errorMsg.classList.remove('hidden');
         } finally {
-            // Revert loading state
             btnText.textContent = 'Download';
             btnLoader.classList.add('hidden');
             btnIcon.classList.remove('hidden');
