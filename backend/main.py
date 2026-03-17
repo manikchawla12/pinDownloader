@@ -33,9 +33,9 @@ def extract_pinterest_video(url: str):
     logger.info(f"Extracting video from URL: {url}")
     ydl_opts = {
         'clean_infojson': True,
-        'quiet': False,  # Changed to False to see more details
+        'quiet': False,
         'skip_download': True,
-        'no_warnings': False,  # Changed to see warnings
+        'no_warnings': False,
         'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'socket_timeout': 30,
         'extractor_args': {'youtube': {'player_client': ['web']}},
@@ -47,8 +47,8 @@ def extract_pinterest_video(url: str):
             # Log detailed format information
             formats = info.get('formats', [])
             logger.info(f"Available formats: {len(formats)}")
-            for i, fmt in enumerate(formats[:5]):  # Log first 5 formats
-                logger.debug(f"Format {i}: ext={fmt.get('ext')}, vcodec={fmt.get('vcodec')}, size={fmt.get('filesize', 'unknown')}, url={fmt.get('url', 'none')[:80]}")
+            for i, fmt in enumerate(formats[:10]):  # Log first 10 formats
+                logger.info(f"Format {i}: id={fmt.get('format_id')}, ext={fmt.get('ext')}, vcodec={fmt.get('vcodec')}, acodec={fmt.get('acodec')}, size={fmt.get('filesize', 'unknown')}, h={fmt.get('height')}, w={fmt.get('width')}")
 
             return info
         except yt_dlp.utils.DownloadError as e:
@@ -76,47 +76,103 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
         video_url = None
         video_size = None
 
-        # 1. Try MP4 video formats with video codec
         formats = info.get('formats', [])
-        video_formats = [f for f in formats if f.get('vcodec') not in (None, 'none') and f.get('ext') == 'mp4']
+        logger.info(f"Analyzing {len(formats)} total formats...")
 
-        if video_formats:
-            # Sort by file size (prefer larger files as they're more likely to be complete videos)
-            video_formats.sort(key=lambda x: x.get('filesize') or x.get('filesize_approx') or 0, reverse=True)
-            selected = video_formats[0]
+        # Filter out HLS formats (m3u8) - these are playlists, not direct videos
+        hls_formats = [f for f in formats if f.get('ext') == 'm3u8' or 'hls' in f.get('format_id', '').lower()]
+        direct_formats = [f for f in formats if f.get('ext') != 'm3u8' and 'hls' not in f.get('format_id', '').lower()]
+
+        logger.info(f"Found {len(direct_formats)} direct formats, {len(hls_formats)} HLS formats")
+
+        # If only HLS formats are available, we cannot download them via proxy
+        if not direct_formats and hls_formats:
+            logger.error("Only HLS formats available. Cannot proxy download HLS playlists.")
+            raise HTTPException(status_code=400, detail="This video only offers HLS streaming format. Please try another video.")
+
+        # Priority 1: MP4 with both video and audio codecs
+        video_audio_formats = [f for f in direct_formats if
+                                f.get('vcodec') not in (None, 'none') and
+                                f.get('acodec') not in (None, 'none') and
+                                f.get('ext') == 'mp4']
+        logger.info(f"Found {len(video_audio_formats)} MP4 formats with video+audio")
+
+        if video_audio_formats:
+            # Sort by file size and quality
+            video_audio_formats.sort(key=lambda x: (
+                x.get('filesize') or x.get('filesize_approx') or 0,
+                x.get('height') or 0,
+                x.get('width') or 0
+            ), reverse=True)
+            selected = video_audio_formats[0]
             video_url = selected.get('url')
             video_size = selected.get('filesize') or selected.get('filesize_approx')
-            logger.info(f"Selected format: {selected.get('format_id')} with size {video_size}")
+            logger.info(f"Selected MP4 with audio: {selected.get('format_id')} (size: {video_size}, h: {selected.get('height')})")
 
-        # 2. Fallback to best quality from all formats
+        # Priority 2: MP4 with video codec only
         if not video_url:
-            logger.info("No MP4 video format found, trying all formats...")
-            formats_with_url = [f for f in formats if f.get('url')]
-            if formats_with_url:
-                # Sort by quality metrics
-                formats_with_url.sort(key=lambda x: (
+            video_only_formats = [f for f in direct_formats if
+                                   f.get('vcodec') not in (None, 'none') and
+                                   f.get('ext') == 'mp4']
+            logger.info(f"Found {len(video_only_formats)} MP4 video-only formats")
+
+            if video_only_formats:
+                video_only_formats.sort(key=lambda x: (
+                    x.get('filesize') or x.get('filesize_approx') or 0,
+                    x.get('height') or 0
+                ), reverse=True)
+                selected = video_only_formats[0]
+                video_url = selected.get('url')
+                video_size = selected.get('filesize') or selected.get('filesize_approx')
+                logger.info(f"Selected MP4 video-only: {selected.get('format_id')} (size: {video_size})")
+
+        # Priority 3: Any format with video codec
+        if not video_url:
+            logger.info("No MP4 video format found, trying other video formats...")
+            other_video_formats = [f for f in direct_formats if f.get('vcodec') not in (None, 'none')]
+
+            if other_video_formats:
+                other_video_formats.sort(key=lambda x: (
+                    x.get('filesize') or x.get('filesize_approx') or 0,
+                    x.get('height') or 0
+                ), reverse=True)
+                selected = other_video_formats[0]
+                video_url = selected.get('url')
+                video_size = selected.get('filesize') or selected.get('filesize_approx')
+                logger.info(f"Selected {selected.get('ext')}: {selected.get('format_id')} (size: {video_size})")
+
+        # Priority 4: Fallback to best quality by filesize
+        if not video_url:
+            logger.info("No video codec found, trying best quality format...")
+            formats_with_size = [f for f in direct_formats if f.get('filesize') or f.get('filesize_approx')]
+
+            if formats_with_size:
+                formats_with_size.sort(key=lambda x: (
                     x.get('filesize') or x.get('filesize_approx') or 0,
                     x.get('width') or 0,
                     x.get('height') or 0
                 ), reverse=True)
-                selected = formats_with_url[0]
+                selected = formats_with_size[0]
                 video_url = selected.get('url')
                 video_size = selected.get('filesize') or selected.get('filesize_approx')
-                logger.info(f"Selected fallback format: {selected.get('format_id')} with size {video_size}")
+                logger.info(f"Selected best quality: {selected.get('format_id')} (ext: {selected.get('ext')}, size: {video_size})")
 
-        # 3. Last resort: use top-level url if available
-        if not video_url:
+        # Priority 5: Use the top-level url from info dict
+        if not video_url and not direct_formats:
             video_url = info.get('url')
-            logger.info("Using top-level URL as fallback")
+            if video_url:
+                logger.info("Using top-level URL from info dict as fallback")
 
         thumbnail = info.get('thumbnail')
         title = info.get('title', 'Pinterest Video')
         
         if not video_url:
-            logger.warning(f"No video found for URL: {url}")
+            logger.error(f"No suitable video URL found for: {url}")
+            logger.error(f"Direct formats available: {len(direct_formats)}, HLS formats: {len(hls_formats)}")
+            logger.debug(f"All format IDs: {[f.get('format_id') for f in formats]}")
             raise HTTPException(status_code=404, detail="No playable video found at this URL.")
             
-        logger.info(f"Successfully extracted: {title} (size: {video_size} bytes)")
+        logger.info(f"Successfully extracted: {title} (size: {video_size} bytes, URL: {video_url[:100]}...)")
         return {
             "success": True,
             "title": title,
@@ -124,6 +180,8 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
             "thumbnail": thumbnail,
             "size": video_size
         }
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"API Error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
@@ -133,6 +191,11 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
 async def proxy_download(url: str = Query(..., description="Direct video URL to proxy"), 
                          filename: str = Query("video.mp4", description="Filename for the downloaded file")):
     logger.info(f"Proxying download: {filename} from URL: {url[:100]}...")
+
+    # Reject M3U8 playlists - they need special handling
+    if '.m3u8' in url.lower() or 'application/vnd.apple.mpegurl' in url.lower():
+        logger.error(f"M3U8 playlist detected: {url[:100]}. This requires HLS processing.")
+        raise HTTPException(status_code=400, detail="M3U8 HLS playlists are not supported. Please provide a direct video URL.")
 
     request_headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -170,12 +233,23 @@ async def proxy_download(url: str = Query(..., description="Direct video URL to 
             try:
                 cl_int = int(content_length)
                 if cl_int < 10000:  # Less than 10KB is suspicious for a video
-                    logger.warning(f"Suspicious content length: {cl_int} bytes. This might be an error page.")
+                    logger.warning(f"Suspicious content length: {cl_int} bytes. This might be an error page or playlist.")
+                    # Check if it's an M3U8 despite not having .m3u8 in URL
+                    await response.aclose()
+                    await client.aclose()
+                    raise HTTPException(status_code=400, detail="Content appears to be a playlist, not a direct video file. Try extracting the video again.")
             except ValueError:
                 pass
 
         content_type = response.headers.get("Content-Type", "")
         logger.info(f"Response Content-Type: {content_type}")
+
+        # Reject HLS/playlist content types
+        if content_type and ("mpegurl" in content_type.lower() or "vnd.apple" in content_type.lower()):
+            logger.error(f"M3U8 playlist detected by content-type: {content_type}")
+            await response.aclose()
+            await client.aclose()
+            raise HTTPException(status_code=400, detail="M3U8 HLS playlists are not supported. Please try extracting the video again.")
 
         # Warn if content type doesn't look like video
         if content_type and "video" not in content_type.lower() and "octet-stream" not in content_type.lower():
