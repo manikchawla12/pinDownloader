@@ -79,86 +79,86 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
         formats = info.get('formats', [])
         logger.info(f"Analyzing {len(formats)} total formats...")
 
-        # Filter out HLS formats (m3u8) - these are playlists, not direct videos
-        hls_formats = [f for f in formats if f.get('ext') == 'm3u8' or 'hls' in f.get('format_id', '').lower()]
-        direct_formats = [f for f in formats if f.get('ext') != 'm3u8' and 'hls' not in f.get('format_id', '').lower()]
+        # Only filter out m3u8 playlists (true HLS playlists)
+        # V_HLSV4-* formats are HLS video segments with actual downloadable URLs - these are valid!
+        true_hls_playlists = [f for f in formats if f.get('ext') == 'm3u8']
+        usable_formats = [f for f in formats if f.get('ext') != 'm3u8']
 
-        logger.info(f"Found {len(direct_formats)} direct formats, {len(hls_formats)} HLS formats")
+        logger.info(f"Found {len(usable_formats)} usable formats, {len(true_hls_playlists)} m3u8 playlists")
 
-        # If only HLS formats are available, we cannot download them via proxy
-        if not direct_formats and hls_formats:
-            logger.error("Only HLS formats available. Cannot proxy download HLS playlists.")
-            raise HTTPException(status_code=400, detail="This video only offers HLS streaming format. Please try another video.")
+        # If only m3u8 playlists available with no downloadable segments, error
+        if not usable_formats and true_hls_playlists:
+            logger.error("Only m3u8 playlists available with no downloadable segments.")
+            raise HTTPException(status_code=400, detail="This video only offers HLS streaming format without direct download capability.")
 
         # Priority 1: MP4 with both video and audio codecs
-        video_audio_formats = [f for f in direct_formats if
+        video_audio_formats = [f for f in usable_formats if
                                 f.get('vcodec') not in (None, 'none') and
                                 f.get('acodec') not in (None, 'none') and
                                 f.get('ext') == 'mp4']
         logger.info(f"Found {len(video_audio_formats)} MP4 formats with video+audio")
 
         if video_audio_formats:
-            # Sort by file size and quality
+            # Sort by quality (height first, then width)
             video_audio_formats.sort(key=lambda x: (
-                x.get('filesize') or x.get('filesize_approx') or 0,
                 x.get('height') or 0,
                 x.get('width') or 0
             ), reverse=True)
             selected = video_audio_formats[0]
             video_url = selected.get('url')
             video_size = selected.get('filesize') or selected.get('filesize_approx')
-            logger.info(f"Selected MP4 with audio: {selected.get('format_id')} (size: {video_size}, h: {selected.get('height')})")
+            logger.info(f"Selected MP4 with audio: {selected.get('format_id')} (size: {video_size}, h: {selected.get('height')}, w: {selected.get('width')})")
 
-        # Priority 2: MP4 with video codec only
+        # Priority 2: MP4 with video codec only (from HLS segments - V_HLSV4-*)
         if not video_url:
-            video_only_formats = [f for f in direct_formats if
+            video_only_formats = [f for f in usable_formats if
                                    f.get('vcodec') not in (None, 'none') and
                                    f.get('ext') == 'mp4']
-            logger.info(f"Found {len(video_only_formats)} MP4 video-only formats")
+            logger.info(f"Found {len(video_only_formats)} MP4 video-only formats (includes HLS segments)")
 
             if video_only_formats:
+                # Sort by quality
                 video_only_formats.sort(key=lambda x: (
-                    x.get('filesize') or x.get('filesize_approx') or 0,
-                    x.get('height') or 0
+                    x.get('height') or 0,
+                    x.get('width') or 0
                 ), reverse=True)
                 selected = video_only_formats[0]
                 video_url = selected.get('url')
                 video_size = selected.get('filesize') or selected.get('filesize_approx')
-                logger.info(f"Selected MP4 video-only: {selected.get('format_id')} (size: {video_size})")
+                logger.info(f"Selected MP4 video-only: {selected.get('format_id')} (size: {video_size}, h: {selected.get('height')}, w: {selected.get('width')})")
 
         # Priority 3: Any format with video codec
         if not video_url:
             logger.info("No MP4 video format found, trying other video formats...")
-            other_video_formats = [f for f in direct_formats if f.get('vcodec') not in (None, 'none')]
+            other_video_formats = [f for f in usable_formats if f.get('vcodec') not in (None, 'none')]
 
             if other_video_formats:
                 other_video_formats.sort(key=lambda x: (
-                    x.get('filesize') or x.get('filesize_approx') or 0,
-                    x.get('height') or 0
+                    x.get('height') or 0,
+                    x.get('width') or 0
                 ), reverse=True)
                 selected = other_video_formats[0]
                 video_url = selected.get('url')
                 video_size = selected.get('filesize') or selected.get('filesize_approx')
-                logger.info(f"Selected {selected.get('ext')}: {selected.get('format_id')} (size: {video_size})")
+                logger.info(f"Selected {selected.get('ext')}: {selected.get('format_id')} (size: {video_size}, h: {selected.get('height')})")
 
-        # Priority 4: Fallback to best quality by filesize
+        # Priority 4: Fallback to any available format with URL
         if not video_url:
-            logger.info("No video codec found, trying best quality format...")
-            formats_with_size = [f for f in direct_formats if f.get('filesize') or f.get('filesize_approx')]
+            logger.info("No video codec found, trying best quality format by height...")
+            formats_with_url = [f for f in usable_formats if f.get('url')]
 
-            if formats_with_size:
-                formats_with_size.sort(key=lambda x: (
-                    x.get('filesize') or x.get('filesize_approx') or 0,
-                    x.get('width') or 0,
-                    x.get('height') or 0
+            if formats_with_url:
+                formats_with_url.sort(key=lambda x: (
+                    x.get('height') or 0,
+                    x.get('width') or 0
                 ), reverse=True)
-                selected = formats_with_size[0]
+                selected = formats_with_url[0]
                 video_url = selected.get('url')
                 video_size = selected.get('filesize') or selected.get('filesize_approx')
-                logger.info(f"Selected best quality: {selected.get('format_id')} (ext: {selected.get('ext')}, size: {video_size})")
+                logger.info(f"Selected best available: {selected.get('format_id')} (ext: {selected.get('ext')}, size: {video_size})")
 
         # Priority 5: Use the top-level url from info dict
-        if not video_url and not direct_formats:
+        if not video_url:
             video_url = info.get('url')
             if video_url:
                 logger.info("Using top-level URL from info dict as fallback")
@@ -168,7 +168,7 @@ async def download_video(request: Request, url: str = Query(..., description="Pi
         
         if not video_url:
             logger.error(f"No suitable video URL found for: {url}")
-            logger.error(f"Direct formats available: {len(direct_formats)}, HLS formats: {len(hls_formats)}")
+            logger.error(f"Usable formats: {len(usable_formats)}, m3u8 playlists: {len(true_hls_playlists)}")
             logger.debug(f"All format IDs: {[f.get('format_id') for f in formats]}")
             raise HTTPException(status_code=404, detail="No playable video found at this URL.")
             
