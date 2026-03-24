@@ -41,15 +41,17 @@ app.add_middleware(
 
 # ──────────────────────── Admin Auth ────────────────────────
 # REQUIRED: Set these via environment variables. No defaults for security.
-ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
-SECRET_KEY = os.environ.get("SECRET_KEY")
+ADMIN_USERNAME = (os.environ.get("ADMIN_USERNAME") or "").strip()
+ADMIN_PASSWORD = (os.environ.get("ADMIN_PASSWORD") or "").strip()
+SECRET_KEY = (os.environ.get("SECRET_KEY") or "").strip()
 
 if not all([ADMIN_USERNAME, ADMIN_PASSWORD, SECRET_KEY]):
     logger.warning(
         "⚠️  ADMIN_USERNAME, ADMIN_PASSWORD, or SECRET_KEY env vars are not set. "
         "Admin login will be disabled until they are configured."
     )
+else:
+    logger.info(f"Admin auth configured for user: '{ADMIN_USERNAME}' (password length: {len(ADMIN_PASSWORD)}, key length: {len(SECRET_KEY)})")
 
 # Simple in-memory token store (survives as long as the process is up)
 active_tokens: dict[str, datetime] = {}
@@ -317,10 +319,13 @@ async def admin_login(request: Request):
         raise HTTPException(status_code=503, detail="Admin auth is not configured. Set ADMIN_USERNAME, ADMIN_PASSWORD, and SECRET_KEY env vars.")
     
     body = await request.json()
-    username = body.get("username", "")
-    password = body.get("password", "")
+    username = body.get("username", "").strip()
+    password = body.get("password", "").strip()
+    
+    logger.info(f"Login attempt: user='{username}' (expected='{ADMIN_USERNAME}'), pass_len={len(password)} (expected_len={len(ADMIN_PASSWORD)})")
     
     if username != ADMIN_USERNAME or password != ADMIN_PASSWORD:
+        logger.warning(f"Login failed: username_match={username == ADMIN_USERNAME}, password_match={password == ADMIN_PASSWORD}")
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     token = generate_token(username)
