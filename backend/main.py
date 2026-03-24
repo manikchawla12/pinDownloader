@@ -40,11 +40,16 @@ app.add_middleware(
 )
 
 # ──────────────────────── Admin Auth ────────────────────────
+# REQUIRED: Set these via environment variables. No defaults for security.
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# Simple token-based auth. Set these via env vars in production.
-ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "***REMOVED***")
-SECRET_KEY = os.environ.get("SECRET_KEY", "***REMOVED***")
+if not all([ADMIN_USERNAME, ADMIN_PASSWORD, SECRET_KEY]):
+    logger.warning(
+        "⚠️  ADMIN_USERNAME, ADMIN_PASSWORD, or SECRET_KEY env vars are not set. "
+        "Admin login will be disabled until they are configured."
+    )
 
 # Simple in-memory token store (survives as long as the process is up)
 active_tokens: dict[str, datetime] = {}
@@ -308,6 +313,9 @@ async def download_video(request: Request,
 @app.post("/api/admin/login")
 @limiter.limit("5/minute")
 async def admin_login(request: Request):
+    if not all([ADMIN_USERNAME, ADMIN_PASSWORD, SECRET_KEY]):
+        raise HTTPException(status_code=503, detail="Admin auth is not configured. Set ADMIN_USERNAME, ADMIN_PASSWORD, and SECRET_KEY env vars.")
+    
     body = await request.json()
     username = body.get("username", "")
     password = body.get("password", "")
