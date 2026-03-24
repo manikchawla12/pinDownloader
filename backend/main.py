@@ -322,10 +322,8 @@ async def admin_login(request: Request):
     username = body.get("username", "").strip()
     password = body.get("password", "").strip()
     
-    logger.info(f"Login attempt: user='{username}' (expected='{ADMIN_USERNAME}'), pass_len={len(password)} (expected_len={len(ADMIN_PASSWORD)})")
-    
     if username != ADMIN_USERNAME or password != ADMIN_PASSWORD:
-        logger.warning(f"Login failed: username_match={username == ADMIN_USERNAME}, password_match={password == ADMIN_PASSWORD}")
+        logger.warning(f"Failed login attempt for user: '{username}'")
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     token = generate_token(username)
