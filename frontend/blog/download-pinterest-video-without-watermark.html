@@ -104,10 +104,7 @@
             
             <p>However, <strong>Pinterest handles things differently.</strong> Pinterest relies on client-side rendering for its interface. The actual MP4 file hosted on their CDN is entirely clean. Any branding you see while using the Pinterest app is rendered via HTML overlay or app UI elements—it is not burned into the video file itself.</p>
 
-            <!-- Inline AdSense Placeholder -->
-            <div class="my-8 bg-gray-200 text-gray-400 text-sm py-8 border border-dashed border-gray-300 rounded-lg text-center">
-                [AdSense Inline Article Placement]
-            </div>
+
 
             <h2>How Traditional Screensharing Fails</h2>
             <p>Many users resort to using the built-in screen recording tools on iOS or Android. While screen recording is a quick fix, it inherently captures everything visible on your screen. This means your "saved" video will contain:</p>
@@ -120,21 +117,26 @@
             <p>Screen recording guarantees a watermarked, low-fidelity result.</p>
 
             <h2>The PinClip Extraction Strategy</h2>
-            <p>Instead of capturing your screen, <a href="/">PinClip's free converter tool</a> communicates directly with Pinterest's Content Delivery Network.</p>
+            <p>Instead of capturing your screen, PinClip's <a href="/pinterest-video-downloader">Pinterest video downloader</a> communicates directly with Pinterest's Content Delivery Network.</p>
             
             <p>When you paste a Pinterest URL into our tool, our backend scripts examine the HTML and JSON metadata of that specific Pinterest webpage. We bypass all of Pinterest's CSS overlays and user interface graphics to locate the raw, direct URL of the MP4 file sitting on the CDN. We then securely hand that direct link over to you.</p>
 
             <p>Because you are downloading the raw source file that the creator originally uploaded, it is guaranteed to be 100% watermark-free, preserving the crisp 1080p, 60fps quality of the <a href="/blog/how-to-download-pinterest-videos">original upload</a>.</p>
 
             <h2>Legal Disclaimer</h2>
-            <p>We emphasize that removing UI overlays and retrieving raw source files does not change the ownership of the content. Being able to view a pin without a watermark does not grant you the right to re-upload the content as your own or use it commercially. PinClip is strictly a utility intended to help users create personal, offline mood boards and archives.</p>
+            <p>We emphasize that removing UI overlays and retrieving raw source files does not change the ownership of the content. Being able to view a pin without a watermark does not grant you the right to re-upload the content as your own or use it commercially. PinClip is strictly a utility intended to help users create personal, offline mood boards and archives. Read our full <a href="/disclaimer">Disclaimer</a> and <a href="/terms-of-service">Terms of Service</a>.</p>
+            <p>Ready to download? Try our <a href="/pinterest-video-downloader">Pinterest video downloader</a> now, or explore the <a href="/pinterest-to-mp4">Pinterest to MP4 converter</a> and <a href="/download-pinterest-reels">Pinterest Reels downloader</a>.</p>
         </article>
     </main>
 
-    <footer class="bg-dark text-white py-12 mt-auto text-center">
-        <div class="max-w-6xl mx-auto px-4">
-            &copy; 2026 PinClip | <a href="/terms-of-service" class="hover:text-pinterest">Terms of Service</a>
+    <footer class="bg-dark text-white py-12 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div><div class="flex items-center gap-2 mb-4"><img src="/favicon.png" alt="PinClip" class="h-6 w-6 rounded"><span class="font-bold text-lg">PinClip</span></div><p class="text-gray-400 text-sm mb-4">Free Pinterest video downloader — fast, safe, HD quality.</p><p class="text-gray-400 text-sm">📧 <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a></p></div>
+            <div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/" class="hover:text-pinterest">Home</a></li><li><a href="/pinterest-video-downloader" class="hover:text-pinterest">Pinterest Video Downloader</a></li><li><a href="/download-pinterest-video" class="hover:text-pinterest">Download Pinterest Video</a></li><li><a href="/pinterest-to-mp4" class="hover:text-pinterest">Pinterest to MP4</a></li><li><a href="/download-pinterest-reels" class="hover:text-pinterest">Download Reels</a></li><li><a href="/blog" class="hover:text-pinterest">Blog</a></li></ul></div>
+            <div><h4 class="font-bold mb-4">Legal</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/privacy-policy" class="hover:text-pinterest">Privacy Policy</a></li><li><a href="/terms-of-service" class="hover:text-pinterest">Terms of Service</a></li><li><a href="/disclaimer" class="hover:text-pinterest">Disclaimer</a></li></ul></div>
+            <div><h4 class="font-bold mb-4">Company</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/about-us" class="hover:text-pinterest">About Us</a></li><li><a href="/contact" class="hover:text-pinterest">Contact</a></li></ul></div>
         </div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">&copy; 2026 PinClip. All rights reserved. | Contact: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a><br><span class="text-xs mt-2 block">This tool is intended for personal use only. Users are responsible for respecting copyright laws.</span></div>
     </footer>
 </body>
 </html>
