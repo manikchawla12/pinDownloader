@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free PinClip (HD) – Download Videos Without Watermark</title>
-    <meta name="description" content="Download Pinterest videos online in HD quality without watermark. Free, fast, and secure Pinterest video downloader. No login required.">
-    <meta name="keywords" content="pinterest video downloader, download pinterest video, pinterest video download hd, pinterest to mp4">
+    <title>PinClip – Free Pinterest Video Downloader | HD MP4 Without Watermark</title>
+    <meta name="description" content="Download Pinterest videos in HD MP4 format without watermark. PinClip is a free, fast, and secure Pinterest video downloader that works on iPhone, Android, PC, and Mac. No login required.">
+    <meta name="keywords" content="pinterest video downloader, download pinterest video, pinterest video download hd, pinterest to mp4, save pinterest video, pinterest reel download">
     <meta name="google-site-verification" content="0vFvQHDXPK0jXihjRL0bA5FBjMMrdvTB0ARa_YwOcCI" />
     
     <!-- Google Fonts -->
@@ -16,15 +16,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
 
-    <!-- AdSense Placeholder Script -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-
-    <!-- Structured Data -->
+    <!-- Structured Data: WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebApplication",
       "name": "PinClip",
+      "url": "https://pinclip.in",
       "operatingSystem": "All",
       "applicationCategory": "MultimediaApplication",
       "offers": {
@@ -32,9 +30,68 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Download Pinterest videos online in HD quality without watermark. Free, fast, and secure Pinterest video downloader."
+      "description": "Download Pinterest videos in HD MP4 format without watermark. Free, fast, and secure Pinterest video downloader."
     }
     </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is PinClip free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, PinClip is 100% free. There are no hidden fees, premium tiers, or subscription costs. You can download unlimited Pinterest videos at no charge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download Pinterest videos without watermark?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. PinClip extracts the original video file directly from Pinterest's servers, so you receive the clean, unmodified version without any watermark overlays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool work on iPhone and Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. PinClip is a web-based tool that works in any browser. On iPhone, use Safari or Chrome. On Android, use Chrome or any browser. No app installation needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to download Pinterest videos using PinClip?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, PinClip is completely secure. We do not store your downloads, require login credentials, or collect personal data. The entire process runs through encrypted HTTPS connections."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are downloaded videos saved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Videos are saved to your browser's default Downloads folder. On mobile, check your Files app or Photos gallery depending on your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What video quality does PinClip support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PinClip always extracts the highest quality available on Pinterest, typically HD resolution (720p or 1080p) in standard MP4 format compatible with all devices."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" type="image/png" href="/favicon.png">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7120148790304596" crossorigin="anonymous"></script>
@@ -42,35 +99,30 @@
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
     
     <!-- Header -->
-        <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
                     <img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded">
                     <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
                 </a>
-                
-                <!-- Desktop Nav -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
                     <a href="/blog" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
                     <a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a>
+                    <a href="/about-us" class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
                 </nav>
-
-                <!-- Mobile Menu Button -->
                 <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
             <div class="px-4 py-3 space-y-2 pb-4">
                 <a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
                 <a href="/blog" class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
                 <a href="/download-pinterest-video" class="block text-base font-medium text-gray-700 hover:text-pinterest">Features</a>
+                <a href="/about-us" class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
             </div>
         </div>
     </header>
@@ -79,31 +131,24 @@
         document.addEventListener('DOMContentLoaded', function() {
             var btn = document.getElementById('mobileMenuBtn');
             var menu = document.getElementById('mobileMenu');
-            if (btn && menu) {
-                btn.addEventListener('click', function() {
-                    menu.classList.toggle('hidden');
-                });
-            }
+            if (btn && menu) { btn.addEventListener('click', function() { menu.classList.toggle('hidden'); }); }
         });
     </script>
 
-    <!-- Header Ad Banner Placeholder -->
-    <div class="w-full max-w-6xl mx-auto mt-4 px-4 text-center">
-        <div class="bg-gray-200 text-gray-400 text-sm py-8 border border-dashed border-gray-300 rounded-lg">
-            [AdSense Header Banner Placement]
-        </div>
-    </div>
-
     <!-- Main Content -->
     <main class="flex-grow">
-        <!-- Hero Section -->
+
+        <!-- SECTION 1: Intro + Tool -->
         <section class="py-12 md:py-20 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-dark mb-4 leading-tight">
-                    Free PinClip – Pinterest Video Downloader Online
+                    Pinterest Video Downloader – Save HD Videos for Free
                 </h1>
-                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                    Download Pinterest videos in HD MP4 without watermark. Paste the link and save your video instantly.
+                <p class="text-lg md:text-xl text-gray-600 mb-4 max-w-3xl mx-auto">
+                    Download Pinterest videos in HD MP4 format without watermark. PinClip is a completely free online tool that lets you save any Pinterest video, Idea Pin, or Reel directly to your phone or computer in seconds.
+                </p>
+                <p class="text-base text-gray-500 mb-10 max-w-2xl mx-auto">
+                    Whether you're on an iPhone, Android, Windows PC, or Mac — simply paste the Pinterest link below, click Download, and the video is yours. No signup, no app install, no watermarks.
                 </p>
                 
                 <!-- Downloader Box -->
@@ -132,23 +177,10 @@
         <!-- Result Section (Hidden initially) -->
         <section id="resultSection" class="py-8 px-4 hidden">
             <div class="max-w-3xl mx-auto">
-                <style>
-                    .btn-secondary {
-                        background-color: #f3f4f6;
-                        color: #374151;
-                        border: 1px solid #d1d5db;
-                    }
-                    .btn-secondary:hover {
-                        background-color: #e5e7eb;
-                    }
-                </style>
                 <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
                     <div class="w-full md:w-1/2 aspect-video bg-gray-100 rounded-lg overflow-hidden relative shadow-inner group">
-                        <!-- Video Player -->
                         <video id="resultVideo" class="w-full h-full object-contain hidden" controls poster=""></video>
-                        <!-- Image Fallback/Poster -->
                         <img id="resultThumbnail" src="" alt="Video Thumbnail" class="w-full h-full object-cover">
-                        <!-- Play Overlay (Only visible when image is shown) -->
                         <div id="playOverlay" class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center pointer-events-none">
                              <svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
                         </div>
@@ -159,7 +191,6 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             Ready to download
                         </p>
-                        
                         <a id="downloadBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary w-full shadow-lg">
                             <span>Download MP4</span>
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -169,86 +200,181 @@
             </div>
         </section>
 
-        <!-- Below Button Ad Banner Placeholder -->
-        <div class="w-full max-w-4xl mx-auto my-8 px-4 text-center">
-            <div class="bg-gray-200 text-gray-400 text-sm py-6 border border-dashed border-gray-300 rounded-lg">
-                [AdSense Middle Placement]
-            </div>
-        </div>
-
-        <!-- How it works (SEO Content) -->
+        <!-- SECTION 2: How to Download Pinterest Videos (step-by-step) -->
         <section id="how-it-works" class="py-16 bg-white px-4">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold text-center text-dark mb-12">How to Download Pinterest Videos</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Step 1 -->
+                <h2 class="text-3xl font-bold text-center text-dark mb-4">How to Download Pinterest Videos</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Follow these four simple steps to save any Pinterest video to your device. The entire process takes less than 30 seconds and works identically on mobile phones, tablets, and desktop computers.</p>
+                <div class="grid md:grid-cols-4 gap-6">
                     <div class="text-center">
                         <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                        <h3 class="text-xl font-semibold mb-2">Copy Link</h3>
-                        <p class="text-gray-600">Open Pinterest, find the video you want, tap the share icon, and select "Copy Link".</p>
+                        <h3 class="text-lg font-semibold mb-2">Find the Video</h3>
+                        <p class="text-gray-600 text-sm">Open the Pinterest app or website. Browse your feed or search for the video you want to save.</p>
                     </div>
-                    <!-- Step 2 -->
                     <div class="text-center">
                         <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                        <h3 class="text-xl font-semibold mb-2">Paste URL</h3>
-                        <p class="text-gray-600">Paste the copied link into the input box at the top of this page and click "Download".</p>
+                        <h3 class="text-lg font-semibold mb-2">Copy the Link</h3>
+                        <p class="text-gray-600 text-sm">Tap the share icon on the Pinterest video and select "Copy Link" to copy the video URL to your clipboard.</p>
                     </div>
-                    <!-- Step 3 -->
                     <div class="text-center">
                         <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                        <h3 class="text-xl font-semibold mb-2">Save MP4</h3>
-                        <p class="text-gray-600">Wait a few seconds for our tool to process, then click the Download MP4 button to save it.</p>
+                        <h3 class="text-lg font-semibold mb-2">Paste &amp; Download</h3>
+                        <p class="text-gray-600 text-sm">Paste the copied link into the input field above and click the red "Download" button on PinClip.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-pinterest bg-opacity-10 text-pinterest rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                        <h3 class="text-lg font-semibold mb-2">Save in HD</h3>
+                        <p class="text-gray-600 text-sm">Click "Download MP4" to save the video in high definition. Find it in your device's Downloads folder.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Extensive SEO Text Section -->
+        <!-- SECTION 3: Features -->
         <section class="py-16 bg-gray-50 px-4">
-            <div class="max-w-4xl mx-auto prose prose-lg text-gray-700">
-                <h2 class="text-3xl font-bold text-dark mb-6">The Best Free PinClip Online</h2>
-                <p class="mb-4">
-                    Pinterest is an incredible platform for discovering ideas, inspiration, short clips, and DIY tutorials. However, the app doesn't provide a built-in feature to download videos directly to your device. That's where our <strong>PinClip</strong> comes in. We offer a fast, reliable, and entirely free tool to help you save your favorite Pinterest videos in high-definition (HD) MP4 format, completely without watermarks.
-                </p>
-                <h3 class="text-2xl font-bold text-dark mt-8 mb-4">Features of Our Pinterest Downloader</h3>
-                <ul class="list-disc pl-6 mb-6 space-y-2">
-                    <li><strong>No Watermark:</strong> Enjoy your downloaded videos clean and unobscured.</li>
-                    <li><strong>HD Quality:</strong> We extract the highest possible resolution available on Pinterest.</li>
-                    <li><strong>Fast & Secure:</strong> State-of-the-art backend processing ensures quick downloads without comprising your security.</li>
-                    <li><strong>All Devices Supported:</strong> Works seamlessly on mobile phones (iOS/Android), tablets, and desktop computers (PC/Mac).</li>
-                    <li><strong>No Signup Required:</strong> Unlimited downloads without ever creating an account.</li>
-                </ul>
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-dark mb-4">Why Choose PinClip?</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">PinClip is built to be the fastest, safest, and most reliable <a href="/pinterest-video-downloader" class="text-pinterest hover:underline">Pinterest video downloader</a> available online. Here's what makes us different from other tools.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">No Watermark</h3>
+                        <p class="text-gray-600 text-sm">We extract the original video file directly from Pinterest, so you receive a completely clean download without any overlaid watermarks or logos.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">HD Quality</h3>
+                        <p class="text-gray-600 text-sm">PinClip automatically selects the highest resolution available. Most Pinterest videos are saved in 720p or 1080p depending on what the original uploader provided.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Safe &amp; Secure</h3>
+                        <p class="text-gray-600 text-sm">PinClip uses encrypted HTTPS connections. We never store your videos, collect personal data, or require you to create an account.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">All Devices</h3>
+                        <p class="text-gray-600 text-sm">Works perfectly on iPhone (iOS), Android phones, iPads, Windows PCs, Macs, and Chromebooks. If it has a browser, PinClip works on it.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">No Signup Needed</h3>
+                        <p class="text-gray-600 text-sm">Unlike many other tools, PinClip requires absolutely no account creation. Just paste a link and download — it's that straightforward.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Unlimited Downloads</h3>
+                        <p class="text-gray-600 text-sm">There are no daily limits or hidden quotas. Download as many Pinterest videos as you need, completely free of charge, forever.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="py-16 bg-white px-4">
+        <!-- SECTION 4: Detailed SEO Content -->
+        <section class="py-16 bg-white px-4">
+            <div class="max-w-4xl mx-auto prose prose-lg text-gray-700">
+                <h2 class="text-3xl font-bold text-dark mb-6">The Best Free Pinterest Video Downloader in 2026</h2>
+                <p>Pinterest has evolved from a simple image-sharing platform into one of the richest visual discovery engines on the internet. With over 500 million monthly active users worldwide, the platform now hosts millions of high-quality videos covering everything from cooking recipes and DIY home projects to fashion lookbooks and workout routines.</p>
+                <p>However, Pinterest does not offer a built-in option to download videos directly to your device. While you can save pins to your boards within the app, those saved videos require an internet connection and can be lost if the original creator deletes them. That's exactly the problem PinClip was designed to solve.</p>
+                
+                <h3 class="text-2xl font-bold text-dark mt-8 mb-4">What Makes PinClip Different?</h3>
+                <p>Unlike generic video downloaders that try to support dozens of platforms poorly, PinClip is <strong>purpose-built for Pinterest</strong>. Our backend technology is specifically engineered to handle Pinterest's unique video delivery system, including HLS adaptive streaming, split audio/video segments, and signed URLs. This means:</p>
+                <ul class="list-disc pl-6 mb-6 space-y-2">
+                    <li><strong>Higher success rate:</strong> We handle edge cases that other tools fail on, including Pinterest Idea Pins, Reels, and private board videos.</li>
+                    <li><strong>Better quality:</strong> We always extract the highest available resolution rather than forcing a lower bitrate.</li>
+                    <li><strong>Faster processing:</strong> Our cloud-based backend processes your request in seconds, not minutes.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-dark mt-8 mb-4">How Our Technology Works</h3>
+                <p>When you paste a Pinterest URL, PinClip's backend analyzes the page structure, identifies all available video formats and resolutions, and automatically selects the best quality option. The video is then processed on our secure servers and delivered directly to your browser as a standard MP4 file. The entire pipeline runs through encrypted HTTPS connections, ensuring your data remains private.</p>
+                
+                <p>Whether you're a content creator saving reference material, a student archiving educational tutorials, or simply someone who wants to share a funny clip with friends offline — PinClip is the tool you need. Learn more about our capabilities on the <a href="/download-pinterest-video" class="text-pinterest hover:underline">features page</a>, or read our comprehensive <a href="/blog/how-to-download-pinterest-videos" class="text-pinterest hover:underline">step-by-step guide</a> for detailed instructions.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: FAQ -->
+        <section id="faq" class="py-16 bg-gray-50 px-4">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold text-center text-dark mb-10">Frequently Asked Questions</h2>
+                <h2 class="text-3xl font-bold text-center text-dark mb-4">Frequently Asked Questions</h2>
+                <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Get answers to the most common questions about downloading Pinterest videos using PinClip.</p>
                 <div class="space-y-4">
-                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Is it free to download Pinterest videos?</h3>
-                        <p class="text-gray-600">Yes, our Pinterest video downloader is 100% free forever. There are no hidden fees or subscription costs.</p>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Is PinClip free to use?</h3>
+                        <p class="text-gray-600">Yes, PinClip is 100% free. There are no hidden fees, premium tiers, or subscription costs. You can download unlimited Pinterest videos at no charge.</p>
                     </div>
-                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Are the downloaded videos watermark-free?</h3>
-                        <p class="text-gray-600">Absolutely. We fetch the raw video file directly from the source, so you get the original video without any added watermarks.</p>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I download Pinterest videos without watermark?</h3>
+                        <p class="text-gray-600">Absolutely. PinClip extracts the original video file directly from Pinterest's servers, so you receive the clean, unmodified version without any watermark overlays.</p>
                     </div>
-                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Where are the downloaded videos saved?</h3>
-                        <p class="text-gray-600">By default, videos are saved in your browser's default "Downloads" folder. On mobile devices, check your gallery or files app.</p>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Does this tool work on iPhone and Android?</h3>
+                        <p class="text-gray-600">Yes. PinClip is a web-based tool that works in any modern browser. On iPhone, use Safari or Chrome. On Android, use Chrome or any preferred browser. No app installation is required.</p>
                     </div>
-                    <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Is it safe to use this tool?</h3>
-                        <p class="text-gray-600">Yes, it is completely secure. We do not store your download history or save the videos on our servers.</p>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Is it safe to download Pinterest videos using PinClip?</h3>
+                        <p class="text-gray-600">Yes, PinClip is completely secure. We do not store your downloads, require login credentials, or collect personal data. The entire process runs through encrypted HTTPS connections.</p>
                     </div>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Where are the downloaded videos saved?</h3>
+                        <p class="text-gray-600">Videos are saved to your browser's default Downloads folder. On mobile devices, check your Files app or Photos gallery. On desktop, look in your system's Downloads directory.</p>
+                    </div>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What video quality does PinClip support?</h3>
+                        <p class="text-gray-600">PinClip always extracts the highest quality available on Pinterest. Most Pinterest videos are saved in 720p or 1080p HD resolution in standard MP4 format, compatible with all modern devices and media players.</p>
+                    </div>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I download Pinterest Reels and Idea Pins?</h3>
+                        <p class="text-gray-600">Yes. PinClip supports all types of Pinterest video content including standard video pins, Idea Pins, and Reels. Simply copy the link and paste it into our tool. You can also visit our dedicated <a href="/download-pinterest-reels" class="text-pinterest hover:underline">Pinterest Reels downloader</a> page.</p>
+                    </div>
+                    <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Is there a limit on downloads?</h3>
+                        <p class="text-gray-600">No. PinClip offers unlimited downloads with no daily caps or hidden restrictions. Download as many Pinterest videos as you need.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Helpful Resources (Internal Linking) -->
+        <section class="py-16 bg-white px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-dark mb-4">Helpful Resources</h2>
+                <p class="text-center text-gray-600 mb-10">Explore our guides and tools to get the most out of Pinterest video downloading.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <a href="/blog/how-to-download-pinterest-videos" class="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-dark mb-2">📖 How to Download Pinterest Videos (2026 Guide)</h3>
+                        <p class="text-gray-600 text-sm">A comprehensive step-by-step guide covering every method to save Pinterest videos on any device.</p>
+                    </a>
+                    <a href="/download-pinterest-reels" class="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-dark mb-2">🎬 Download Pinterest Reels &amp; Idea Pins</h3>
+                        <p class="text-gray-600 text-sm">Learn how to save Pinterest's short-form video content including Reels and Idea Pins.</p>
+                    </a>
+                    <a href="/pinterest-to-mp4" class="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-dark mb-2">🔄 Pinterest to MP4 Converter</h3>
+                        <p class="text-gray-600 text-sm">Convert any Pinterest video link to a downloadable MP4 file instantly.</p>
+                    </a>
+                    <a href="/blog" class="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-semibold text-dark mb-2">📝 PinClip Blog</h3>
+                        <p class="text-gray-600 text-sm">Tips, tricks, and guides for downloading and managing Pinterest content.</p>
+                    </a>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer with Trust Signals -->
     <footer class="bg-dark text-white py-12 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-1">
@@ -256,15 +382,17 @@
                     <img src="/favicon.png" alt="PinClip Logo" class="h-6 w-6 rounded">
                     <span class="font-bold text-lg tracking-tight">PinClip</span>
                 </div>
-                <p class="text-gray-400 text-sm">The best free tool to download Pinterest videos online, safely and securely.</p>
+                <p class="text-gray-400 text-sm mb-4">PinClip is a free online tool designed to help users download Pinterest videos in high quality. Our goal is to provide a simple, fast, and reliable experience across all devices.</p>
+                <p class="text-gray-400 text-sm">📧 <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest transition-colors">orderbusinesspromotion@gmail.com</a></p>
             </div>
             <div>
                 <h4 class="font-bold mb-4">Quick Links</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
                     <li><a href="/" class="hover:text-pinterest transition-colors">Home</a></li>
-                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Pinterest Video Download</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Download Pinterest Video</a></li>
                     <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4</a></li>
-                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Download Reels</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Download Pinterest Reels</a></li>
+                    <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog</a></li>
                 </ul>
             </div>
             <div>
@@ -284,8 +412,8 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-            &copy; 2026 PinClip. All rights reserved.<br>
-            <span class="text-xs mt-2 block">This tool is intended for personal use only. Users must respect Pinterest's terms of service and copyright laws.</span>
+            &copy; 2026 PinClip. All rights reserved. | Contact: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a><br>
+            <span class="text-xs mt-2 block">This tool is intended for personal use only. Users are responsible for respecting copyright laws and Pinterest's terms of service. PinClip does not host or store any downloaded videos. Read our <a href="/disclaimer" class="hover:text-pinterest underline">full disclaimer</a>.</span>
         </div>
     </footer>
 
