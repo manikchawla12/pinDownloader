@@ -24,6 +24,7 @@ PRIORITY = {
     "/download-pinterest-reels": ("0.9", "monthly"),
     "/download-pinterest-video": ("0.9", "monthly"),
     "/blog": ("0.8", "weekly"),
+    "/limitations": ("0.8", "monthly"),
     "/about-us": ("0.5", "yearly"),
     "/contact": ("0.5", "yearly"),
     "/privacy-policy": ("0.3", "yearly"),

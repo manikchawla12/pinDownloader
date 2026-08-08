@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Policy | PinClip</title>
-    <meta name="description" content="Every cookie PinClip and its advertising partners use, why they exist, how long they last, and how to withdraw your consent at any time.">
+    <title>What PinClip Cannot Do &mdash; Known Limitations</title>
+    <meta name="description" content="An honest list of everything our Pinterest downloader cannot do: no 1080p (Pinterest does not serve it), no image pins, no private content, no burned-in watermark removal, no batch mode.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="canonical" href="https://pinclip.vercel.app/cookie-policy">
+    <link rel="canonical" href="https://pinclip.vercel.app/limitations">
     <!-- Google Consent Mode v2 — must run before any Google tag -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -35,16 +35,16 @@
     <!-- Social sharing -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="PinClip">
-    <meta property="og:title" content="Cookie Policy | PinClip">
-    <meta property="og:description" content="Every cookie PinClip and its advertising partners use, why they exist, how long they last, and how to withdraw your consent at any time.">
-    <meta property="og:url" content="https://pinclip.vercel.app/cookie-policy">
+    <meta property="og:title" content="What PinClip Cannot Do &amp;mdash; Known Limitations">
+    <meta property="og:description" content="An honest list of everything our Pinterest downloader cannot do: no 1080p (Pinterest does not serve it), no image pins, no private content, no burned-in watermark removal, no batch mode.">
+    <meta property="og:url" content="https://pinclip.vercel.app/limitations">
     <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cookie Policy | PinClip">
-    <meta name="twitter:description" content="Every cookie PinClip and its advertising partners use, why they exist, how long they last, and how to withdraw your consent at any time.">
+    <meta name="twitter:title" content="What PinClip Cannot Do &amp;mdash; Known Limitations">
+    <meta name="twitter:description" content="An honest list of everything our Pinterest downloader cannot do: no 1080p (Pinterest does not serve it), no image pins, no private content, no burned-in watermark removal, no batch mode.">
     <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="PinClip">
@@ -87,69 +87,67 @@
             <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-6">
                 <a href="/" class="hover:text-pinterest">Home</a>
                 <span class="mx-2" aria-hidden="true">/</span>
-                <span class="text-gray-700">Cookie Policy</span>
+                <span class="text-gray-700">Limitations</span>
             </nav>
             <article class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
-                <h1 class="text-3xl md:text-4xl font-bold text-dark mb-2">Cookie Policy</h1>
-                <p class="text-sm text-gray-500 mb-8">Last updated: 8 August 2026</p>
+                <h1 class="text-3xl md:text-4xl font-bold text-dark mb-2">What PinClip cannot do</h1>
+                <p class="text-sm text-gray-500 mb-8">Last updated: 9 August 2026</p>
                 <div class="prose prose-lg max-w-none">
 
-<p>This Cookie Policy explains how PinClip uses cookies and browser storage, and how you can control
-them. It should be read together with our <a href="/privacy-policy">Privacy Policy</a>.</p>
+                <p>Most tools in this category only publish the things they are good at. That leaves you to discover the limits by hitting them. This page is the other list &mdash; everything we know PinClip cannot do, why, and what to do instead. Where we can put a number on it, the number comes from our own measurements rather than from marketing copy.</p>
 
-<h2>What cookies are</h2>
-<p>Cookies are small text files placed on your device by a website. They are widely used to make
-sites work, to remember preferences, and to measure and personalise advertising. Related
-technologies such as <em>local storage</em> serve the same purpose and are covered by this policy.</p>
+                <h2>It cannot give you 1080p</h2>
+                <p>Not because of a limitation in our code, but because Pinterest does not appear to serve it. In <a href="/blog/pinterest-video-size-guide">a sample of 23 pins we measured in August 2026</a>, not one file exceeded 720 pixels on its short edge. The most common resolution was 576&times;1024.</p>
+                <p>Worse, Pinterest sometimes <em>advertises</em> a resolution it does not deliver: five of those 23 pins listed a rendition at 1080&times;1920 or 1000&times;1500 and then handed over a 720&times;1280 file. If another site promises you Full HD from a Pinterest pin, it is either reading that same inflated metadata or upscaling, which adds pixels but no detail.</p>
+                <p><strong>What to do instead:</strong> nothing, unfortunately. No tool can retrieve quality that was never stored. If you need the original master, ask the creator.</p>
 
-<h2>How we ask for your permission</h2>
-<p>The first time you visit, a banner asks whether you accept advertising cookies. Until you choose,
-PinClip runs with Google Consent Mode v2 defaults of <strong>denied</strong> for advertising and analytics
-storage &mdash; meaning no advertising cookies are placed. If you decline, you keep full access to the
-downloader and every article on the site.</p>
+                <h2>It cannot download image pins</h2>
+                <p>PinClip extracts video streams. A pin containing only a still image has no video track, and the tool will tell you so rather than inventing one. Look for the play indicator on a pin before copying its link.</p>
 
-<h2>Cookies used on this site</h2>
+                <h2>It only returns one video from a multi-page Idea Pin</h2>
+                <p>An Idea Pin can hold up to twenty pages, each with its own media. Behind a single URL, those are separate items. PinClip resolves the pin's primary video and does not walk the remaining pages.</p>
+                <p><strong>What to do instead:</strong> open each page individually in the Pinterest web interface and copy that page's own link, then run them one at a time.</p>
 
-<h3>Strictly necessary</h3>
-<table>
-<thead><tr><th>Name</th><th>Set by</th><th>Purpose</th><th>Duration</th></tr></thead>
-<tbody>
-<tr><td><code>pinclip_consent</code></td><td>PinClip (local storage)</td><td>Remembers whether you accepted or declined advertising cookies</td><td>Until cleared</td></tr>
-</tbody>
-</table>
+                <h2>It cannot handle pins that embed YouTube</h2>
+                <p>Some pins are not self-hosted video at all &mdash; they are a Pinterest wrapper around a YouTube embed. Two of the 32 URLs in our sample turned out to be exactly this. The extractor correctly follows through to YouTube, and YouTube then refuses the request.</p>
+                <p><strong>What to do instead:</strong> open the pin, find the original YouTube link, and use a tool intended for that platform &mdash; subject to YouTube's own terms.</p>
 
-<h3>Advertising &mdash; only after you accept</h3>
-<table>
-<thead><tr><th>Name</th><th>Set by</th><th>Purpose</th><th>Duration</th></tr></thead>
-<tbody>
-<tr><td><code>__gads</code>, <code>__gpi</code></td><td>Google</td><td>Ad delivery, frequency capping and measurement</td><td>Up to 13 months</td></tr>
-<tr><td><code>IDE</code>, <code>test_cookie</code></td><td>Google DoubleClick</td><td>Measuring ad effectiveness and personalising ads</td><td>Up to 13 months</td></tr>
-<tr><td><code>NID</code></td><td>Google</td><td>Stores advertising preferences</td><td>Up to 6 months</td></tr>
-</tbody>
-</table>
-<p>Google may update the exact cookie names it uses. The authoritative, current list is published in
-Google's <a href="https://business.safety.google/adscookies/" rel="nofollow noopener" target="_blank">advertising cookies reference</a>.</p>
+                <h2>It cannot reach private or restricted content</h2>
+                <p>If a pin sits on a secret board, belongs to a private account, or is otherwise gated behind a login, PinClip cannot see it. We do not authenticate to Pinterest, we do not store cookies, and we will not add a way to bypass access controls. A useful test: open the pin in a private browsing window. If you cannot see it while logged out, neither can we.</p>
 
-<h2>Changing your mind</h2>
-<p>To withdraw or change consent, clear this site's data in your browser &mdash; the banner will appear
-again on your next visit:</p>
-<ul>
-<li><strong>Chrome</strong>: Settings &rarr; Privacy and security &rarr; Third-party cookies &rarr; See all site data and permissions.</li>
-<li><strong>Safari</strong>: Settings &rarr; Privacy &rarr; Manage Website Data.</li>
-<li><strong>Firefox</strong>: Settings &rarr; Privacy &amp; Security &rarr; Cookies and Site Data &rarr; Manage Data.</li>
-<li><strong>Edge</strong>: Settings &rarr; Cookies and site permissions &rarr; Manage and delete cookies and site data.</li>
-</ul>
-<p>You can also opt out of personalised advertising globally at
-<a href="https://www.google.com/settings/ads" rel="nofollow noopener" target="_blank">Google Ads Settings</a>,
-<a href="https://www.aboutads.info/choices/" rel="nofollow noopener" target="_blank">aboutads.info/choices</a>, or
-<a href="https://optout.networkadvertising.org/" rel="nofollow noopener" target="_blank">optout.networkadvertising.org</a>.</p>
+                <h2>It cannot recover audio that was never there</h2>
+                <p>Two of the 23 files we measured had no audio stream at all &mdash; not muted, genuinely silent, because the creator uploaded them that way. A silent download is usually this, not a bug.</p>
+                <p>Separately, Pinterest's HLS delivery splits video and audio into different streams that have to be muxed back together. Our server does this with <code>ffmpeg</code>. A downloader running without ffmpeg will hand you a silent file even when the pin does have sound, which is one reason the same pin can behave differently on different sites.</p>
 
-<h2>What happens if you block cookies</h2>
-<p>Nothing on PinClip breaks. The downloader, the guides and the blog all work with cookies fully
-disabled. You will simply see non-personalised advertising instead of personalised advertising.</p>
+                <h2>It cannot remove text a creator burned into the video</h2>
+                <p>&ldquo;No watermark&rdquo; on this site means one specific, narrow thing: <strong>we do not add a watermark of our own.</strong> It does not mean we can strip marks that are already in the picture.</p>
+                <p>The distinction that matters is <em>when</em> the text was added. Overlays applied inside Pinterest's editor are rendered by the app at viewing time and are genuinely not in the underlying file, so they will not appear in your download. Text, logos or handles that the creator burned in before uploading are part of the pixel data, and no tool can remove them without destroying the image underneath.</p>
 
-<h2>Contact</h2>
-<p>Questions about this policy? Email <a href="mailto:orderbusinesspromotion@gmail.com">orderbusinesspromotion@gmail.com</a>.</p>
+                <h2>It may not include licensed music</h2>
+                <p>Where a creator added a track from Pinterest's own music library, that audio is mixed in at playback rather than stored in the file, so it may be missing from your download. Licensed music also carries copyright entirely separate from the video &mdash; worth remembering before you reuse anything.</p>
+
+                <h2>It has no bulk or batch mode</h2>
+                <p>One link at a time, deliberately. Batch downloading an entire board is the usage pattern that turns a personal-use tool into a scraping tool, and it is the fastest way to get an IP range blocked. We rate-limit requests for the same reason.</p>
+
+                <h2>It will not extract audio only</h2>
+                <p>We could add MP3 export in an afternoon. We have not, because pulling a soundtrack out of someone else's video is considerably more likely to be a copyright problem than saving the clip for yourself. If you need audio from something you own, run <code>ffmpeg</code> on the MP4 locally.</p>
+
+                <h2>It can break without warning</h2>
+                <p>PinClip depends on the structure of Pinterest's pages and its media delivery. Both are Pinterest's to change, and when they change, extraction breaks until the underlying library is updated. This is not hypothetical &mdash; it happens periodically to every tool in this category. If something that worked last month stopped working, that is the most likely reason. <a href="/contact">Tell us</a> and include the pin URL.</p>
+
+                <h2>The server sleeps</h2>
+                <p>The extraction backend runs on a free hosting tier. After a quiet period the first request has to wake the instance, which can take up to a minute before anything happens. Subsequent requests resolve in a second or two. If your first attempt seems to hang, that is usually why &mdash; give it a moment and try again.</p>
+
+                <h2>Things we will not add</h2>
+                <ul>
+                    <li><strong>Login-gated downloads.</strong> Accessing content behind someone's authentication is not a feature, it is a bypass.</li>
+                    <li><strong>Watermark removal from burned-in pixels.</strong> Beyond being technically destructive, the whole point of a creator's mark is attribution.</li>
+                    <li><strong>Whole-board scraping.</strong> See above.</li>
+                    <li><strong>Upscaling sold as &ldquo;HD&rdquo;.</strong> Interpolating a 576px video to 1080p produces a bigger file and no more detail. Calling that Full HD would be a lie.</li>
+                </ul>
+
+                <h2>If something here is wrong</h2>
+                <p>These limits reflect what we have actually tested, and testing has gaps. If you hit a case we have not described &mdash; or find that something listed here works fine for you &mdash; <a href="/contact">let us know</a> and we will update the page. Our measurements are published as <a href="/data/pinterest-video-sample-2026-08.csv" download>raw CSV</a> so you can check them yourself.</p>
 
                 </div>
             </article>

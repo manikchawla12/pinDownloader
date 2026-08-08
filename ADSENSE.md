@@ -155,6 +155,87 @@ npm run build:css                  # Tailwind
 `normalize_pages.py` is idempotent — run it after editing any page. Edit the
 nav in one place (`NAV`, `HEADER`, `FOOTER` in that file) and re-run.
 
+---
+
+## Round 2 — answering "Low value content" (9 Aug 2026)
+
+The first pass fixed a site that *rendered* broken. This pass addresses the
+actual flag. An independent read of the live homepage against the thin-content
+policy came back with: *"No first-hand experience, proprietary research, data,
+testing results, or unique insights differentiate this from dozens of identical
+Pinterest downloader landing pages."* That is the problem this round solves.
+
+### Original research (the core of it)
+
+We sampled 32 real public video pins across five categories, downloaded each
+with the production format selector, and ran `ffprobe` on every resulting file.
+23 produced video. Findings, all first-hand:
+
+- **Nothing in the sample was 1080p.** No file exceeded 720px on its short edge.
+  Most common resolution: 576x1024 (10 of 23). This directly contradicts what
+  the site previously claimed, and what essentially every competitor claims.
+- **Pinterest's own metadata overstates resolution on 5 of 23 pins.** The
+  progressive `V_EXP*` / `V_720P` entries report the pin's *display* dimensions,
+  not the encoded video's. One pin advertised `V_720P` at 1080x1920 and
+  delivered 720x1280 — a format named "720P", reporting 1920px, serving 1280px.
+- **2 of 23 files had no audio track at all** (creator uploaded them silent).
+- **Median 7.6 MB per minute**, range 2.1–17.6. Median bitrate 1,014 kbps.
+- **19 of 23 were exactly 9:16**; fps was 30 in 15 cases, 60 in 3.
+- **~28% of sampled URLs produced nothing** — 5 image pins, 2 pins that turned
+  out to wrap a *YouTube* embed, 1 deleted pin.
+
+Published as `/blog/pinterest-video-size-guide` (1,600 words, with a data figure
+built from the measurements) plus the raw dataset at
+`/data/pinterest-video-sample-2026-08.csv` so any row can be verified.
+
+### A backend "fix" that turned out not to be one
+
+The measurements suggested the downloader was picking 720x1280 when a 1080x1920
+rendition existed. A resolution-first format selector was written and tested
+against the old one on four pins — **output was byte-identical every time**,
+because the 1080x1920 label was itself false. The change was reverted;
+`backend/main.py` is untouched. Worth recording so nobody re-derives it.
+
+### Claims removed
+
+Every unverifiable superiority claim is gone, sitewide:
+"fastest, safest, and most reliable", "higher success rate than generic
+alternatives", "faster processing", "always extracts the highest quality
+available", and all "1080p / Full HD" promises. Each was replaced with something
+measured or with a plain description.
+
+### New: `/limitations`
+
+A 1,100-word page listing everything the tool *cannot* do — no 1080p, no image
+pins, one video per multi-page Idea Pin, no YouTube-embed pins, no private
+content, no burned-in watermark removal, no batch mode, no audio-only export,
+plus the free-tier cold start. Competitors do not publish this. It is
+simultaneously the strongest originality signal on the site and the most useful
+page for a real user.
+
+### Duplicate content resolved
+
+`/blog/download-pinterest-videos-iphone-android` and
+`/blog/how-to-download-pinterest-videos` were structurally the same article —
+same sections, same query. The former's unique troubleshooting content was
+merged into the latter (rewritten against the measured data), the page was
+removed, and a 301 added. The blog is now 4 genuinely distinct posts.
+
+Also fixed: a layout bug from round 1 that placed each blog card's date line
+*outside* its anchor, making every date its own grid cell.
+
+### About page
+
+Rewritten from anonymous marketing ("our team of developers and designers…") to
+specifics: who runs it, how the extraction actually works, what we refuse to
+claim and why, and how it is funded.
+
+### Still the biggest risk
+
+**The `vercel.app` subdomain.** Unchanged from round 1 and still the single
+largest handicap. Everything above raises the content floor; none of it
+substitutes for applying from a domain you own.
+
 ## Still worth doing
 
 - Add original images or diagrams to the blog posts; they currently hotlink

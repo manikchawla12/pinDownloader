@@ -85,7 +85,7 @@
           "name": "What video quality does PinClip support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PinClip always extracts the highest quality available on Pinterest, typically HD resolution (720p or 1080p) in standard MP4 format compatible with all devices."
+            "text": "PinClip requests the largest rendition Pinterest lists for a pin. In our August 2026 sample of 23 pins that meant 720x1280 at best, and 576x1024 most often, always as H.264 MP4."
           }
         }
       ]
@@ -268,7 +268,7 @@
         <section class="py-16 bg-gray-50 px-4">
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl font-bold text-center text-dark mb-4">Why Choose PinClip?</h2>
-                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">PinClip is built to be the fastest, safest, and most reliable <strong>Pinterest video downloader</strong> available online. Here's what makes us different from other tools.</p>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">A plain description of what the tool does, what it produces, and where it falls short.</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                         <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
@@ -282,7 +282,7 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <h3 class="text-lg font-semibold mb-2">HD Quality</h3>
-                        <p class="text-gray-600 text-sm">PinClip automatically selects the highest resolution available. Most Pinterest videos are saved in 720p or 1080p depending on what the original uploader provided.</p>
+                        <p class="text-gray-600 text-sm">PinClip requests the largest rendition Pinterest offers. In our measurements that topped out at 720&times;1280 &mdash; see the <a href="/blog/pinterest-video-size-guide" class="text-pinterest hover:underline">data</a>.</p>
                     </div>
                     <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                         <div class="w-12 h-12 bg-red-50 text-pinterest rounded-lg flex items-center justify-center mb-4">
@@ -412,15 +412,15 @@
             <div class="max-w-4xl mx-auto prose prose-lg text-gray-700">
                 <h2 class="text-3xl font-bold text-dark mb-6">The Best Free Pinterest Video Downloader in 2026</h2>
                 <p>With over 500 million monthly active users, Pinterest has evolved from a simple image-sharing platform into one of the internet's richest visual discovery engines. The sheer volume of high-quality video content — covering topics from <a href="/blog/how-to-download-pinterest-videos" class="text-pinterest hover:underline">cooking tutorials and DIY projects</a> to fashion lookbooks and workout programs — continues to grow every day.</p>
-                <p>However, Pinterest does not offer a built-in option to download videos directly to your device. While you can save pins to your boards, those saved videos require an internet connection and disappear permanently if the creator deletes them. PinClip was purpose-built to solve exactly this problem — serving as the most reliable <strong>Pinterest video downloader</strong> available today.</p>
+                <p>However, Pinterest does not offer a built-in option to download videos directly to your device. While you can save pins to your boards, those saved videos require an internet connection and disappear permanently if the creator deletes them. PinClip was purpose-built to solve exactly this problem — serving as a focused tool for exactly this one job.</p>
                 
                 <h3 class="text-2xl font-bold text-dark mt-8 mb-4">What Makes PinClip Different from Other Downloaders?</h3>
-                <p>Unlike generic video downloaders that try to support dozens of platforms poorly, PinClip is <strong>purpose-built exclusively for Pinterest</strong>. Our backend technology is specifically engineered to handle Pinterest's unique video delivery system, including HLS adaptive streaming, split audio/video segments, and signed media URLs. This purpose-built approach means:</p>
+                <p>PinClip only handles Pinterest. Our backend technology is specifically engineered to handle Pinterest's unique video delivery system, including HLS adaptive streaming, split audio/video segments, and signed media URLs. In practice that means:</p>
                 <ul class="list-disc pl-6 mb-6 space-y-2">
-                    <li><strong>Higher success rate:</strong> We handle edge cases that other tools fail on, including Pinterest Idea Pins, Reels, and Story Pins with embedded video.</li>
-                    <li><strong>Better quality:</strong> We always extract the highest available resolution — typically 720p or 1080p — rather than forcing a lower bitrate to save bandwidth.</li>
-                    <li><strong>Faster processing:</strong> Our cloud-based backend processes your request in seconds, not minutes, thanks to optimized server infrastructure.</li>
-                    <li><strong>No watermarks ever:</strong> We deliver the clean, original file exactly as the creator uploaded it— no overlays, no branding.</li>
+                    <li><strong>Idea Pins and Reels are handled:</strong> not just standard video pins. Multi-page Idea Pins return their primary video &mdash; see the <a href="/limitations" class="text-pinterest hover:underline">limitations page</a> for what that misses.</li>
+                    <li><strong>Better quality:</strong> We always extract the highest available resolution — typically 576&times;1024 or 720&times;1280 — rather than forcing a lower bitrate to save bandwidth.</li>
+                    <li><strong>Typical turnaround is a few seconds</strong> for metadata. Larger files take as long as the transfer takes; the server is on a free tier and a first request after a quiet period can be slow to wake.</li>
+                    <li><strong>Nothing is added:</strong> we do not overlay a watermark of our own. Anything the creator burned into the video before uploading is part of the picture and stays there.</li>
                 </ul>
 
                 <h3 class="text-2xl font-bold text-dark mt-8 mb-4">How Our Technology Works</h3>
@@ -458,7 +458,7 @@
                     </div>
                     <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
                         <h3 class="text-lg font-semibold text-gray-800 mb-2">What video quality does PinClip support?</h3>
-                        <p class="text-gray-600">PinClip always extracts the highest quality available on Pinterest. Most Pinterest videos are saved in 720p or 1080p HD resolution in standard MP4 format, compatible with all modern devices and media players.</p>
+                        <p class="text-gray-600">PinClip requests the largest rendition Pinterest lists for a pin. When we measured 23 pins in August 2026, every file came back at 720&times;1280 or smaller, most commonly 576&times;1024 &mdash; always H.264 in an MP4 container. You get whatever Pinterest stores; a downloader cannot add detail that was never uploaded. We published the <a href="/blog/pinterest-video-size-guide" class="text-pinterest hover:underline">full measurements</a>.</p>
                     </div>
                     <div class="bg-white border rounded-lg p-6 hover:shadow-md transition-shadow">
                         <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I download Pinterest Reels and Idea Pins?</h3>
@@ -490,7 +490,7 @@
                         <h3 class="text-lg font-semibold text-dark mb-2">🔄 Pinterest to MP4 Converter</h3>
                         <p class="text-gray-600 text-sm">Convert any Pinterest video link to a downloadable MP4 file instantly.</p>
                     </a>
-                    <a href="/blog/download-pinterest-videos-iphone-android" class="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                    <a href="/blog/how-to-download-pinterest-videos" class="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
                         <h3 class="text-lg font-semibold text-dark mb-2">📱 Download Pinterest Videos on iPhone &amp; Android</h3>
                         <p class="text-gray-600 text-sm">Complete mobile guide with device-specific steps for saving Pinterest videos on iOS and Android.</p>
                     </a>
@@ -518,6 +518,7 @@
                     <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
                     <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
                     <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/limitations" class="hover:text-pinterest transition-colors">What it cannot do</a></li>
                     <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
                 </ul>
             </div>

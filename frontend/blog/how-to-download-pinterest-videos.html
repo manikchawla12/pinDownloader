@@ -130,7 +130,7 @@
                 <span>•</span>
                 <time datetime="2026-08-08">Updated April 2026</time>
                 <span>•</span>
-                <span>8 min read</span>
+                <span>11 min read</span>
             </div>
 
             <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1000" alt="Pinterest Application Open on Smartphone" class="rounded-xl w-full mb-8 shadow-sm">
@@ -263,7 +263,23 @@
             </ul>
             <p>However, you should <strong>never</strong> reupload someone else's video content as your own, use it in commercial projects without permission, or distribute it on other platforms without crediting the original creator. Always respect intellectual property rights and Pinterest's Terms of Service. For more details, read our <a href="/disclaimer">Disclaimer</a>.</p>
 
-            <h2>Summary</h2>
+            <h2>When it does not work</h2>
+                <p>About one pin in four in our own testing produced no file. These are the causes, in the order you are likely to hit them.</p>
+                <h3>&ldquo;This link is not supported&rdquo;</h3>
+                <p>The URL is not a Pinterest pin URL. It needs to look like <code>pinterest.com/pin/&lt;numbers&gt;/</code> or <code>pin.it/&lt;code&gt;</code>. A board URL, a profile URL, or a search results URL will not work &mdash; open the individual pin first.</p>
+                <h3>The pin has no video</h3>
+                <p>Image pins turn up constantly in video-related searches. Check for the play indicator before copying the link. There is no video track to extract from a still image.</p>
+                <h3>The pin is really a YouTube embed</h3>
+                <p>Some pins wrap a YouTube video rather than hosting their own. Two of the 32 URLs in <a href="/blog/pinterest-video-size-guide">our measurement sample</a> turned out to be this. Open the pin, find the YouTube link, and handle it there.</p>
+                <h3>The pin is private or deleted</h3>
+                <p>Open it in a private browsing window. If you cannot see it logged out, neither can the tool &mdash; and a 404 means the creator removed it.</p>
+                <h3>The download is silent</h3>
+                <p>Usually because the creator uploaded it without audio; two of the 23 files we measured had no audio stream at all. Occasionally it means the tool that produced it could not mux Pinterest&rsquo;s separate audio stream back in.</p>
+                <h3>The quality looks lower than expected</h3>
+                <p>It probably is not a fault. Pinterest tops out well below Full HD &mdash; nothing in our sample exceeded 720&times;1280, and the most common size was 576&times;1024. See <a href="/blog/pinterest-video-size-guide">the measurements</a> and the <a href="/limitations">limitations page</a>.</p>
+                <h3>The first attempt hangs</h3>
+                <p>The extraction server runs on a free tier and sleeps when idle. A cold start can take up to a minute. Try once more.</p>
+                <h2>Summary</h2>
             <p>Downloading Pinterest videos in 2026 is straightforward thanks to tools like PinClip. In just four simple steps — find, copy, paste, and download — you can save any Pinterest video to your device in HD MP4 format. No app installations, no signups, no watermarks.</p>
 
             <p>Whether you're building an offline recipe collection, archiving DIY tutorials, or simply want to share a clip with a friend who doesn't use Pinterest, <a href="/">PinClip</a> makes it effortless.</p>
@@ -298,6 +314,7 @@
                     <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
                     <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
                     <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/limitations" class="hover:text-pinterest transition-colors">What it cannot do</a></li>
                     <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
                 </ul>
             </div>

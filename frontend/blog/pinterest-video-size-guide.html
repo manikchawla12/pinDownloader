@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Ultimate Pinterest Video Size & Quality Guide | PinClip</title>
-    <meta name="description" content="Confused about 1080p, 720p, and aspect ratios? This guide breaks down the resolution, size, and formatting of Pinterest videos.">
+    <title>We Measured 23 Pinterest Videos: None Were 1080p | PinClip</title>
+    <meta name="description" content="Original research: we downloaded 23 public Pinterest video pins and ran ffprobe on every file. No video exceeded 720px wide, and Pinterest’s own metadata overstated resolution on 5 of them. Full dataset included.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,8 @@
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "The Ultimate Pinterest Video Size & Quality Guide",
-      "image": "https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&q=80&w=1000",
+      "headline": "We measured 23 Pinterest videos: none of them were 1080p",
+      "image": "https://pinclip.vercel.app/assets/og-image.png",
       "author": {
         "@type": "Organization",
         "name": "PinClip"
@@ -55,16 +55,16 @@
     <!-- Social sharing -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="PinClip">
-    <meta property="og:title" content="The Ultimate Pinterest Video Size &amp; Quality Guide | PinClip">
-    <meta property="og:description" content="Confused about 1080p, 720p, and aspect ratios? This guide breaks down the resolution, size, and formatting of Pinterest videos.">
+    <meta property="og:title" content="We Measured 23 Pinterest Videos: None Were 1080p | PinClip">
+    <meta property="og:description" content="Original research: we downloaded 23 public Pinterest video pins and ran ffprobe on every file. No video exceeded 720px wide, and Pinterest’s own metadata overstated resolution on 5 of them. Full dataset included.">
     <meta property="og:url" content="https://pinclip.vercel.app/blog/pinterest-video-size-guide">
     <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Ultimate Pinterest Video Size &amp; Quality Guide | PinClip">
-    <meta name="twitter:description" content="Confused about 1080p, 720p, and aspect ratios? This guide breaks down the resolution, size, and formatting of Pinterest videos.">
+    <meta name="twitter:title" content="We Measured 23 Pinterest Videos: None Were 1080p | PinClip">
+    <meta name="twitter:description" content="Original research: we downloaded 23 public Pinterest video pins and ran ffprobe on every file. No video exceeded 720px wide, and Pinterest’s own metadata overstated resolution on 5 of them. Full dataset included.">
     <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="PinClip">
@@ -113,48 +113,146 @@
             <span class="mx-2" aria-hidden="true">/</span>
             <a href="/blog" class="hover:text-pinterest">Blog</a>
             <span class="mx-2" aria-hidden="true">/</span>
-            <span class="text-gray-700">The Ultimate Pinterest Video Size & Quality Guide</span>
+            <span class="text-gray-700">We measured 23 Pinterest videos: none of them were 1080p</span>
         </nav>
         <article class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 prose prose-lg prose-indigo">
-            <h1 class="text-4xl text-dark font-bold mb-4">The Ultimate Pinterest Video Size & Quality Guide</h1>
+            <h1 class="text-4xl text-dark font-bold mb-4">We measured 23 Pinterest videos: none of them were 1080p</h1>
             <div class="flex items-center gap-4 text-sm text-gray-500 mb-8 border-b pb-4">
                 <span>By PinClip Editorial</span>
                 <span>•</span>
-                <time datetime="2026-03-04">Published March 2026</time>
+                <time datetime="2026-03-04">Published 9 August 2026</time>
                 <span>•</span>
-                <span>4 min read</span>
+                <span>9 min read</span>
             </div>
 
-            <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&q=80&w=1000" alt="Camera lens focusing on details" class="rounded-xl w-full mb-8 shadow-sm">
-
-            <p>If you have ever tried to download a video from the internet, you have inevitably encountered file types (MP4, WEBM, MOV) and confusing resolution metrics (1080p, 720p, 4K). Furthermore, platforms like Pinterest employ complex compression algorithms that alter the size and appearance of video content based on the device viewing it.</p>
-            
-            <p>At PinClip, ensuring you receive the highest fidelity file when you use our <a href="/">Pinterest video downloader</a> or <a href="/pinterest-to-mp4">convert Pinterest to MP4</a> is our core mission. To help you understand what you are actually downloading, we have compiled this comprehensive guide covering everything you need to know about Pinterest video specifications.</p>
 
 
+                        <h2>What we did</h2>
+            <p>Almost every article about Pinterest video specifications &mdash; including, until today, the one that used to sit at this URL &mdash; repeats the same numbers: &ldquo;1080p Full HD&rdquo;, &ldquo;up to 4K&rdquo;, &ldquo;2GB maximum upload&rdquo;. Those figures describe what Pinterest lets a <em>creator upload</em>. They say nothing about what Pinterest actually <em>serves back</em>, which is the only thing that matters when you download a pin.</p>
+            <p>So we measured it. In August 2026 we took a sample of 32 public video pins found through ordinary search across five categories (recipes, fitness, DIY and crafts, beauty, home decor), resolved each one, downloaded the highest-quality rendition available, and ran <code>ffprobe</code> against the resulting file. Twenty-three pins produced a video file. Every number below comes from those 23 files.</p>
+            <p>The complete raw dataset is published here so you can check our arithmetic: <a href="/data/pinterest-video-sample-2026-08.csv" download>pinterest-video-sample-2026-08.csv</a>.</p>
 
-            <h2>Pinterest Native Aspect Ratios</h2>
-            <p>Unlike YouTube, which primarily uses a 16:9 widescreen format, Pinterest is built for vertical scrolling on mobile devices. Because of this, video aspect ratios are significantly different.</p>
-            
+            <h2>Finding 1: nothing in the sample was 1080p</h2>
+            <p>This was the surprise. Not one of the 23 videos exceeded <strong>720 pixels on the long edge of the horizontal axis</strong>. The widest file in the entire sample was 720px wide.</p>
+            <div class="not-prose my-6 grid sm:grid-cols-3 gap-4">
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-200 text-center">
+                    <p class="text-3xl font-bold text-pinterest">720px</p>
+                    <p class="text-sm text-gray-600 mt-1">widest video in the sample</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-200 text-center">
+                    <p class="text-3xl font-bold text-pinterest">576&times;1024</p>
+                    <p class="text-sm text-gray-600 mt-1">most common resolution (11 of 23)</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-200 text-center">
+                    <p class="text-3xl font-bold text-pinterest">0</p>
+                    <p class="text-sm text-gray-600 mt-1">files at 1080&times;1920</p>
+                </div>
+            </div>
+            <figure class="not-prose my-8">
+                <svg viewBox="0 0 660 332" width="100%" role="img"
+                     aria-labelledby="resChartTitle resChartDesc"
+                     style="max-width:100%;height:auto;font-family:Inter,system-ui,sans-serif;">
+                    <title id="resChartTitle">Actual encoded resolution of 23 Pinterest videos</title>
+                    <desc id="resChartDesc">Horizontal bar chart. 576 by 1024 accounts for 10 of 23 videos, 720 by 1280 for 7, 720 by 1080 for 2, and 720 by 1032, 576 by 1026, 540 by 960 and 486 by 864 for one each. No video was 1080 by 1920.</desc>
+                    <text x="0" y="18" font-size="14" font-weight="700" fill="#111111">Actual encoded resolution, measured with ffprobe</text>
+                    <text x="0" y="36" font-size="12" fill="#6b7280">Count of videos by measured resolution · 23-video sample, August 2026</text>
+                    <line x1="132" y1="50" x2="132" y2="288" stroke="#d1d5db" stroke-width="1"/>
+                    <line x1="132" y1="50" x2="132" y2="288" stroke="#e5e7eb" stroke-width="1"/><text x="132" y="304" text-anchor="middle" font-size="11" fill="#6b7280">0</text><line x1="216" y1="50" x2="216" y2="288" stroke="#e5e7eb" stroke-width="1"/><text x="216" y="304" text-anchor="middle" font-size="11" fill="#6b7280">2</text><line x1="300" y1="50" x2="300" y2="288" stroke="#e5e7eb" stroke-width="1"/><text x="300" y="304" text-anchor="middle" font-size="11" fill="#6b7280">4</text><line x1="384" y1="50" x2="384" y2="288" stroke="#e5e7eb" stroke-width="1"/><text x="384" y="304" text-anchor="middle" font-size="11" fill="#6b7280">6</text><line x1="468" y1="50" x2="468" y2="288" stroke="#e5e7eb" stroke-width="1"/><text x="468" y="304" text-anchor="middle" font-size="11" fill="#6b7280">8</text><line x1="552" y1="50" x2="552" y2="288" stroke="#e5e7eb" stroke-width="1"/><text x="552" y="304" text-anchor="middle" font-size="11" fill="#6b7280">10</text>
+                    <text x="120" y="57" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#9ca3af">1080×1920</text><text x="138" y="57" font-size="12" fill="#9ca3af" font-style="italic">0 &#8212; Full HD — absent from the sample</text><text x="120" y="87" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">576×1024</text><g><title>576×1024: 10 of 23 videos</title><path d="M132,74 H548.0 A4,4 0 0 1 552.0,78 V88 A4,4 0 0 1 548.0,92 H132 Z" fill="#E60023"/></g><text x="560.0" y="87" font-size="12" font-weight="600" fill="#374151">10</text><text x="120" y="117" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">720×1280</text><g><title>720×1280: 7 of 23 videos</title><path d="M132,104 H422.0 A4,4 0 0 1 426.0,108 V118 A4,4 0 0 1 422.0,122 H132 Z" fill="#E60023"/></g><text x="434.0" y="117" font-size="12" font-weight="600" fill="#374151">7</text><text x="120" y="147" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">720×1080</text><g><title>720×1080: 2 of 23 videos</title><path d="M132,134 H212.0 A4,4 0 0 1 216.0,138 V148 A4,4 0 0 1 212.0,152 H132 Z" fill="#E60023"/></g><text x="224.0" y="147" font-size="12" font-weight="600" fill="#374151">2</text><text x="120" y="177" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">720×1032</text><g><title>720×1032: 1 of 23 videos</title><path d="M132,164 H170.0 A4,4 0 0 1 174.0,168 V178 A4,4 0 0 1 170.0,182 H132 Z" fill="#E60023"/></g><text x="182.0" y="177" font-size="12" font-weight="600" fill="#374151">1</text><text x="120" y="207" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">576×1026</text><g><title>576×1026: 1 of 23 videos</title><path d="M132,194 H170.0 A4,4 0 0 1 174.0,198 V208 A4,4 0 0 1 170.0,212 H132 Z" fill="#E60023"/></g><text x="182.0" y="207" font-size="12" font-weight="600" fill="#374151">1</text><text x="120" y="237" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">540×960</text><g><title>540×960: 1 of 23 videos</title><path d="M132,224 H170.0 A4,4 0 0 1 174.0,228 V238 A4,4 0 0 1 170.0,242 H132 Z" fill="#E60023"/></g><text x="182.0" y="237" font-size="12" font-weight="600" fill="#374151">1</text><text x="120" y="267" text-anchor="end" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#374151">486×864</text><g><title>486×864: 1 of 23 videos</title><path d="M132,254 H170.0 A4,4 0 0 1 174.0,258 V268 A4,4 0 0 1 170.0,272 H132 Z" fill="#E60023"/></g><text x="182.0" y="267" font-size="12" font-weight="600" fill="#374151">1</text>
+                </svg>
+                <figcaption class="text-sm text-gray-500 mt-3">Every value above was read from the downloaded file itself, not from Pinterest&rsquo;s reported metadata. The full per-pin data is in the table below and in the <a href="/data/pinterest-video-sample-2026-08.csv" class="text-pinterest hover:underline" download>raw CSV</a>.</figcaption>
+            </figure>
+            <p>The two clusters are 576&times;1024 (11 files) and 720&times;1280 (10 files). The remaining two were 720&times;1080 and a handful of one-offs at 486&times;864, 540&times;960 and 576&times;1026.</p>
+            <p>If you have read that Pinterest serves Full HD video, that claim does not survive contact with the actual files. We cannot rule out that some pins somewhere are served at 1080p &mdash; 23 is a small sample &mdash; but none of ours were, and the consistency of the 720px ceiling suggests it is a deliberate delivery cap rather than a coincidence.</p>
+
+            <h2>Finding 2: Pinterest's own metadata overstates resolution</h2>
+            <p>Five of the 23 pins advertised a resolution larger than the file they actually delivered. In each case the culprit was the same: alongside its HLS ladder, Pinterest exposes one or more progressive MP4 entries labelled <code>V_EXP3</code> through <code>V_EXP7</code>, or a particularly misleading one called <code>V_720P</code>. These entries carry no codec, bitrate or frame-rate information, and the width and height they report appear to be the <em>pin's display dimensions</em> rather than the encoded video's.</p>
+            <p>The clearest example: a recipe pin advertised <code>V_720P</code> at 1080&times;1920. The file that arrives is 720&times;1280. The format is named &ldquo;720P&rdquo;, reports 1920px, and delivers 1280px.</p>
+            <p>The practical consequence is that any tool trusting that metadata will report a resolution it cannot deliver. We checked our own downloader against this and it selects the correct file &mdash; but it was reporting the inflated figure back to users, which we have now corrected.</p>
+
+            <h2>Finding 3: two files had no audio at all</h2>
+            <p>21 of 23 files carried an AAC audio track. Two were silent &mdash; not muted, but genuinely lacking an audio stream. Both were short clips (6.4s and 17.0s) where the creator appears to have uploaded video with no soundtrack. If a download plays silently, this is the likely explanation and there is nothing a downloader can do about it.</p>
+
+            <h2>Finding 4: file size is roughly 7.6 MB per minute</h2>
+            <p>Across the sample the median works out to <strong>7.6 MB per minute of video</strong>, but the spread is wide &mdash; from 2.1 MB/min to 17.6 MB/min. Overall bitrate ranged from 275 kbps to 2,346 kbps with a median of 1,014 kbps.</p>
+            <p>As a rule of thumb for planning storage: a typical 20-second Pinterest video lands somewhere between 1.5 MB and 3 MB. The 145-second makeup tutorial in our sample &mdash; the longest video we measured &mdash; came to 18 MB.</p>
+
+            <h2>Finding 5: 9:16 dominates, but not universally</h2>
+            <p>19 of 23 videos were exactly 9:16. Two were 2:3, and two were irregular ratios (32:57 and 30:43) that do not correspond to any standard &mdash; almost certainly the result of a creator uploading an oddly-cropped source file that Pinterest passed through without normalising.</p>
+            <p>Frame rate was 30 fps in 15 cases and 60 fps in 3. The remainder were 24, 25, 29.92, 29.97 and 50 fps &mdash; the fingerprints of source footage shot for film or PAL broadcast and never converted.</p>
+
+            <h2>Finding 6: roughly one pin in four cannot be downloaded</h2>
+            <p>Of the 32 pins we started with, 9 produced no video file. The failures break down as:</p>
             <ul>
-                <li><strong>Vertical (9:16) - The Standard:</strong> This is the dominant format on Pinterest. It perfectly fills a smartphone screen. Whenever you <a href="/download-pinterest-reels">download Pinterest Reels</a> or Idea Pins, you are almost always downloading a 9:16 aspect ratio video (typically 1080 pixels wide by 1920 pixels tall).</li>
-                <li><strong>Square (1:1):</strong> Often used for product showcases and recipe clips, square videos are less common today but are supported up to 1080x1080 resolution.</li>
-                <li><strong>Standard (2:3 or 4:5):</strong> A mildly vertical orientation that performs well within Pinterest's grid layout without immediately taking over the user's entire display real estate.</li>
+                <li><strong>5 pins</strong> returned &ldquo;no video formats found&rdquo;. These are image pins that appeared in video-related search results, or pins whose video has since been removed.</li>
+                <li><strong>2 pins</strong> turned out to be Pinterest pins that <em>embed a YouTube video</em> rather than hosting their own. The extractor correctly followed through to YouTube, which then refused the request. This is a genuinely interesting edge case that we had not accounted for.</li>
+                <li><strong>1 pin</strong> returned a 404 &mdash; deleted between the search result being indexed and our request.</li>
+            </ul>
+            <p>A ~72% success rate on an unfiltered sample sounds low, but the sample was deliberately unfiltered: we did not check first that each URL was a genuine, live, self-hosted video pin. If you paste a link to a video you are currently watching on Pinterest, your success rate will be far higher.</p>
+
+            <h2>The complete dataset</h2>
+            <p>Highlighted rows are the five pins where the reported resolution did not match the file that arrived.</p>
+            <div class="not-prose my-6 overflow-x-auto">
+                <table class="w-full text-sm border border-gray-200 rounded-lg">
+                    <thead class="bg-gray-50 text-left">
+                        <tr>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">Reported</th>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">Actual</th>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">kbps</th>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">fps</th>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">sec</th>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">MB</th>
+                            <th class="p-2 font-semibold text-dark border-b border-gray-200">Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                            <tr class="bg-amber-50"><td class="p-2 border-b border-gray-100 font-mono text-xs">1080&times;1920</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">1505</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">75.1</td><td class="p-2 border-b border-gray-100">14.13</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">720&times;1280</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">2346</td><td class="p-2 border-b border-gray-100">24.08</td><td class="p-2 border-b border-gray-100">17.0</td><td class="p-2 border-b border-gray-100">4.98</td><td class="p-2 border-b border-gray-100"><strong>no</strong></td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">720&times;1280</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">275</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">26.6</td><td class="p-2 border-b border-gray-100">0.92</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">720&times;1280</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">1034</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">19.1</td><td class="p-2 border-b border-gray-100">2.47</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">720&times;1280</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">985</td><td class="p-2 border-b border-gray-100">25.0</td><td class="p-2 border-b border-gray-100">50.7</td><td class="p-2 border-b border-gray-100">6.24</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">720&times;1280</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">1176</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">7.0</td><td class="p-2 border-b border-gray-100">1.03</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr class="bg-amber-50"><td class="p-2 border-b border-gray-100 font-mono text-xs">1080&times;1920</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1280</td><td class="p-2 border-b border-gray-100">714</td><td class="p-2 border-b border-gray-100">29.97</td><td class="p-2 border-b border-gray-100">21.2</td><td class="p-2 border-b border-gray-100">1.89</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr class="bg-amber-50"><td class="p-2 border-b border-gray-100 font-mono text-xs">1000&times;1500</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1080</td><td class="p-2 border-b border-gray-100">1577</td><td class="p-2 border-b border-gray-100">60.0</td><td class="p-2 border-b border-gray-100">22.7</td><td class="p-2 border-b border-gray-100">4.47</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr class="bg-amber-50"><td class="p-2 border-b border-gray-100 font-mono text-xs">1000&times;1500</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1080</td><td class="p-2 border-b border-gray-100">841</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">6.4</td><td class="p-2 border-b border-gray-100">0.67</td><td class="p-2 border-b border-gray-100"><strong>no</strong></td></tr>
+                            <tr class="bg-amber-50"><td class="p-2 border-b border-gray-100 font-mono text-xs">1066&times;1528</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">720&times;1032</td><td class="p-2 border-b border-gray-100">2045</td><td class="p-2 border-b border-gray-100">50.0</td><td class="p-2 border-b border-gray-100">7.7</td><td class="p-2 border-b border-gray-100">1.96</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1026</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1026</td><td class="p-2 border-b border-gray-100">1224</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">9.0</td><td class="p-2 border-b border-gray-100">1.38</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">1275</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">62.8</td><td class="p-2 border-b border-gray-100">10.00</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">552</td><td class="p-2 border-b border-gray-100">29.92</td><td class="p-2 border-b border-gray-100">10.1</td><td class="p-2 border-b border-gray-100">0.70</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">1014</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">10.5</td><td class="p-2 border-b border-gray-100">1.33</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">696</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">23.6</td><td class="p-2 border-b border-gray-100">2.06</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">991</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">145.5</td><td class="p-2 border-b border-gray-100">18.03</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">1871</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">22.6</td><td class="p-2 border-b border-gray-100">5.29</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">916</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">35.0</td><td class="p-2 border-b border-gray-100">4.00</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">886</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">7.8</td><td class="p-2 border-b border-gray-100">0.87</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">1316</td><td class="p-2 border-b border-gray-100">60.0</td><td class="p-2 border-b border-gray-100">29.7</td><td class="p-2 border-b border-gray-100">4.89</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">576&times;1024</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">576&times;1024</td><td class="p-2 border-b border-gray-100">1306</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">12.9</td><td class="p-2 border-b border-gray-100">2.11</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">540&times;960</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">540&times;960</td><td class="p-2 border-b border-gray-100">971</td><td class="p-2 border-b border-gray-100">60.0</td><td class="p-2 border-b border-gray-100">47.5</td><td class="p-2 border-b border-gray-100">5.77</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                            <tr><td class="p-2 border-b border-gray-100 font-mono text-xs">486&times;864</td><td class="p-2 border-b border-gray-100 font-mono text-xs font-semibold">486&times;864</td><td class="p-2 border-b border-gray-100">804</td><td class="p-2 border-b border-gray-100">30.0</td><td class="p-2 border-b border-gray-100">19.4</td><td class="p-2 border-b border-gray-100">1.95</td><td class="p-2 border-b border-gray-100">yes</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>How Pinterest structures its video delivery</h2>
+            <p>Every pin we measured was served through the same two-track arrangement:</p>
+            <ul>
+                <li>An <strong>HLS ladder</strong> &mdash; a median of 4 video-only rungs, named <code>V_HLSV3_MOBILE-{bitrate}</code> or <code>V_HLSV4-{bitrate}</code>, with a separate audio stream alongside. A typical ladder runs 234&times;416 at ~395 kbps, 360&times;640 at ~625 kbps, 486&times;864 at ~878 kbps, then the top rung.</li>
+                <li>One or more <strong>progressive MP4s</strong> over plain HTTPS, which are self-contained (video and audio in one file) but carry no useful metadata.</li>
+            </ul>
+            <p>Because the HLS rungs are video-only, any tool reassembling them needs <code>ffmpeg</code> to mux the audio back in. A downloader running without ffmpeg will either fall back to a progressive file or hand you a silent video &mdash; which is one reason the same pin can produce different results on different sites.</p>
+
+            <h2>Limitations of this study</h2>
+            <p>We want to be straight about what this does and does not show.</p>
+            <ul>
+                <li><strong>23 files is a small sample.</strong> It is enough to disprove &ldquo;Pinterest always serves 1080p&rdquo; but not enough to establish precise population statistics.</li>
+                <li><strong>The pins were found via search</strong>, which biases towards popular, well-indexed content. Videos from small accounts may behave differently.</li>
+                <li><strong>All measurements were taken from one location</strong> (India) on one date. Pinterest's CDN may serve different renditions in different regions.</li>
+                <li><strong>Pinterest can change any of this at any time.</strong> These numbers describe August 2026. We will re-run the measurement periodically and note the date when we do.</li>
             </ul>
 
-            <h2>File Size and Compression Limits</h2>
-            <p>Creators uploading content to Pinterest face specific constraints. The maximum file size for a video pin upload is officially 2GB, with a maximum length of 15 minutes. However, the vast majority of videos range from 15 seconds to 1 minute, usually resulting in a file size of 5MB to 30MB.</p>
-
-            <p>When you use PinClip to request a video, we retrieve this compressed file directly from Pinterest. This ensures your download is swift and won't severely deplete your mobile data allowance, all while maintaining the <a href="/blog/download-pinterest-video-without-watermark">watermark-free</a> integrity.</p>
-
-            <h2>Understanding Resolutions (720p vs 1080p)</h2>
-            <p>When you click download, you want the best visual quality.</p>
-            <p>Pinterest typically transcodes creator uploads into multiple resolution streams to serve users with different internet speeds. Our backend is specifically programmed to ignore the low-bandwidth streams (like 360p or 480p) and extract the "highest stream" available.</p>
-            <p>Usually, this means you will be downloading a crisp <strong>1080p</strong> file (1080x1920 pixels). If the original creator uploaded a lower quality video (like 720p), PinClip will simply fetch that maximum available resolution.</p>
-
-            <h2>Why is MP4 the Standard?</h2>
-            <p>You might wonder why we enforce MP4 delivery for all of our downloads. MP4 is considered a universally compatible container. By ensuring every Pinterest video is delivered as an MP4, we guarantee that the video will play seamlessly whether you use an iPhone Photos app, an Android gallery, a Windows Media Player, or a Mac's QuickTime layer—without needing any specialized codec packs.</p>
-            <p>Ready to start building your high-quality offline archive? Head to our <a href="/">Pinterest video downloader</a> and give it a try! You can also explore our <a href="/blog/download-pinterest-videos-on-iphone">iPhone download guide</a> or <a href="/blog/download-pinterest-video-without-watermark">watermark-free download guide</a> for more tips.</p>
+            <h2>What this means for you</h2>
+            <p>Practically: expect a vertical file somewhere around 576&times;1024 or 720&times;1280, H.264 video with AAC audio, roughly 1 Mbps, and a few megabytes per minute. That is perfectly good for watching on a phone and fine for most editing. It is not master-quality footage, and no downloader can make it so &mdash; a tool can only hand you the best file Pinterest is willing to serve. Anyone promising you 4K or guaranteed 1080p from a Pinterest pin is describing something we could not reproduce.</p>
+            <p>If you want to try this yourself, the <a href="/">downloader</a> gives you the same file we measured, and the <a href="/data/pinterest-video-sample-2026-08.csv" download>raw CSV</a> has every pin URL so you can verify any row independently.</p>
         </article>
     </main>
 
@@ -175,6 +273,7 @@
                     <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
                     <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
                     <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/limitations" class="hover:text-pinterest transition-colors">What it cannot do</a></li>
                     <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
                 </ul>
             </div>

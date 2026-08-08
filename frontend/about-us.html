@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About PinClip – Our Mission &amp; Story | Free Pinterest Video Downloader</title>
-    <meta name="description" content="Learn about PinClip, the free Pinterest video downloader. Our mission, values, and the team behind the tool that helps millions save Pinterest videos.">
+    <title>About PinClip &mdash; Who Runs It and How It Works</title>
+    <meta name="description" content="PinClip is run by two people in India as a side project. How the downloader actually works, what we refuse to claim about video quality, and how the site is funded.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -34,16 +34,16 @@
     <!-- Social sharing -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="PinClip">
-    <meta property="og:title" content="About PinClip – Our Mission &amp; Story | Free Pinterest Video Downloader">
-    <meta property="og:description" content="Learn about PinClip, the free Pinterest video downloader. Our mission, values, and the team behind the tool that helps millions save Pinterest videos.">
+    <meta property="og:title" content="About PinClip &mdash; Who Runs It and How It Works">
+    <meta property="og:description" content="PinClip is run by two people in India as a side project. How the downloader actually works, what we refuse to claim about video quality, and how the site is funded.">
     <meta property="og:url" content="https://pinclip.vercel.app/about-us">
     <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About PinClip – Our Mission &amp; Story | Free Pinterest Video Downloader">
-    <meta name="twitter:description" content="Learn about PinClip, the free Pinterest video downloader. Our mission, values, and the team behind the tool that helps millions save Pinterest videos.">
+    <meta name="twitter:title" content="About PinClip &mdash; Who Runs It and How It Works">
+    <meta name="twitter:description" content="PinClip is run by two people in India as a side project. How the downloader actually works, what we refuse to claim about video quality, and how the site is funded.">
     <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="PinClip">
@@ -82,46 +82,49 @@
     </header>
 
 
-    <main id="main" class="flex-grow py-12 px-4">
+        <main id="main" class="flex-grow py-12 px-4">
         <div class="max-w-4xl mx-auto">
+            <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-6">
+                <a href="/" class="hover:text-pinterest">Home</a>
+                <span class="mx-2" aria-hidden="true">/</span>
+                <span class="text-gray-700">About</span>
+            </nav>
             <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
-                <h1 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">About PinClip</h1>
-                
-                <div class="prose prose-lg text-gray-700 mx-auto">
-                    <h2 class="text-2xl font-bold text-dark mt-6 mb-3">Our Mission</h2>
-                    <p>PinClip is a free online tool designed to help users download Pinterest videos in high quality. Our mission is simple: to provide the most reliable, fastest, and safest way to save Pinterest video content directly to any device — without requiring software installations, account signups, or compromising on video quality.</p>
+                <h1 class="text-3xl md:text-4xl font-bold text-dark mb-6">About PinClip</h1>
+                <div class="prose prose-lg max-w-none">
 
-                    <p>We believe that when you find inspiration on Pinterest — whether it's a cooking recipe that you want to try offline in the kitchen, a DIY tutorial for a weekend project, or a workout routine you want to follow at the gym — you should be able to save it easily. Pinterest's native sharing options don't include direct video downloads, and we built PinClip to bridge that gap.</p>
+                    <p>PinClip is a free web tool that takes a public Pinterest video URL and gives you back the MP4. That is the whole product. This page explains who runs it, how it actually works, and how it pays for itself.</p>
 
-                    <h2 class="text-2xl font-bold text-dark mt-8 mb-3">Why We Built PinClip</h2>
-                    <p>Our team of developers and designers noticed a persistent problem: existing video download tools were either riddled with intrusive pop-up ads, required installing browser extensions of questionable safety, or simply didn't work reliably with Pinterest's unique video infrastructure. Many tools would return low-quality versions or fail silently on Idea Pins and Reels.</p>
+                    <h2>Who we are</h2>
+                    <p>PinClip is run by two people in India &mdash; one writing the code, one writing the guides &mdash; as a side project, not a company. There is no team, no office and no investor. Everything published here is written by us; we do not commission or generate filler articles to chase search traffic.</p>
+                    <p>When something on this site says &ldquo;we measured&rdquo;, it means we actually ran the measurement and published the data. The <a href="/blog/pinterest-video-size-guide">resolution study</a> is the clearest example: 23 pins, downloaded and probed with <code>ffmpeg</code>, with the <a href="/data/pinterest-video-sample-2026-08.csv" download>raw CSV</a> attached so anyone can check the numbers.</p>
+                    <p>You can reach us at <a href="mailto:orderbusinesspromotion@gmail.com">orderbusinesspromotion@gmail.com</a>. It is a real inbox and we answer it.</p>
 
-                    <p>We set out to build something better. PinClip was engineered from the ground up with a deep understanding of Pinterest's content delivery architecture, including how the platform serves HLS adaptive streams and signed media URLs. The result is a tool with a significantly higher success rate and better output quality than generic alternatives.</p>
+                    <h2>How it works</h2>
+                    <p>When you paste a link, a small Python service resolves the pin and reads the list of media renditions Pinterest publishes for it. Pinterest serves most videos two ways at once: an HLS ladder of video-only rungs with a separate audio stream, and one or more self-contained progressive MP4s. The service picks the largest rendition, uses <code>ffmpeg</code> to mux audio and video back together if the chosen rung needs it, and streams the result to your browser.</p>
+                    <p>Nothing is kept. The URL you paste is held in memory for the length of the request and never written to a database. The video file is streamed through and discarded &mdash; there is no media library on our servers, which is also why we cannot offer download history.</p>
 
-                    <h2 class="text-2xl font-bold text-dark mt-8 mb-3">Our Core Values</h2>
-                    <ul class="list-disc pl-6 space-y-3">
-                        <li><strong>Privacy First:</strong> We do not store any downloaded videos on our servers. We don't track your download history, and we never ask for personal information. Your privacy matters to us.</li>
-                        <li><strong>Quality Without Compromise:</strong> We always extract the highest available resolution. If a video was uploaded in 1080p, that's exactly what you'll receive — no downscaling, no re-encoding.</li>
-                        <li><strong>Accessibility:</strong> PinClip works on every major platform and device. Whether you're using an iPhone, an older Android device, a Chromebook, or a desktop Linux machine, PinClip is accessible through any modern web browser.</li>
-                        <li><strong>Transparency:</strong> We're upfront about what our tool does and how it works. You can read our <a href="/privacy-policy" class="text-pinterest hover:underline">Privacy Policy</a>, <a href="/terms-of-service" class="text-pinterest hover:underline">Terms of Service</a>, and <a href="/disclaimer" class="text-pinterest hover:underline">Disclaimer</a> for complete details.</li>
+                    <h2>What we will not claim</h2>
+                    <p>This category is full of sites promising 4K, guaranteed Full HD and watermark removal. We measured what Pinterest actually serves and none of that held up, so we do not say it.</p>
+                    <ul>
+                        <li>We do not promise 1080p. In our sample nothing exceeded 720&times;1280, and five pins advertised a resolution higher than the file they delivered.</li>
+                        <li>&ldquo;No watermark&rdquo; here means only that <em>we</em> add none. Marks a creator burned into the video before uploading cannot be removed by any tool.</li>
+                        <li>We do not claim to be the fastest or most reliable option, because we have no way to measure that against every competitor and neither does anyone else making the claim.</li>
                     </ul>
+                    <p>The full list of things the tool cannot do is on the <a href="/limitations">limitations page</a>. We would rather you read it before you need it.</p>
 
-                    <h2 class="text-2xl font-bold text-dark mt-8 mb-3">Responsible Use</h2>
-                    <p>PinClip is intended exclusively for personal, non-commercial use. We encourage all users to respect the intellectual property rights of content creators on Pinterest. If you plan to use downloaded content in any public or commercial context, please obtain proper permission from the original creator first. For more details, please review our <a href="/disclaimer" class="text-pinterest hover:underline">Disclaimer</a> page.</p>
+                    <h2>Where we stand on copyright</h2>
+                    <p>Every video PinClip touches belongs to whoever made it. We claim nothing, host nothing and store nothing. Saving a public video for your own offline use is generally fine; republishing it, monetising it, or passing it off as your own is not, and no wording on this site changes that.</p>
+                    <p>We act on valid takedown notices and can block specific pins, boards or accounts from being processed &mdash; see the <a href="/dmca">DMCA policy</a>. If you are a creator with a concern, email us directly; you do not need to file a formal notice to start a conversation.</p>
 
-                    <h2 class="text-2xl font-bold text-dark mt-8 mb-3">Get in Touch</h2>
-                    <p>Have a question, feedback, or suggestion? We'd genuinely love to hear from you. Whether it's a feature request, a bug report, or just a friendly note, reach out to us at:</p>
-                    <p class="text-center mt-4">
-                        <a href="mailto:orderbusinesspromotion@gmail.com" class="btn-primary inline-block">📧 orderbusinesspromotion@gmail.com</a>
-                    </p>
-                    <p class="text-center text-sm text-gray-500 mt-4">We typically respond within 24–48 hours.</p>
+                    <h2>How this is funded</h2>
+                    <p>Advertising, through Google AdSense. That is the only revenue. There is no paid tier, no affiliate links in the articles, and nothing is sold. Ads are also why the site asks about cookies: until you choose, advertising and analytics storage default to denied, and declining costs you no functionality. Details are in the <a href="/cookie-policy">cookie policy</a>.</p>
+                    <p>The trade-off is worth stating plainly: the site exists because ads pay for the server, and the content is written to be worth reading rather than to fill space around them.</p>
+
+                    <h2>Not affiliated with Pinterest</h2>
+                    <p>PinClip is independent. We are not affiliated with, endorsed by, or connected to Pinterest, Inc. in any way. &ldquo;Pinterest&rdquo; and &ldquo;Idea Pin&rdquo; are trademarks of Pinterest, Inc., used here only to describe what the tool does.</p>
+
                 </div>
-            </div>
-
-            <!-- Internal Links -->
-            <div class="mt-8 text-center text-sm text-gray-600">
-                <p>Ready to get started? <a href="/" class="text-pinterest font-semibold hover:underline">Use PinClip now →</a></p>
-                <p class="mt-2">Or explore our <a href="/blog" class="text-pinterest hover:underline">Blog</a> for guides and tips.</p>
             </div>
         </div>
     </main>
@@ -143,6 +146,7 @@
                     <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
                     <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
                     <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/limitations" class="hover:text-pinterest transition-colors">What it cannot do</a></li>
                     <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
                 </ul>
             </div>
