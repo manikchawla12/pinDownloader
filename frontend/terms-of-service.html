@@ -3,90 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - PinClip</title>
+    <title>Terms of Service | PinClip</title>
+    <meta name="description" content="The terms governing your use of PinClip's free Pinterest video downloader: acceptable use, copyright obligations, warranties and limitation of liability.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="https://pinclip.vercel.app/terms-of-service">
+    <!-- Google Consent Mode v2 — must run before any Google tag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function(){
+        var stored = null;
+        try { stored = localStorage.getItem('pinclip_consent'); } catch (e) {}
+        var state = stored === 'granted' ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
+          analytics_storage: state,
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+      })();
+    </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7120148790304596" crossorigin="anonymous"></script>
-    <link rel="canonical" href="https://pinclip.vercel.app/terms-of-service">
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PinClip">
+    <meta property="og:title" content="Terms of Service | PinClip">
+    <meta property="og:description" content="The terms governing your use of PinClip's free Pinterest video downloader: acceptable use, copyright obligations, warranties and limitation of liability.">
+    <meta property="og:url" content="https://pinclip.vercel.app/terms-of-service">
+    <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms of Service | PinClip">
+    <meta name="twitter:description" content="The terms governing your use of PinClip's free Pinterest video downloader: acceptable use, copyright obligations, warranties and limitation of liability.">
+    <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="PinClip">
+    <meta name="theme-color" content="#E60023">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
-        <header class="bg-white shadow-sm sticky top-0 z-50">
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="/" class="flex items-center gap-2">
-                    <img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded">
+                <a href="/" class="flex items-center gap-2" aria-label="PinClip home">
+                    <img src="/favicon.png" alt="" width="32" height="32" class="h-8 w-8 rounded">
                     <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
                 </a>
-                
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
-                    <a href="/blog" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
-                    <a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a>
+                <nav class="hidden md:flex space-x-7" aria-label="Main navigation">
+                    <a href="/" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
+                    <a href="/pinterest-to-mp4" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">MP4 Converter</a>
+                    <a href="/download-pinterest-reels" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Reels</a>
+                    <a href="/blog" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
+                    <a href="/about-us" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
                 </nav>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none focus:ring-2 focus:ring-pinterest rounded">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
-            <div class="px-4 py-3 space-y-2 pb-4">
-                <a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
-                <a href="/blog" class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
-                <a href="/download-pinterest-video" class="block text-base font-medium text-gray-700 hover:text-pinterest">Features</a>
-            </div>
+            <nav class="px-4 py-3 space-y-2 pb-4" aria-label="Mobile navigation">
+                <a href="/" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
+                <a href="/pinterest-to-mp4" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">MP4 Converter</a>
+                <a href="/download-pinterest-reels" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Reels</a>
+                <a href="/blog" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
+                <a href="/about-us" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
+            </nav>
         </div>
     </header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var btn = document.getElementById('mobileMenuBtn');
-            var menu = document.getElementById('mobileMenu');
-            if (btn && menu) {
-                btn.addEventListener('click', function() {
-                    menu.classList.toggle('hidden');
-                });
-            }
-        });
-    </script>
+    <main id="main" class="flex-grow py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-6">
+                <a href="/" class="hover:text-pinterest">Home</a>
+                <span class="mx-2" aria-hidden="true">/</span>
+                <span class="text-gray-700">Terms of Service</span>
+            </nav>
+            <article class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+                <h1 class="text-3xl md:text-4xl font-bold text-dark mb-2">Terms of Service</h1>
+                <p class="text-sm text-gray-500 mb-8">Last updated: 8 August 2026</p>
+                <div class="prose prose-lg max-w-none">
 
-    <main class="flex-grow py-12 px-4">
-        <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 prose prose-lg">
-            <h1 class="text-3xl font-bold text-dark mb-6">Terms of Service</h1>
-            <p>Welcome to PinClip. By using this website, you agree to comply with and be bound by the following terms of service.</p>
-            
-            <h3 class="font-bold mt-6 mb-2">1. Use License</h3>
-            <p>Permission is granted to temporarily use the PinClip tool for personal, non-commercial transitory viewing only. You must not use our tool to download material that you do not have the right to copy under copyright law.</p>
-            
-            <h3 class="font-bold mt-6 mb-2">2. Respecting Copyrights</h3>
-            <p>Users must respect the intellectual property rights of others. We do not support the downloading of copyrighted videos for commercial intent. Our service is strictly a conduit that extracts direct public links from Pinterest's servers.</p>
-            
-            <h3 class="font-bold mt-6 mb-2">3. Disclaimer of Warranties</h3>
-            <p>The materials on our website are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties of merchantability.</p>
-            
-            <h3 class="font-bold mt-6 mb-2">4. Limitations</h3>
-            <p>In no event shall PinClip be liable for any damages arising out of the use or inability to use the materials on our website.</p>
+<p>These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of PinClip at
+<a href="/">pinclip.vercel.app</a> (the &ldquo;Service&rdquo;). By using the Service you agree to these Terms.
+If you do not agree, please do not use the Service.</p>
+
+<h2>1. What PinClip is</h2>
+<p>PinClip is a free, browser-based utility that takes a publicly accessible Pinterest URL, locates
+the underlying video file, and returns it to you as an MP4. It is a technical conduit. We are an
+independent project and are <strong>not affiliated with, endorsed by, or sponsored by Pinterest, Inc.</strong>
+&ldquo;Pinterest&rdquo;, &ldquo;Idea Pin&rdquo; and related marks belong to Pinterest, Inc.</p>
+
+<h2>2. Eligibility</h2>
+<p>You must be at least 13 years old (16 in the EEA and UK) to use the Service. By using it you
+confirm that you meet this requirement and that you have the legal capacity to accept these Terms.</p>
+
+<h2>3. Your responsibilities</h2>
+<p>You are solely responsible for the content you choose to download and for what you do with it.
+You agree that you will:</p>
+<ul>
+<li>only download content you own, content you have permission to download, or content whose use is
+otherwise permitted by law in your jurisdiction (for example, a personal-use or fair-dealing exception);</li>
+<li>not republish, redistribute, sell, sublicense or monetise downloaded content without the rights
+holder's permission;</li>
+<li>not present someone else's work as your own;</li>
+<li>respect Pinterest's own Terms of Service and any restrictions a creator has placed on their work;</li>
+<li>comply with all applicable laws, including copyright law.</li>
+</ul>
+
+<h2>4. Acceptable use</h2>
+<p>You must not:</p>
+<ul>
+<li>use automated systems, scrapers or scripts to submit requests at volume;</li>
+<li>attempt to circumvent rate limits, access controls, or any security measure;</li>
+<li>use the Service to access private, restricted or non-public content;</li>
+<li>interfere with, overload, or disrupt the Service or the infrastructure it runs on;</li>
+<li>reverse engineer, decompile, or resell the Service;</li>
+<li>use the Service for any unlawful, infringing, deceptive or harmful purpose.</li>
+</ul>
+<p>We apply rate limits and may block IP addresses that abuse the Service.</p>
+
+<h2>5. Intellectual property</h2>
+<p>The PinClip name, site design, written guides and source code are our property or are used under
+licence, and are protected by copyright and trademark law. Nothing in these Terms transfers those
+rights to you.</p>
+<p>We claim <strong>no ownership whatsoever</strong> over the videos processed through the Service. All rights
+in that content remain with the original creators and rights holders.</p>
+
+<h2>6. Copyright complaints</h2>
+<p>We respect intellectual property rights and respond to valid notices. If you believe the Service
+has been used to infringe your copyright, please follow the procedure in our
+<a href="/dmca">DMCA &amp; Copyright Policy</a>.</p>
+
+<h2>7. Availability and changes</h2>
+<p>The Service is provided free of charge and on a best-effort basis. We may modify, suspend or
+discontinue any part of it at any time without notice. Because PinClip depends on how Pinterest
+delivers its content, some links may stop working without warning, and we do not guarantee that any
+particular video can be downloaded.</p>
+
+<h2>8. Advertising</h2>
+<p>The Service is funded by third-party advertising, primarily Google AdSense. Advertisements are
+not endorsements. Any dealings you have with an advertiser are solely between you and them, and we
+are not responsible for their products, services or content.</p>
+
+<h2>9. Disclaimer of warranties</h2>
+<p>THE SERVICE IS PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the Service will be uninterrupted,
+timely, secure, error-free, or that any specific result will be obtained from using it.</p>
+
+<h2>10. Limitation of liability</h2>
+<p>To the maximum extent permitted by law, PinClip and its operators shall not be liable for any
+indirect, incidental, special, consequential or punitive damages, or for any loss of profits, data,
+goodwill or other intangible losses, arising out of or relating to your use of or inability to use
+the Service &mdash; including any claim arising from content you downloaded. Our total aggregate
+liability for any claim relating to the Service shall not exceed <strong>USD 50</strong>.</p>
+<p>Nothing in these Terms excludes or limits liability that cannot lawfully be excluded or limited,
+including liability for death or personal injury caused by negligence, or for fraud.</p>
+
+<h2>11. Indemnity</h2>
+<p>You agree to indemnify and hold harmless PinClip and its operators from any claim, demand, loss or
+expense (including reasonable legal fees) arising from your use of the Service, your breach of these
+Terms, or your infringement of any third party's rights.</p>
+
+<h2>12. Termination</h2>
+<p>We may restrict or terminate your access to the Service at any time, without notice, if we
+reasonably believe you have breached these Terms. Sections 5, 9, 10, 11 and 13 survive termination.</p>
+
+<h2>13. Governing law</h2>
+<p>These Terms are governed by the laws of India, without regard to conflict-of-laws principles.
+Where you are a consumer, you retain the benefit of any mandatory protections of the law of your
+country of residence.</p>
+
+<h2>14. Changes to these Terms</h2>
+<p>We may revise these Terms from time to time. The &ldquo;last updated&rdquo; date at the top of this page
+reflects the current version. Continuing to use the Service after a change means you accept the
+revised Terms.</p>
+
+<h2>15. Contact</h2>
+<p>Questions about these Terms: <a href="mailto:orderbusinesspromotion@gmail.com">orderbusinesspromotion@gmail.com</a>.</p>
+
+                </div>
+            </article>
         </div>
     </main>
 
-    <footer class="bg-dark text-white py-8 mt-auto text-center text-sm">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="space-x-4 mb-4">
-                <a href="/" class="hover:text-pinterest">Home</a>
-                <a href="/privacy-policy" class="hover:text-pinterest">Privacy</a>
-                <a href="/disclaimer" class="hover:text-pinterest">Disclaimer</a>
+    <footer class="bg-dark text-white py-12 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/favicon.png" alt="" width="24" height="24" class="h-6 w-6 rounded">
+                    <span class="font-bold text-lg tracking-tight">PinClip</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">PinClip is a free online tool that saves public Pinterest videos as standard MP4 files. Built and maintained by an independent two-person team since 2026.</p>
+                <p class="text-gray-400 text-sm">Email: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest transition-colors">orderbusinesspromotion@gmail.com</a></p>
             </div>
-            &copy; 2026 PinClip
+            <div>
+                <h2 class="font-bold mb-4 text-base">Tools</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-pinterest transition-colors">Pinterest Video Downloader</a></li>
+                    <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Legal</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/privacy-policy" class="hover:text-pinterest transition-colors">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy" class="hover:text-pinterest transition-colors">Cookie Policy</a></li>
+                    <li><a href="/terms-of-service" class="hover:text-pinterest transition-colors">Terms of Service</a></li>
+                    <li><a href="/dmca" class="hover:text-pinterest transition-colors">DMCA &amp; Copyright</a></li>
+                    <li><a href="/disclaimer" class="hover:text-pinterest transition-colors">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Company</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/about-us" class="hover:text-pinterest transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-pinterest transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2026 PinClip. All rights reserved.</p>
+            <p class="text-xs mt-3 max-w-3xl mx-auto">PinClip is an independent tool and is not affiliated with, endorsed by, or sponsored by Pinterest, Inc. &quot;Pinterest&quot; is a trademark of Pinterest, Inc. We do not host, store or upload any video files. Please only download content you own or have permission to use &mdash; see our <a href="/dmca" class="hover:text-pinterest underline">DMCA policy</a> and <a href="/disclaimer" class="hover:text-pinterest underline">disclaimer</a>.</p>
         </div>
     </footer>
+    <script src="./assets/js/site.js" defer></script>
+    <script src="./assets/js/consent.js" defer></script>
 </body>
 </html>

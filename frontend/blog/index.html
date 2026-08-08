@@ -11,67 +11,98 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google Consent Mode v2 — must run before any Google tag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function(){
+        var stored = null;
+        try { stored = localStorage.getItem('pinclip_consent'); } catch (e) {}
+        var state = stored === 'granted' ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
+          analytics_storage: state,
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+      })();
+    </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7120148790304596" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://pinclip.vercel.app/blog">
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PinClip">
+    <meta property="og:title" content="PinClip Blog - Pinterest Video Tips &amp; Guides">
+    <meta property="og:description" content="Read the latest articles, guides, and tips on downloading Pinterest videos, converting Pins to MP4, and more on the PinClip blog.">
+    <meta property="og:url" content="https://pinclip.vercel.app/blog">
+    <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PinClip Blog - Pinterest Video Tips &amp; Guides">
+    <meta name="twitter:description" content="Read the latest articles, guides, and tips on downloading Pinterest videos, converting Pins to MP4, and more on the PinClip blog.">
+    <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="PinClip">
+    <meta name="theme-color" content="#E60023">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+    <a href="#main" class="skip-link">Skip to main content</a>
     
-        <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="/" class="flex items-center gap-2">
-                    <img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded">
+                <a href="/" class="flex items-center gap-2" aria-label="PinClip home">
+                    <img src="/favicon.png" alt="" width="32" height="32" class="h-8 w-8 rounded">
                     <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
                 </a>
-                
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
-                    <a href="/blog" class="text-pinterest font-medium">Blog</a>
-                    <a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a>
-                    <a href="/about-us" class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
+                <nav class="hidden md:flex space-x-7" aria-label="Main navigation">
+                    <a href="/" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
+                    <a href="/pinterest-to-mp4" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">MP4 Converter</a>
+                    <a href="/download-pinterest-reels" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Reels</a>
+                    <a href="/blog" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
+                    <a href="/about-us" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
                 </nav>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none focus:ring-2 focus:ring-pinterest rounded">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
-            <div class="px-4 py-3 space-y-2 pb-4">
-                <a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
-                <a href="/blog" class="block text-base font-medium text-pinterest">Blog</a>
-                <a href="/download-pinterest-video" class="block text-base font-medium text-gray-700 hover:text-pinterest">Features</a>
-                <a href="/about-us" class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
-            </div>
+            <nav class="px-4 py-3 space-y-2 pb-4" aria-label="Mobile navigation">
+                <a href="/" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
+                <a href="/pinterest-to-mp4" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">MP4 Converter</a>
+                <a href="/download-pinterest-reels" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Reels</a>
+                <a href="/blog" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
+                <a href="/about-us" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
+            </nav>
         </div>
     </header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var btn = document.getElementById('mobileMenuBtn');
-            var menu = document.getElementById('mobileMenu');
-            if (btn && menu) {
-                btn.addEventListener('click', function() {
-                    menu.classList.toggle('hidden');
-                });
-            }
-        });
-    </script>
 
-    <main class="flex-grow py-12 px-4">
+    <main id="main" class="flex-grow py-12 px-4">
         <div class="max-w-4xl mx-auto">
+            <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-5 text-center">
+                <a href="/" class="hover:text-pinterest">Home</a>
+                <span class="mx-2" aria-hidden="true">/</span>
+                <span class="text-gray-700">Blog</span>
+            </nav>
             <h1 class="text-4xl font-bold text-dark mb-4 text-center">PinClip Blog</h1>
-            <p class="text-lg text-gray-600 mb-12 text-center">Everything you need to know about saving and sharing Pinterest content.</p>
+            <p class="text-lg text-gray-600 mb-6 text-center max-w-2xl mx-auto">Practical guides to saving, organising and understanding Pinterest video &mdash; written by the people who build the tool.</p>
+            <div class="max-w-3xl mx-auto text-gray-600 mb-12 space-y-4">
+                <p>Every article here starts from a real question we have been emailed. Why does a download come out smaller than expected? Why do some Idea Pins only save one page? Where does the file actually go on a Chromebook? We answer those properly, with the technical reasoning behind the answer rather than a list of steps to follow blindly.</p>
+                <p>We also try to be straight about the limits. Some pins genuinely cannot be downloaded, some watermarks genuinely cannot be removed, and some uses of a downloaded video are genuinely not yours to make. Where that is the case, the articles say so &mdash; see our <a href="/disclaimer" class="text-pinterest hover:underline">disclaimer</a> for the short version.</p>
+            </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Blog Post 1 -->
-                <a href="/blog/how-to-download-pinterest-videos" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
+                <p class="text-xs text-gray-500 mt-3 mb-1"><time datetime="2026-04-12">Updated April 2026</time> &middot; 8 min read</p>
+                        <a href="/blog/how-to-download-pinterest-videos" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
                     <div class="aspect-video bg-gray-200 w-full relative">
                         <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1000" alt="Pinterest Interface" class="w-full h-full object-cover">
                     </div>
@@ -83,7 +114,8 @@
                 </a>
 
                 <!-- Blog Post 2 -->
-                <a href="/blog/download-pinterest-videos-on-iphone" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
+                <p class="text-xs text-gray-500 mt-3 mb-1"><time datetime="2026-03-18">March 2026</time> &middot; 6 min read</p>
+                        <a href="/blog/download-pinterest-videos-on-iphone" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
                     <div class="aspect-video bg-gray-200 w-full relative">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1000" alt="iPhone displaying Pinterest" class="w-full h-full object-cover">
                     </div>
@@ -95,7 +127,8 @@
                 </a>
 
                 <!-- Blog Post 3 -->
-                <a href="/blog/download-pinterest-video-without-watermark" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
+                <p class="text-xs text-gray-500 mt-3 mb-1"><time datetime="2026-03-10">March 2026</time> &middot; 5 min read</p>
+                        <a href="/blog/download-pinterest-video-without-watermark" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
                     <div class="aspect-video bg-gray-200 w-full relative">
                         <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&q=80&w=1000" alt="Clean video screen" class="w-full h-full object-cover">
                     </div>
@@ -107,7 +140,8 @@
                 </a>
 
                 <!-- Blog Post 4 -->
-                <a href="/blog/pinterest-video-size-guide" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
+                <p class="text-xs text-gray-500 mt-3 mb-1"><time datetime="2026-03-04">March 2026</time> &middot; 4 min read</p>
+                        <a href="/blog/pinterest-video-size-guide" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
                     <div class="aspect-video bg-gray-200 w-full relative">
                         <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&q=80&w=1000" alt="Video Dimensions" class="w-full h-full object-cover">
                     </div>
@@ -119,7 +153,8 @@
                 </a>
 
                 <!-- Blog Post 5 -->
-                <a href="/blog/download-pinterest-videos-iphone-android" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
+                <p class="text-xs text-gray-500 mt-3 mb-1"><time datetime="2026-04-02">April 2026</time> &middot; 7 min read</p>
+                        <a href="/blog/download-pinterest-videos-iphone-android" class="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 overflow-hidden">
                     <div class="aspect-video bg-gray-200 w-full relative">
                         <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&q=80&w=1000" alt="Person using smartphone" class="w-full h-full object-cover">
                     </div>
@@ -135,12 +170,48 @@
 
     <footer class="bg-dark text-white py-12 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div><div class="flex items-center gap-2 mb-4"><img src="/favicon.png" alt="PinClip" class="h-6 w-6 rounded"><span class="font-bold text-lg">PinClip</span></div><p class="text-gray-400 text-sm mb-4">Free Pinterest video downloader — fast, safe, HD quality.</p><p class="text-gray-400 text-sm">📧 <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a></p></div>
-            <div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/" class="hover:text-pinterest">Home</a></li><li><a href="/download-pinterest-video" class="hover:text-pinterest">Download Pinterest Video</a></li><li><a href="/pinterest-to-mp4" class="hover:text-pinterest">Pinterest to MP4</a></li><li><a href="/download-pinterest-reels" class="hover:text-pinterest">Download Reels</a></li><li><a href="/blog" class="hover:text-pinterest">Blog</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Legal</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/privacy-policy" class="hover:text-pinterest">Privacy Policy</a></li><li><a href="/terms-of-service" class="hover:text-pinterest">Terms of Service</a></li><li><a href="/disclaimer" class="hover:text-pinterest">Disclaimer</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Company</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/about-us" class="hover:text-pinterest">About Us</a></li><li><a href="/contact" class="hover:text-pinterest">Contact</a></li></ul></div>
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/favicon.png" alt="" width="24" height="24" class="h-6 w-6 rounded">
+                    <span class="font-bold text-lg tracking-tight">PinClip</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">PinClip is a free online tool that saves public Pinterest videos as standard MP4 files. Built and maintained by an independent two-person team since 2026.</p>
+                <p class="text-gray-400 text-sm">Email: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest transition-colors">orderbusinesspromotion@gmail.com</a></p>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Tools</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-pinterest transition-colors">Pinterest Video Downloader</a></li>
+                    <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Legal</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/privacy-policy" class="hover:text-pinterest transition-colors">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy" class="hover:text-pinterest transition-colors">Cookie Policy</a></li>
+                    <li><a href="/terms-of-service" class="hover:text-pinterest transition-colors">Terms of Service</a></li>
+                    <li><a href="/dmca" class="hover:text-pinterest transition-colors">DMCA &amp; Copyright</a></li>
+                    <li><a href="/disclaimer" class="hover:text-pinterest transition-colors">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Company</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/about-us" class="hover:text-pinterest transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-pinterest transition-colors">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">&copy; 2026 PinClip. All rights reserved. | Contact: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a><br><span class="text-xs mt-2 block">This tool is intended for personal use only. Users are responsible for respecting copyright laws.</span></div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2026 PinClip. All rights reserved.</p>
+            <p class="text-xs mt-3 max-w-3xl mx-auto">PinClip is an independent tool and is not affiliated with, endorsed by, or sponsored by Pinterest, Inc. &quot;Pinterest&quot; is a trademark of Pinterest, Inc. We do not host, store or upload any video files. Please only download content you own or have permission to use &mdash; see our <a href="/dmca" class="hover:text-pinterest underline">DMCA policy</a> and <a href="/disclaimer" class="hover:text-pinterest underline">disclaimer</a>.</p>
+        </div>
     </footer>
+    <script src="../assets/js/consent.js" defer></script>
+    <script src="../assets/js/site.js" defer></script>
 </body>
 </html>

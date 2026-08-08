@@ -2,10 +2,12 @@
   "name": "pinterest-downloader-frontend",
   "version": "1.0.0",
   "scripts": {
+    "build": "npm run build:css",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
     "dev": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20",
     "tailwindcss": "^3.4.1"
   }
 }

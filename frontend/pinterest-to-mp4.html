@@ -10,24 +10,137 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google Consent Mode v2 — must run before any Google tag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function(){
+        var stored = null;
+        try { stored = localStorage.getItem('pinclip_consent'); } catch (e) {}
+        var state = stored === 'granted' ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
+          analytics_storage: state,
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+      })();
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7120148790304596" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://pinclip.vercel.app/pinterest-to-mp4">
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PinClip">
+    <meta property="og:title" content="Pinterest to MP4 Converter – Free HD Conversion Tool | PinClip">
+    <meta property="og:description" content="Convert Pinterest videos to MP4 format instantly. Free, fast, and secure online tool for converting Pinterest pins, Idea Pins, and Reels to HD MP4 files.">
+    <meta property="og:url" content="https://pinclip.vercel.app/pinterest-to-mp4">
+    <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pinterest to MP4 Converter – Free HD Conversion Tool | PinClip">
+    <meta name="twitter:description" content="Convert Pinterest videos to MP4 format instantly. Free, fast, and secure online tool for converting Pinterest pins, Idea Pins, and Reels to HD MP4 files.">
+    <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="PinClip">
+    <meta name="theme-color" content="#E60023">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will converting to MP4 reduce the video quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There is no re-encoding step. PinClip downloads the exact H.264 video and AAC audio streams Pinterest already stores and rewraps them into an MP4 container. The pixels and the audio samples are bit-for-bit identical to what the creator uploaded, so quality cannot drop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Pinterest not just give me an MP4 in the first place?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pinterest delivers video over HLS, which splits a clip into hundreds of small .ts segments described by an .m3u8 playlist. That is efficient for streaming because the player can switch bitrate mid-video, but it means there is no single file to save. Conversion means fetching every segment in order and stitching them back into one container."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between MP4, WEBM and MOV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MP4 is a container that almost universally holds H.264 video and AAC audio, and plays on essentially every device made in the last fifteen years. WEBM uses VP9 or AV1 and is smaller at the same quality, but older Apple devices and TVs often refuse it. MOV is Apple's container and is best inside Final Cut. For portability, MP4 is the right default, which is why it is the only format we output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert a Pinterest video to MP3 or extract just the audio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not through this tool. We deliberately only produce video files, because stripping a soundtrack out of someone's video is far more likely to be a copyright problem than saving the clip itself. If you need audio from content you own, use a local tool such as ffmpeg on the MP4 you downloaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the converted file keep the original resolution and frame rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We always request the highest-resolution rendition Pinterest offers for that pin, and the frame rate is whatever the creator uploaded — usually 24, 30 or 60 fps. If a pin was only ever uploaded at 480p, no tool can produce a genuine 1080p version of it."
+      }
+    }
+  ]
+}
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
-    <header class="bg-white shadow-sm sticky top-0 z-50"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16"><a href="/" class="flex items-center gap-2"><img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded"><span class="font-bold text-xl tracking-tight text-dark">PinClip</span></a><nav class="hidden md:flex space-x-8"><a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a><a href="/blog" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a><a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a><a href="/about-us" class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a></nav><button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div><div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0"><div class="px-4 py-3 space-y-2 pb-4"><a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a><a href="/blog" class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a><a href="/download-pinterest-video" class="block text-base font-medium text-gray-700 hover:text-pinterest">Features</a><a href="/about-us" class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a></div></div></header>
-    <script>document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m){b.addEventListener('click',function(){m.classList.toggle('hidden');})}});</script>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center gap-2" aria-label="PinClip home">
+                    <img src="/favicon.png" alt="" width="32" height="32" class="h-8 w-8 rounded">
+                    <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
+                </a>
+                <nav class="hidden md:flex space-x-7" aria-label="Main navigation">
+                    <a href="/" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
+                    <a href="/pinterest-to-mp4" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">MP4 Converter</a>
+                    <a href="/download-pinterest-reels" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Reels</a>
+                    <a href="/blog" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
+                    <a href="/about-us" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
+                </nav>
+                <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none focus:ring-2 focus:ring-pinterest rounded">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
+            <nav class="px-4 py-3 space-y-2 pb-4" aria-label="Mobile navigation">
+                <a href="/" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
+                <a href="/pinterest-to-mp4" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">MP4 Converter</a>
+                <a href="/download-pinterest-reels" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Reels</a>
+                <a href="/blog" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
+                <a href="/about-us" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <main class="flex-grow">
+    <main id="main" class="flex-grow">
         <section class="py-12 bg-pinterest bg-opacity-5 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-4xl font-bold text-dark mb-4">Pinterest to MP4 Converter</h1>
                 <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">Convert any Pinterest video, Idea Pin, or Reel into a downloadable MP4 file. Free, fast, and works on all devices.</p>
                 <div class="bg-white p-6 rounded-2xl shadow-md max-w-2xl mx-auto border border-gray-100">
                     <form id="downloadForm" class="flex flex-col md:flex-row gap-4">
-                        <input type="url" id="videoUrl" placeholder="Paste Pinterest link..." required class="input-field flex-grow" pattern="https?://([a-zA-Z0-9-]+\.)?(pinterest\.com|pin\.it)/.*">
-                        <button type="submit" class="btn-primary group"><span id="btnText">Convert &amp; Download</span><div id="btnLoader" class="loader ml-2 hidden"></div><svg id="btnIcon" class="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg></button>
+                        <label for="videoUrl" class="sr-only">Pinterest video URL</label>
+                        <input type="url" id="videoUrl" placeholder="Paste Pinterest link..." required class="input-field flex-grow" pattern="https?://([a-zA-Z0-9-]+\.)?(pinterest\.[a-z.]{2,}|pin\.it)/.*">
+                        <button type="submit" class="btn-primary group"><span id="btnText">Convert &amp; Download</span><div id="btnLoader" class="loader ml-2 hidden"></div><svg id="btnIcon" class="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg></button>
                     </form>
-                    <div id="errorMsg" class="text-red-500 mt-4 text-sm hidden"></div>
+                    <div id="errorMsg" role="alert" class="text-red-500 mt-4 text-sm hidden"></div>
                 </div>
             </div>
         </section>
@@ -38,12 +151,12 @@
                     <div class="w-full md:w-1/2 aspect-video bg-gray-100 rounded-lg overflow-hidden relative">
                         <video id="resultVideo" class="w-full h-full object-contain hidden" controls></video>
                         <img id="resultThumbnail" src="" alt="Video Thumbnail" class="w-full h-full object-cover">
-                        <div id="playOverlay" class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center pointer-events-none"><svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg></div>
+                        <div id="playOverlay" class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center pointer-events-none"><svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg></div>
                     </div>
                     <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
                         <h3 id="resultTitle" class="text-xl font-bold text-gray-800 mb-2 line-clamp-2">Pinterest Video</h3>
-                        <p class="text-green-600 font-medium mb-6 flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Ready to download</p>
-                        <a id="downloadBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary w-full shadow-lg"><span>Download HD MP4</span><svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg></a>
+                        <p class="text-green-600 font-medium mb-6 flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Ready to download</p>
+                        <a id="downloadBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary w-full shadow-lg"><span>Download HD MP4</span><svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg></a>
                     </div>
                 </div>
             </div>
@@ -79,17 +192,82 @@
                 <p class="mt-8">Want to learn more about downloading Pinterest content? Read our comprehensive <a href="/blog/how-to-download-pinterest-videos" class="text-pinterest hover:underline">2026 guide to downloading Pinterest videos</a>, or try our <a href="/" class="text-pinterest hover:underline">main Pinterest video downloader</a> tool.</p>
             </div>
         </section>
+
+        <!-- Page-specific FAQ -->
+        <section id="faq" class="py-16 bg-gray-50 px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-dark mb-10">Pinterest to MP4: Common Questions</h2>
+                <div class="space-y-4">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Will converting to MP4 reduce the video quality?</h3>
+                        <p class="text-gray-600">No. There is no re-encoding step. PinClip downloads the exact H.264 video and AAC audio streams Pinterest already stores and rewraps them into an MP4 container. The pixels and the audio samples are bit-for-bit identical to what the creator uploaded, so quality cannot drop.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Why does Pinterest not just give me an MP4 in the first place?</h3>
+                        <p class="text-gray-600">Pinterest delivers video over HLS, which splits a clip into hundreds of small .ts segments described by an .m3u8 playlist. That is efficient for streaming because the player can switch bitrate mid-video, but it means there is no single file to save. Conversion means fetching every segment in order and stitching them back into one container.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What is the difference between MP4, WEBM and MOV?</h3>
+                        <p class="text-gray-600">MP4 is a container that almost universally holds H.264 video and AAC audio, and plays on essentially every device made in the last fifteen years. WEBM uses VP9 or AV1 and is smaller at the same quality, but older Apple devices and TVs often refuse it. MOV is Apple's container and is best inside Final Cut. For portability, MP4 is the right default, which is why it is the only format we output.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I convert a Pinterest video to MP3 or extract just the audio?</h3>
+                        <p class="text-gray-600">Not through this tool. We deliberately only produce video files, because stripping a soundtrack out of someone's video is far more likely to be a copyright problem than saving the clip itself. If you need audio from content you own, use a local tool such as ffmpeg on the MP4 you downloaded.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Does the converted file keep the original resolution and frame rate?</h3>
+                        <p class="text-gray-600">Yes. We always request the highest-resolution rendition Pinterest offers for that pin, and the frame rate is whatever the creator uploaded — usually 24, 30 or 60 fps. If a pin was only ever uploaded at 480p, no tool can produce a genuine 1080p version of it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-dark text-white py-12 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div><div class="flex items-center gap-2 mb-4"><img src="/favicon.png" alt="PinClip" class="h-6 w-6 rounded"><span class="font-bold text-lg">PinClip</span></div><p class="text-gray-400 text-sm mb-4">Free Pinterest video downloader — fast, safe, HD quality.</p><p class="text-gray-400 text-sm">📧 <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a></p></div>
-            <div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/" class="hover:text-pinterest">Home</a></li><li><a href="/download-pinterest-video" class="hover:text-pinterest">Download Pinterest Video</a></li><li><a href="/pinterest-to-mp4" class="hover:text-pinterest">Pinterest to MP4</a></li><li><a href="/download-pinterest-reels" class="hover:text-pinterest">Download Reels</a></li><li><a href="/blog" class="hover:text-pinterest">Blog</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Legal</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/privacy-policy" class="hover:text-pinterest">Privacy Policy</a></li><li><a href="/terms-of-service" class="hover:text-pinterest">Terms of Service</a></li><li><a href="/disclaimer" class="hover:text-pinterest">Disclaimer</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Company</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/about-us" class="hover:text-pinterest">About Us</a></li><li><a href="/contact" class="hover:text-pinterest">Contact</a></li></ul></div>
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/favicon.png" alt="" width="24" height="24" class="h-6 w-6 rounded">
+                    <span class="font-bold text-lg tracking-tight">PinClip</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">PinClip is a free online tool that saves public Pinterest videos as standard MP4 files. Built and maintained by an independent two-person team since 2026.</p>
+                <p class="text-gray-400 text-sm">Email: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest transition-colors">orderbusinesspromotion@gmail.com</a></p>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Tools</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-pinterest transition-colors">Pinterest Video Downloader</a></li>
+                    <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Legal</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/privacy-policy" class="hover:text-pinterest transition-colors">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy" class="hover:text-pinterest transition-colors">Cookie Policy</a></li>
+                    <li><a href="/terms-of-service" class="hover:text-pinterest transition-colors">Terms of Service</a></li>
+                    <li><a href="/dmca" class="hover:text-pinterest transition-colors">DMCA &amp; Copyright</a></li>
+                    <li><a href="/disclaimer" class="hover:text-pinterest transition-colors">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Company</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/about-us" class="hover:text-pinterest transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-pinterest transition-colors">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">&copy; 2026 PinClip. All rights reserved. | Contact: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a><br><span class="text-xs mt-2 block">This tool is intended for personal use only. Users are responsible for respecting copyright laws and Pinterest's terms of service.</span></div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2026 PinClip. All rights reserved.</p>
+            <p class="text-xs mt-3 max-w-3xl mx-auto">PinClip is an independent tool and is not affiliated with, endorsed by, or sponsored by Pinterest, Inc. &quot;Pinterest&quot; is a trademark of Pinterest, Inc. We do not host, store or upload any video files. Please only download content you own or have permission to use &mdash; see our <a href="/dmca" class="hover:text-pinterest underline">DMCA policy</a> and <a href="/disclaimer" class="hover:text-pinterest underline">disclaimer</a>.</p>
+        </div>
     </footer>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/consent.js" defer></script>
+    <script src="./assets/js/site.js" defer></script>
 </body>
 </html>

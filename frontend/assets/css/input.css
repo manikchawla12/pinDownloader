@@ -6,6 +6,9 @@
     .btn-primary {
         @apply bg-pinterest hover:bg-pinterestHover text-white font-bold py-3 px-6 rounded-full transition-colors duration-200 shadow-md inline-flex items-center justify-center;
     }
+    .btn-secondary {
+        @apply bg-white hover:bg-gray-50 text-dark font-semibold py-3 px-6 rounded-full border border-gray-300 transition-colors duration-200 inline-flex items-center justify-center;
+    }
     .input-field {
         @apply w-full border-2 border-gray-200 rounded-full py-4 px-6 text-gray-700 leading-tight focus:outline-none focus:border-pinterest focus:ring-1 focus:ring-pinterest transition-colors;
     }
@@ -29,4 +32,106 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Accessibility: keyboard-only skip link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: #E60023;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+.skip-link:focus {
+    left: 0;
+}
+
+/* Cookie consent banner */
+#cookieConsent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    background: #111111;
+    color: #f3f4f6;
+    padding: 1rem;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+#cookieConsent[hidden] {
+    display: none;
+}
+.consent-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    align-items: flex-start;
+}
+@media (min-width: 768px) {
+    .consent-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.consent-actions {
+    display: flex;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+.consent-btn {
+    border-radius: 9999px;
+    padding: 0.55rem 1.35rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+.consent-btn--accept {
+    background: #E60023;
+    color: #fff;
+}
+.consent-btn--accept:hover {
+    background: #ad081b;
+}
+.consent-btn--reject {
+    background: transparent;
+    color: #f3f4f6;
+    border-color: #4b5563;
+}
+.consent-btn--reject:hover {
+    background: #1f2937;
+}
+#cookieConsent a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Ad slot containers — keep layout stable and clearly separated from content */
+.ad-slot {
+    display: block;
+    margin: 2rem auto;
+    max-width: 72rem;
+    text-align: center;
+    min-height: 100px;
+}
+.ad-slot::before {
+    content: "Advertisement";
+    display: block;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 0.375rem;
 }

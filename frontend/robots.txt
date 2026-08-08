@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Advertising crawlers need explicit access to every page that shows ads.
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Google-Adsense-Ads
+Allow: /
 
 Sitemap: https://pinclip.vercel.app/sitemap.xml

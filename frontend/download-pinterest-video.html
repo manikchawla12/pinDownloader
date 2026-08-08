@@ -3,56 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Pinterest Video in HD – Free Online Tool | PinClip</title>
-    <meta name="description" content="Download Pinterest video online in HD MP4 quality without watermark. Step-by-step guide and free tool for saving Pinterest videos on any device in 2026.">
+    <title>Download Pinterest Videos on PC, Mac &amp; Chromebook | PinClip</title>
+    <meta name="description" content="Desktop guide to saving Pinterest videos: where files land on Windows, macOS, Linux and ChromeOS, browser-specific quirks, organising an offline library, and desktop troubleshooting.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google Consent Mode v2 — must run before any Google tag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function(){
+        var stored = null;
+        try { stored = localStorage.getItem('pinclip_consent'); } catch (e) {}
+        var state = stored === 'granted' ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
+          analytics_storage: state,
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+      })();
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7120148790304596" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://pinclip.vercel.app/download-pinterest-video">
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PinClip">
+    <meta property="og:title" content="Download Pinterest Videos on PC, Mac &amp; Chromebook | PinClip">
+    <meta property="og:description" content="Desktop guide to saving Pinterest videos: where files land on Windows, macOS, Linux and ChromeOS, browser-specific quirks, organising an offline library, and desktop troubleshooting.">
+    <meta property="og:url" content="https://pinclip.vercel.app/download-pinterest-video">
+    <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Download Pinterest Videos on PC, Mac &amp; Chromebook | PinClip">
+    <meta name="twitter:description" content="Desktop guide to saving Pinterest videos: where files land on Windows, macOS, Linux and ChromeOS, browser-specific quirks, organising an offline library, and desktop troubleshooting.">
+    <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="PinClip">
+    <meta name="theme-color" content="#E60023">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+    <a href="#main" class="skip-link">Skip to main content</a>
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center gap-2"><img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded"><span class="font-bold text-xl tracking-tight text-dark">PinClip</span></a>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
-                    <a href="/blog" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
-                    <a href="/download-pinterest-video" class="text-pinterest font-medium">Features</a>
-                    <a href="/about-us" class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
+                <a href="/" class="flex items-center gap-2" aria-label="PinClip home">
+                    <img src="/favicon.png" alt="" width="32" height="32" class="h-8 w-8 rounded">
+                    <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
+                </a>
+                <nav class="hidden md:flex space-x-7" aria-label="Main navigation">
+                    <a href="/" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
+                    <a href="/pinterest-to-mp4" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">MP4 Converter</a>
+                    <a href="/download-pinterest-reels" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Reels</a>
+                    <a href="/blog" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
+                    <a href="/about-us" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
                 </nav>
-                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+                <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none focus:ring-2 focus:ring-pinterest rounded">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
             </div>
         </div>
         <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
-            <div class="px-4 py-3 space-y-2 pb-4">
-                <a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
-                <a href="/blog" class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
-                <a href="/download-pinterest-video" class="block text-base font-medium text-pinterest">Features</a>
-                <a href="/about-us" class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
-            </div>
+            <nav class="px-4 py-3 space-y-2 pb-4" aria-label="Mobile navigation">
+                <a href="/" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
+                <a href="/pinterest-to-mp4" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">MP4 Converter</a>
+                <a href="/download-pinterest-reels" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Reels</a>
+                <a href="/blog" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
+                <a href="/about-us" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
+            </nav>
         </div>
     </header>
-    <script>document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m){b.addEventListener('click',function(){m.classList.toggle('hidden');})}});</script>
 
-    <main class="flex-grow">
+    <main id="main" class="flex-grow">
         <section class="py-12 bg-pinterest bg-opacity-5 px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl font-bold text-dark mb-4">Download Pinterest Video Online</h1>
-                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">Save any Pinterest video directly to your device in HD MP4 format. No watermarks, no registration, no software — just paste the link and download.</p>
+                <nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-5">
+                    <a href="/" class="hover:text-pinterest">Home</a>
+                    <span class="mx-2" aria-hidden="true">/</span>
+                    <span class="text-gray-700">Desktop guide</span>
+                </nav>
+                <h1 class="text-4xl font-bold text-dark mb-4">Download Pinterest Videos on PC, Mac &amp; Chromebook</h1>
+                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">The desktop-focused guide: where your file actually lands on Windows, macOS, Linux and ChromeOS, which browser behaves best, and how to build an organised offline library. Paste a link below to start.</p>
                 <div class="bg-white p-6 rounded-2xl shadow-md max-w-2xl mx-auto border border-gray-100">
                     <form id="downloadForm" class="flex flex-col md:flex-row gap-4">
-                        <input type="url" id="videoUrl" placeholder="Paste Pinterest link here..." required class="input-field flex-grow" pattern="https?://([a-zA-Z0-9-]+\.)?(pinterest\.com|pin\.it)/.*">
+                        <label for="videoUrl" class="sr-only">Pinterest video URL</label>
+                        <input type="url" id="videoUrl" placeholder="Paste Pinterest link here..." required class="input-field flex-grow" pattern="https?://([a-zA-Z0-9-]+\.)?(pinterest\.[a-z.]{2,}|pin\.it)/.*">
                         <button type="submit" class="btn-primary group">
                             <span id="btnText">Download</span>
                             <div id="btnLoader" class="loader ml-2 hidden"></div>
-                            <svg id="btnIcon" class="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <svg id="btnIcon" class="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         </button>
                     </form>
-                    <div id="errorMsg" class="text-red-500 mt-4 text-sm hidden"></div>
+                    <div id="errorMsg" role="alert" class="text-red-500 mt-4 text-sm hidden"></div>
                 </div>
             </div>
         </section>
@@ -82,60 +131,125 @@
             </div>
         </section>
 
-        <!-- SEO Article -->
+        <!-- Desktop-specific guidance -->
         <section class="py-16 px-4 bg-white">
-            <div class="max-w-4xl mx-auto prose prose-lg text-gray-700">
-                <h2 class="text-3xl font-bold text-dark mb-4">Why You Need a Dedicated Pinterest Video Downloader</h2>
-                <p>Pinterest is one of the world's largest visual discovery platforms, hosting millions of videos on topics ranging from cooking and crafts to fitness and fashion. While the Pinterest app allows you to save pins to your boards, it does not provide a native option to download videos directly to your device's storage. This limitation means you always need an internet connection to revisit your saved content, and you risk losing access entirely if the original creator removes their pin.</p>
-                
-                <p>A dedicated <strong>Pinterest video downloader</strong> like PinClip solves this problem by extracting the original video file and delivering it as a standard MP4 that you can store locally, share via messaging apps, or watch offline during flights, commutes, and areas with poor connectivity.</p>
+            <div class="max-w-4xl mx-auto prose prose-lg">
+                <h2>Downloading on a computer is different from downloading on a phone</h2>
+                <p>Most guides about saving Pinterest videos are written for phones, and they quietly assume you are working around a mobile operating system that hides the filesystem from you. On a desktop or laptop the situation is reversed: you have a real filesystem, a real download manager, and real media players. That makes a computer the best place to build an archive you will still be able to use in five years &mdash; but it also means the details differ from every mobile tutorial you have read.</p>
+                <p>This page covers the desktop side specifically. If you are on a phone, our <a href="/blog/download-pinterest-videos-iphone-android">iPhone and Android guide</a> will serve you better.</p>
 
-                <h3 class="text-2xl font-bold text-dark mt-8 mb-3">Step-by-Step: How to Download Pinterest Videos</h3>
-                <p>Using PinClip is straightforward and requires no technical knowledge. Here's the complete process:</p>
-                <ol class="list-decimal pl-6 space-y-2">
-                    <li><strong>Find your video:</strong> Open the Pinterest app or website and navigate to the video pin you want to save. This can be a standard video pin, an Idea Pin, or a Reel.</li>
-                    <li><strong>Copy the link:</strong> Tap the share icon (usually an arrow pointing up or right) and select "Copy Link." On desktop, you can simply copy the URL from your browser's address bar.</li>
-                    <li><strong>Paste into PinClip:</strong> Come back to this page and paste the copied URL into the input field above. Click the red "Download" button.</li>
-                    <li><strong>Save your MP4:</strong> Within seconds, PinClip will process the link and display a preview with a download button. Click "Download MP4" to save the video to your device in the highest available quality.</li>
-                </ol>
+                <h2>Where your file actually goes</h2>
+                <p>When the download finishes, the browser hands the file to your operating system. Exactly where it lands depends on the platform:</p>
+                <div class="not-prose my-6 overflow-x-auto">
+                    <table class="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+                        <thead class="bg-gray-50 text-left">
+                            <tr>
+                                <th class="p-3 font-semibold text-dark border-b border-gray-200">System</th>
+                                <th class="p-3 font-semibold text-dark border-b border-gray-200">Default location</th>
+                                <th class="p-3 font-semibold text-dark border-b border-gray-200">Fastest way to open it</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr><td class="p-3 border-b border-gray-100">Windows 10 / 11</td><td class="p-3 border-b border-gray-100"><code>C:\Users\&lt;you&gt;\Downloads</code></td><td class="p-3 border-b border-gray-100">Win + E, then click Downloads</td></tr>
+                            <tr><td class="p-3 border-b border-gray-100">macOS</td><td class="p-3 border-b border-gray-100"><code>~/Downloads</code></td><td class="p-3 border-b border-gray-100">Cmd + Option + L in Finder</td></tr>
+                            <tr><td class="p-3 border-b border-gray-100">Ubuntu / Linux</td><td class="p-3 border-b border-gray-100"><code>~/Downloads</code></td><td class="p-3 border-b border-gray-100">Ctrl + H in Files</td></tr>
+                            <tr><td class="p-3">ChromeOS</td><td class="p-3"><code>My files &rsaquo; Downloads</code></td><td class="p-3">Alt + Shift + M</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>On ChromeOS the Downloads folder lives in local storage that gets cleared when disk space runs low, so move anything you care about into Google Drive or an external drive shortly after saving it.</p>
 
-                <h3 class="text-2xl font-bold text-dark mt-8 mb-3">Key Advantages of PinClip</h3>
-                <ul class="list-disc pl-6 space-y-2">
-                    <li><strong>No watermarks:</strong> We extract the original video file, so your download is clean and unaltered.</li>
-                    <li><strong>HD quality:</strong> PinClip automatically selects the highest resolution available (typically 720p or 1080p).</li>
-                    <li><strong>Universal compatibility:</strong> Works on iPhones, Android phones, iPads, Windows PCs, Macs, and Chromebooks through any modern web browser.</li>
-                    <li><strong>No account required:</strong> You can start downloading immediately — no signup, no email verification, no personal data collection.</li>
-                    <li><strong>Secure processing:</strong> All connections are encrypted via HTTPS. We never store your videos or download history on our servers.</li>
+                <h2>Browser-by-browser notes</h2>
+                <ul>
+                    <li><strong>Chrome and Edge</strong> &mdash; the smoothest experience. The file downloads straight to disk and appears in the downloads bubble. If you have &ldquo;Ask where to save each file&rdquo; enabled under Settings &rsaquo; Downloads, you get a save dialog instead, which is handy for filing videos as you go.</li>
+                    <li><strong>Firefox</strong> &mdash; works identically, but its built-in preview may try to play the MP4 in a tab first. Use Ctrl + J (Cmd + J on Mac) to open the Downloads library and save from there.</li>
+                    <li><strong>Safari on macOS</strong> &mdash; occasionally opens MP4 files in a new tab rather than downloading them. If that happens, right-click the video and choose &ldquo;Download Video&rdquo;, or hold Option while clicking the download button to force a save.</li>
+                    <li><strong>Brave and other Chromium forks</strong> &mdash; behave like Chrome. Shields do not interfere with the download itself.</li>
                 </ul>
 
-                <h3 class="text-2xl font-bold text-dark mt-8 mb-3">Common Questions About Downloading Pinterest Videos</h3>
-                
-                <h4 class="text-xl font-semibold text-dark mt-6 mb-2">Can I download Pinterest videos on iPhone?</h4>
-                <p>Yes. Open Safari or Chrome on your iPhone, navigate to PinClip, and paste the Pinterest link. The downloaded video will be saved to your Files app or can be accessed through Safari's download manager. For a detailed tutorial, read our guide on <a href="/blog/download-pinterest-videos-on-iphone" class="text-pinterest hover:underline">saving Pinterest videos to iPhone</a>.</p>
-                
-                <h4 class="text-xl font-semibold text-dark mt-6 mb-2">Is there a limit to how many videos I can download?</h4>
-                <p>No. PinClip offers completely unlimited downloads at no cost. There are no daily quotas, premium tiers, or hidden restrictions.</p>
-                
-                <h4 class="text-xl font-semibold text-dark mt-6 mb-2">Do I need to install any software?</h4>
-                <p>No. PinClip is entirely web-based. You don't need to install any apps, browser extensions, or desktop software. Everything runs directly in your browser.</p>
+                <h2>Getting the Pinterest URL on desktop</h2>
+                <p>You do not need the share menu on a computer. Three approaches, in order of speed:</p>
+                <ol>
+                    <li><strong>Address bar.</strong> Click the pin so it opens on its own page, then copy the URL directly from the address bar. This gives you a clean <code>pinterest.com/pin/&lt;id&gt;/</code> link, which is the format the tool handles most reliably.</li>
+                    <li><strong>Right-click the pin.</strong> In the grid view, right-click a pin and choose &ldquo;Copy link address&rdquo;. Faster when you are collecting several videos in a row.</li>
+                    <li><strong>Share button.</strong> Click the share icon on the pin and choose &ldquo;Copy link&rdquo;. This produces a shortened <code>pin.it</code> URL, which also works.</li>
+                </ol>
+                <p>Avoid copying a URL while you are in Pinterest&rsquo;s full-screen viewer &mdash; it sometimes carries tracking parameters that make the link longer than it needs to be. They are harmless, but a clean link is easier to keep track of.</p>
 
-                <p class="mt-8">Ready to get started? Paste your Pinterest link into the tool at the top of this page, or explore our other dedicated tools: the <a href="/pinterest-to-mp4" class="text-pinterest hover:underline">Pinterest to MP4 converter</a> and the <a href="/download-pinterest-reels" class="text-pinterest hover:underline">Pinterest Reels downloader</a>. For more tips, check out the <a href="/blog" class="text-pinterest hover:underline">PinClip Blog</a>.</p>
+                <h2>Building an offline library worth keeping</h2>
+                <p>The advantage of a desktop workflow is that you can organise as you download. A pattern that holds up well over time:</p>
+                <ul>
+                    <li>Create one folder per project or theme &mdash; <code>Kitchen renovation</code>, <code>Sourdough</code>, <code>Studio lighting</code> &mdash; rather than one giant Pinterest folder.</li>
+                    <li>Rename each file to something you will recognise later. <code>pinclip_1723041288.mp4</code> tells you nothing in six months; <code>tile-grout-technique.mp4</code> does.</li>
+                    <li>Keep a plain text file in each folder with the original pin URL next to each filename. It costs ten seconds and means you can always find the creator again to credit them.</li>
+                    <li>Back the folder up. A local file is only durable if it exists in more than one place.</li>
+                </ul>
+
+                <h2>Playing and re-using the files</h2>
+                <p>Everything you download is a standard MP4 with H.264 video, so it plays natively in Windows Media Player, QuickTime, the Photos app, VLC and every modern browser. If a file will not open, VLC is the reliable fallback &mdash; it handles edge cases that the built-in players sometimes refuse.</p>
+                <p>Editing works the same way. The MP4s import directly into DaVinci Resolve, Premiere, iMovie, CapCut and Shotcut without transcoding. Remember that importing a file into an editor does not give you the right to publish the result &mdash; see our <a href="/disclaimer">disclaimer</a> for where personal use ends.</p>
+
+                <h2>Desktop troubleshooting</h2>
+                <h3>The download starts and immediately stops</h3>
+                <p>Usually an antivirus or corporate proxy inspecting the stream. Check your antivirus quarantine log first. On a work machine, a network policy may block large media transfers outright &mdash; there is nothing the site can do about that from its end.</p>
+                <h3>The file is much smaller than expected</h3>
+                <p>Some pins are genuinely short or were uploaded at low bitrate. Compare against the duration shown in the preview: roughly 1&ndash;2&nbsp;MB per 10 seconds at 720p is normal for Pinterest&rsquo;s encoding. Our <a href="/blog/pinterest-video-size-guide">video size and quality guide</a> breaks down the numbers.</p>
+                <h3>Nothing happens when I click download</h3>
+                <p>A pop-up blocker is the usual cause, since the file opens through a new request. Allow pop-ups for this site, or right-click the download button and choose &ldquo;Save link as&rdquo;.</p>
+                <h3>The pin is an image, not a video</h3>
+                <p>This tool only handles video pins. Look for the play indicator on the pin before copying its link &mdash; static image pins have no video track to extract.</p>
+
+                <h2>Related tools and guides</h2>
+                <p>If you specifically want format conversion details, use the <a href="/pinterest-to-mp4">Pinterest to MP4 converter</a>. For short-form vertical content, the <a href="/download-pinterest-reels">Reels and Idea Pin downloader</a> is tuned for that format. Everything else lives on the <a href="/blog">blog</a>.</p>
             </div>
         </section>
     </main>
 
     <footer class="bg-dark text-white py-12 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div><div class="flex items-center gap-2 mb-4"><img src="/favicon.png" alt="PinClip" class="h-6 w-6 rounded"><span class="font-bold text-lg">PinClip</span></div><p class="text-gray-400 text-sm mb-4">Free Pinterest video downloader — fast, safe, HD quality.</p><p class="text-gray-400 text-sm">📧 <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a></p></div>
-            <div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/" class="hover:text-pinterest">Home</a></li><li><a href="/download-pinterest-video" class="hover:text-pinterest">Download Pinterest Video</a></li><li><a href="/pinterest-to-mp4" class="hover:text-pinterest">Pinterest to MP4</a></li><li><a href="/download-pinterest-reels" class="hover:text-pinterest">Download Reels</a></li><li><a href="/blog" class="hover:text-pinterest">Blog</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Legal</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/privacy-policy" class="hover:text-pinterest">Privacy Policy</a></li><li><a href="/terms-of-service" class="hover:text-pinterest">Terms of Service</a></li><li><a href="/disclaimer" class="hover:text-pinterest">Disclaimer</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Company</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/about-us" class="hover:text-pinterest">About Us</a></li><li><a href="/contact" class="hover:text-pinterest">Contact</a></li></ul></div>
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/favicon.png" alt="" width="24" height="24" class="h-6 w-6 rounded">
+                    <span class="font-bold text-lg tracking-tight">PinClip</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">PinClip is a free online tool that saves public Pinterest videos as standard MP4 files. Built and maintained by an independent two-person team since 2026.</p>
+                <p class="text-gray-400 text-sm">Email: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest transition-colors">orderbusinesspromotion@gmail.com</a></p>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Tools</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-pinterest transition-colors">Pinterest Video Downloader</a></li>
+                    <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Legal</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/privacy-policy" class="hover:text-pinterest transition-colors">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy" class="hover:text-pinterest transition-colors">Cookie Policy</a></li>
+                    <li><a href="/terms-of-service" class="hover:text-pinterest transition-colors">Terms of Service</a></li>
+                    <li><a href="/dmca" class="hover:text-pinterest transition-colors">DMCA &amp; Copyright</a></li>
+                    <li><a href="/disclaimer" class="hover:text-pinterest transition-colors">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Company</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/about-us" class="hover:text-pinterest transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-pinterest transition-colors">Contact</a></li>
+                </ul>
+            </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-            &copy; 2026 PinClip. All rights reserved. | Contact: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a><br>
-            <span class="text-xs mt-2 block">This tool is intended for personal use only. Users are responsible for respecting copyright laws and Pinterest's terms of service.</span>
+            <p>&copy; 2026 PinClip. All rights reserved.</p>
+            <p class="text-xs mt-3 max-w-3xl mx-auto">PinClip is an independent tool and is not affiliated with, endorsed by, or sponsored by Pinterest, Inc. &quot;Pinterest&quot; is a trademark of Pinterest, Inc. We do not host, store or upload any video files. Please only download content you own or have permission to use &mdash; see our <a href="/dmca" class="hover:text-pinterest underline">DMCA policy</a> and <a href="/disclaimer" class="hover:text-pinterest underline">disclaimer</a>.</p>
         </div>
     </footer>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/consent.js" defer></script>
+    <script src="./assets/js/site.js" defer></script>
 </body>
 </html>

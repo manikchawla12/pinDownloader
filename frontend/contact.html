@@ -10,14 +10,78 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Google Consent Mode v2 — must run before any Google tag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function(){
+        var stored = null;
+        try { stored = localStorage.getItem('pinclip_consent'); } catch (e) {}
+        var state = stored === 'granted' ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
+          analytics_storage: state,
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
+        });
+      })();
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7120148790304596" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://pinclip.vercel.app/contact">
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PinClip">
+    <meta property="og:title" content="Contact Us – PinClip Support &amp; Feedback">
+    <meta property="og:description" content="Get in touch with the PinClip team for support, feedback, or questions about our free Pinterest video downloader tool.">
+    <meta property="og:url" content="https://pinclip.vercel.app/contact">
+    <meta property="og:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us – PinClip Support &amp; Feedback">
+    <meta name="twitter:description" content="Get in touch with the PinClip team for support, feedback, or questions about our free Pinterest video downloader tool.">
+    <meta name="twitter:image" content="https://pinclip.vercel.app/assets/og-image.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="PinClip">
+    <meta name="theme-color" content="#E60023">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
-    <header class="bg-white shadow-sm sticky top-0 z-50"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16"><a href="/" class="flex items-center gap-2"><img src="/favicon.png" alt="PinClip Logo" class="h-8 w-8 rounded"><span class="font-bold text-xl tracking-tight text-dark">PinClip</span></a><nav class="hidden md:flex space-x-8"><a href="/" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a><a href="/blog" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a><a href="/download-pinterest-video" class="text-gray-600 hover:text-pinterest font-medium transition-colors">Features</a><a href="/about-us" class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a></nav><button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div><div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0"><div class="px-4 py-3 space-y-2 pb-4"><a href="/" class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a><a href="/blog" class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a><a href="/download-pinterest-video" class="block text-base font-medium text-gray-700 hover:text-pinterest">Features</a><a href="/about-us" class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a></div></div></header>
-    <script>document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m){b.addEventListener('click',function(){m.classList.toggle('hidden');})}});</script>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center gap-2" aria-label="PinClip home">
+                    <img src="/favicon.png" alt="" width="32" height="32" class="h-8 w-8 rounded">
+                    <span class="font-bold text-xl tracking-tight text-dark">PinClip</span>
+                </a>
+                <nav class="hidden md:flex space-x-7" aria-label="Main navigation">
+                    <a href="/" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Home</a>
+                    <a href="/pinterest-to-mp4" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">MP4 Converter</a>
+                    <a href="/download-pinterest-reels" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Reels</a>
+                    <a href="/blog" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">Blog</a>
+                    <a href="/about-us" data-nav class="text-gray-600 hover:text-pinterest font-medium transition-colors">About</a>
+                </nav>
+                <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden text-gray-600 hover:text-pinterest focus:outline-none focus:ring-2 focus:ring-pinterest rounded">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
+            <nav class="px-4 py-3 space-y-2 pb-4" aria-label="Mobile navigation">
+                <a href="/" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Home</a>
+                <a href="/pinterest-to-mp4" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">MP4 Converter</a>
+                <a href="/download-pinterest-reels" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Reels</a>
+                <a href="/blog" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">Blog</a>
+                <a href="/about-us" data-nav class="block text-base font-medium text-gray-700 hover:text-pinterest">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <main class="flex-grow py-12 px-4">
+    <main id="main" class="flex-grow py-12 px-4">
         <div class="max-w-4xl mx-auto">
             <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
                 <h1 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">Contact Us</h1>
@@ -25,10 +89,46 @@
                 <div class="prose prose-lg text-gray-700 mx-auto">
                     <p class="text-center text-lg text-gray-600 mb-8">Have a question, found a bug, or want to suggest a feature? We'd love to hear from you. The PinClip team is here to help.</p>
                     
-                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center mb-8">
-                        <h2 class="text-xl font-semibold text-dark mb-3">Email Us</h2>
-                        <p class="text-gray-600 mb-4">The fastest way to reach us is by email. We typically respond within 24–48 hours on business days.</p>
-                        <a href="mailto:orderbusinesspromotion@gmail.com" class="btn-primary inline-block">📧 orderbusinesspromotion@gmail.com</a>
+                    <div class="not-prose bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-200 mb-10">
+                        <h2 class="text-xl font-semibold text-dark mb-1">Send us a message</h2>
+                        <p class="text-sm text-gray-600 mb-6">Fill this in and it will open a pre-filled email in your mail app &mdash; nothing is sent to us or stored anywhere until you press send yourself.</p>
+                        <form id="contactForm" class="space-y-4" novalidate>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="cfName" class="block text-sm font-medium text-gray-700 mb-1">Your name</label>
+                                    <input type="text" id="cfName" name="name" required autocomplete="name" class="w-full border-2 border-gray-200 rounded-lg py-2.5 px-4 text-gray-700 focus:outline-none focus:border-pinterest transition-colors">
+                                </div>
+                                <div>
+                                    <label for="cfEmail" class="block text-sm font-medium text-gray-700 mb-1">Your email</label>
+                                    <input type="email" id="cfEmail" name="email" required autocomplete="email" class="w-full border-2 border-gray-200 rounded-lg py-2.5 px-4 text-gray-700 focus:outline-none focus:border-pinterest transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="cfTopic" class="block text-sm font-medium text-gray-700 mb-1">Topic</label>
+                                <select id="cfTopic" name="topic" class="w-full border-2 border-gray-200 rounded-lg py-2.5 px-4 text-gray-700 bg-white focus:outline-none focus:border-pinterest transition-colors">
+                                    <option>A link is not working</option>
+                                    <option>Bug report</option>
+                                    <option>Feature request</option>
+                                    <option>Copyright or content removal</option>
+                                    <option>Privacy or data request</option>
+                                    <option>Business inquiry</option>
+                                    <option>Something else</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="cfMessage" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="cfMessage" name="message" rows="5" required class="w-full border-2 border-gray-200 rounded-lg py-2.5 px-4 text-gray-700 focus:outline-none focus:border-pinterest transition-colors"></textarea>
+                                <p class="text-xs text-gray-500 mt-1">If a specific pin failed, please paste its URL here &mdash; it makes the problem much faster to reproduce.</p>
+                            </div>
+                            <p id="cfError" role="alert" class="text-red-500 text-sm hidden"></p>
+                            <button type="submit" class="btn-primary w-full sm:w-auto">Open in my email app</button>
+                        </form>
+                    </div>
+
+                    <div class="not-prose bg-white rounded-xl p-6 border border-gray-200 text-center mb-10">
+                        <h2 class="text-lg font-semibold text-dark mb-2">Prefer to email directly?</h2>
+                        <p class="text-gray-600 text-sm mb-4">We answer within 24&ndash;48 hours on business days.</p>
+                        <a href="mailto:orderbusinesspromotion@gmail.com" class="text-pinterest font-semibold hover:underline break-all">orderbusinesspromotion@gmail.com</a>
                     </div>
 
                     <h2 class="text-2xl font-bold text-dark mt-8 mb-3">What Can We Help With?</h2>
@@ -58,12 +158,80 @@
 
     <footer class="bg-dark text-white py-12 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div><div class="flex items-center gap-2 mb-4"><img src="/favicon.png" alt="PinClip" class="h-6 w-6 rounded"><span class="font-bold text-lg">PinClip</span></div><p class="text-gray-400 text-sm mb-4">Free Pinterest video downloader — fast, safe, HD quality.</p><p class="text-gray-400 text-sm">📧 <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a></p></div>
-            <div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/" class="hover:text-pinterest">Home</a></li><li><a href="/download-pinterest-video" class="hover:text-pinterest">Download Pinterest Video</a></li><li><a href="/pinterest-to-mp4" class="hover:text-pinterest">Pinterest to MP4</a></li><li><a href="/download-pinterest-reels" class="hover:text-pinterest">Download Reels</a></li><li><a href="/blog" class="hover:text-pinterest">Blog</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Legal</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/privacy-policy" class="hover:text-pinterest">Privacy Policy</a></li><li><a href="/terms-of-service" class="hover:text-pinterest">Terms of Service</a></li><li><a href="/disclaimer" class="hover:text-pinterest">Disclaimer</a></li></ul></div>
-            <div><h4 class="font-bold mb-4">Company</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="/about-us" class="hover:text-pinterest">About Us</a></li><li><a href="/contact" class="hover:text-pinterest">Contact</a></li></ul></div>
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/favicon.png" alt="" width="24" height="24" class="h-6 w-6 rounded">
+                    <span class="font-bold text-lg tracking-tight">PinClip</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">PinClip is a free online tool that saves public Pinterest videos as standard MP4 files. Built and maintained by an independent two-person team since 2026.</p>
+                <p class="text-gray-400 text-sm">Email: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest transition-colors">orderbusinesspromotion@gmail.com</a></p>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Tools</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-pinterest transition-colors">Pinterest Video Downloader</a></li>
+                    <li><a href="/pinterest-to-mp4" class="hover:text-pinterest transition-colors">Pinterest to MP4 Converter</a></li>
+                    <li><a href="/download-pinterest-reels" class="hover:text-pinterest transition-colors">Reels &amp; Idea Pin Downloader</a></li>
+                    <li><a href="/download-pinterest-video" class="hover:text-pinterest transition-colors">Desktop (PC &amp; Mac) Guide</a></li>
+                    <li><a href="/blog" class="hover:text-pinterest transition-colors">Blog &amp; Guides</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Legal</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/privacy-policy" class="hover:text-pinterest transition-colors">Privacy Policy</a></li>
+                    <li><a href="/cookie-policy" class="hover:text-pinterest transition-colors">Cookie Policy</a></li>
+                    <li><a href="/terms-of-service" class="hover:text-pinterest transition-colors">Terms of Service</a></li>
+                    <li><a href="/dmca" class="hover:text-pinterest transition-colors">DMCA &amp; Copyright</a></li>
+                    <li><a href="/disclaimer" class="hover:text-pinterest transition-colors">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold mb-4 text-base">Company</h2>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="/about-us" class="hover:text-pinterest transition-colors">About Us</a></li>
+                    <li><a href="/contact" class="hover:text-pinterest transition-colors">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">&copy; 2026 PinClip. All rights reserved. | Contact: <a href="mailto:orderbusinesspromotion@gmail.com" class="hover:text-pinterest">orderbusinesspromotion@gmail.com</a><br><span class="text-xs mt-2 block">This tool is intended for personal use only. Users are responsible for respecting copyright laws.</span></div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2026 PinClip. All rights reserved.</p>
+            <p class="text-xs mt-3 max-w-3xl mx-auto">PinClip is an independent tool and is not affiliated with, endorsed by, or sponsored by Pinterest, Inc. &quot;Pinterest&quot; is a trademark of Pinterest, Inc. We do not host, store or upload any video files. Please only download content you own or have permission to use &mdash; see our <a href="/dmca" class="hover:text-pinterest underline">DMCA policy</a> and <a href="/disclaimer" class="hover:text-pinterest underline">disclaimer</a>.</p>
+        </div>
     </footer>
+    <script src="./assets/js/consent.js" defer></script>
+    <script src="./assets/js/site.js" defer></script>
+    <script>
+        (function () {
+            var form = document.getElementById('contactForm');
+            if (!form) return;
+            var error = document.getElementById('cfError');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var name = document.getElementById('cfName').value.trim();
+                var email = document.getElementById('cfEmail').value.trim();
+                var topic = document.getElementById('cfTopic').value;
+                var message = document.getElementById('cfMessage').value.trim();
+
+                if (!name || !email || !message) {
+                    error.textContent = 'Please fill in your name, email and message.';
+                    error.classList.remove('hidden');
+                    return;
+                }
+                if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+                    error.textContent = 'That email address doesn\u2019t look right.';
+                    error.classList.remove('hidden');
+                    return;
+                }
+                error.classList.add('hidden');
+
+                var body = message + '\n\n---\nFrom: ' + name + ' <' + email + '>';
+                window.location.href = 'mailto:orderbusinesspromotion@gmail.com'
+                    + '?subject=' + encodeURIComponent('[PinClip] ' + topic)
+                    + '&body=' + encodeURIComponent(body);
+            });
+        })();
+    </script>
 </body>
 </html>
